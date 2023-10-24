@@ -1,0 +1,24 @@
+// можно инициализировать через команду tsc --init(создает конфиг с комментами)
+
+{
+  "compilerOptions": {
+    "outDir": "./dist/", // куда собирается сборка(в данном случае не важно, т.к. сборка происходит с помощью webpack)
+    "noImplicitAny": true, // подсвечивает места где не указан тип
+    "module": "ESNext",
+    "target": "es5", // стандарт в который будет компилироваться код
+    "jsx": "react-jsx",
+    "allowJs": true, // компилятор обрабатывает не только ts файлы, но и js
+    "moduleResolution": "node",
+    "esModuleInterop": true, // позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import (module.export это common.js)
+
+    // если какая-то библиотека не имеет default export, лоадеры вроде ts-loader автоматически создают их,
+    // это позволяет писать вместо import * as React from 'react'
+    // import React from 'react'
+    "allowSyntheticDefaultImports": true,
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
