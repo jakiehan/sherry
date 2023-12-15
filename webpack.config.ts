@@ -7,7 +7,8 @@ export default (env: BuildEnv) => {
   const paths: BuildPath = {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     build: path.resolve(__dirname, 'build'), // путь до папки куда будет собираться скомпилированный код,
-    html: path.resolve(__dirname, 'public', 'index.html') // index.html будет использоваться как шаблон, туда будут подставляться скрипты,
+    html: path.resolve(__dirname, 'public', 'index.html'), // index.html будет использоваться как шаблон, туда будут подставляться скрипты,
+    src: path.resolve(__dirname, 'src'),
   }
 
   const mode = env.mode || 'development';

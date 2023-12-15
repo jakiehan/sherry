@@ -1,0 +1,15 @@
+.navBar {
+  width: 100%;
+  height: var(--navbar-height);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--inverted-bg-color);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}

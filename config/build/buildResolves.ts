@@ -1,7 +1,12 @@
-import webpack from 'webpack';
+import { ResolveOptions } from 'webpack';
+import { BuildOptions } from './types/config';
 
-export const buildResolves = (): webpack.ResolveOptions => {
+export const buildResolves = (options: BuildOptions): ResolveOptions => {
   return {
     extensions: ['.tsx', '.ts', '.js'], // какие разрешения файлов не будем использовать(видеть) при импорте
+    preferAbsolute: true, // абсолютные пути в приоритете
+    modules: [options.paths.src, 'node_modules'],
+    mainFiles: ['index'],
+    alias: {}
   }
 }
