@@ -4,12 +4,11 @@ import { ThemeProvider } from 'app/providers/ThemeProvider';
 import { App } from 'app/App';
 import 'app/providers/i18n/i18n';
 
-
 render(
-<BrowserRouter>
-  <ThemeProvider>
-    <App />
-  </ThemeProvider>
-</BrowserRouter>,
+  <BrowserRouter>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>,
   document.getElementById('root')
-)
+);

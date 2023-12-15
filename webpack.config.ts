@@ -9,7 +9,7 @@ export default (env: BuildEnv) => {
     build: path.resolve(__dirname, 'build'), // путь до папки куда будет собираться скомпилированный код,
     html: path.resolve(__dirname, 'public', 'index.html'), // index.html будет использоваться как шаблон, туда будут подставляться скрипты,
     src: path.resolve(__dirname, 'src'),
-  }
+  };
 
   const mode = env.mode || 'development';
   const PORT = env.port || 3000;
@@ -20,8 +20,8 @@ export default (env: BuildEnv) => {
     mode,
     paths,
     isDev,
-    port: PORT
-  })
+    port: PORT,
+  });
 
   return config;
 };

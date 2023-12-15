@@ -3,7 +3,7 @@ export type BuildMode = 'production' | 'development'
 export type BuildPath = {
   entry: string; // путь до entry
   build: string; // до папки куда собирается билд
-  html: string;  // до индексного html файла
+  html: string; // до индексного html файла
   src: string; // до папки с исходным кодом
 }
 

@@ -1,18 +1,12 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-interface AboutPageProps {
-
-}
+interface AboutPageProps {}
 
 const AboutPage: FC<AboutPageProps> = () => {
-  const { t } = useTranslation('about')
+  const { t } = useTranslation('about');
 
-  return (
-    <div>
-      {t('О сайте')}
-    </div>
-  );
+  return <div>{t('О сайте')}</div>;
 };
 
-export default AboutPage
+export default AboutPage;
