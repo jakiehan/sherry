@@ -8,6 +8,7 @@ module.exports = {
         "plugin:prettier/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
+        "plugin:i18next/recommended"
     ],
     "overrides": [
     ],
@@ -21,11 +22,13 @@ module.exports = {
         "react",
         "@typescript-eslint",
         "prettier",
-        "simple-import-sort"
+        "simple-import-sort",
+        "i18next"
     ],
     "rules": {
-        'react/react-in-jsx-scope': 0,
-        'react-hooks/exhaustive-deps': 0
+        "react/react-in-jsx-scope": 0,
+        "react-hooks/exhaustive-deps": 0,
+        "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["to"] }]
     },
     "settings": {
         "react": {
