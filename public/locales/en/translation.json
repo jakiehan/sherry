@@ -2,6 +2,8 @@
   "Язык": "English",
   "О сайте": "About us",
   "Главная страница": "Main page",
-  "...Загрузка": "...Loading",
-  "Переключить": "Toggle"
+  "Переключить": "Toggle",
+  "Страница не найдена": "Page not found",
+  "Произошла непредвиденная ошибка": "Something went wrong",
+  "Обновить страницу": "Refresh the page"
 }

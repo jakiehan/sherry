@@ -1,4 +1,4 @@
-import { FC, Suspense } from 'react';
+import { FC, Suspense, useEffect } from 'react';
 import './styles/index.scss';
 import { NavBar } from 'widgets/NavBar';
 import { SideBar } from 'widgets/SideBar';
