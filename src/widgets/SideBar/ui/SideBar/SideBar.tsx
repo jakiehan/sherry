@@ -17,11 +17,13 @@ export const SideBar: FC<SideBarProps> = ({ className }) => {
 
   return (
     <div
+      data-testid="sidebar"
       className={classNames(cls.sideBar, { [cls.collapsed]: collapsed }, [
         className,
       ])}
     >
       <button
+        data-testid="sidebar-toggle"
         type="button"
         onClick={toggleSideBar}
       >

@@ -11,8 +11,6 @@ module.exports = {
         "plugin:react-hooks/recommended",
         "plugin:i18next/recommended"
     ],
-    "overrides": [
-    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -35,5 +33,13 @@ module.exports = {
         "react": {
             "version": "detect"
         }
-    }
+    },
+    "overrides": [
+        {
+            "files": ["./src/**/*.ts", "./src/**/*.tsx"],
+            "rules": {
+                "i18next/no-literal-string": 0,
+            }
+        }
+    ]
 }
