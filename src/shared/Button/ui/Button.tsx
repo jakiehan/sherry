@@ -4,6 +4,7 @@ import cls from './Button.module.scss';
 
 export enum ButtonVariant {
   CLEAR = 'clear', // чистая кнопка без отступов/бордеров и т.д.
+  OUTLINE = 'outline', // с рамкой
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
