@@ -1,13 +1,17 @@
 import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonVariant } from 'shared/Button';
+import { Button, ButtonTheme } from 'shared/Button';
 
 interface LangSwitcherProps {
   className?: string;
+  shortName?: boolean;
 }
 
-export const LangSwitcher: FC<LangSwitcherProps> = ({ className }) => {
+export const LangSwitcher: FC<LangSwitcherProps> = ({
+  className,
+  shortName = false,
+}) => {
   const { i18n, t } = useTranslation();
 
   const toggleLang = async () => {
@@ -17,10 +21,10 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className }) => {
   return (
     <Button
       className={classNames('', {}, [className])}
-      variant={ButtonVariant.CLEAR}
+      variant={ButtonTheme.CLEAR}
       onClick={toggleLang}
     >
-      {t('Язык')}
+      {t(!shortName ? 'Язык' : 'Короткий язык')}
     </Button>
   );
 };

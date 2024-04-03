@@ -4,3 +4,4 @@ webpack.config.ts
 dist
 build
 config
+scripts
