@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Theme } from 'app/providers/ThemeProvider';
+import { Theme, ThemeProvider } from 'app/providers/ThemeProvider';
 
 interface ThemeDecoratorProps {
   children: ReactNode;
@@ -10,5 +10,9 @@ export const ThemeDecorator: FC<ThemeDecoratorProps> = ({
   children,
   theme,
 }) => {
-  return <div className={`app ${theme}`}>{children}</div>;
+  return (
+    <ThemeProvider initialTheme={theme}>
+      <div className={`app ${theme}`}>{children}</div>;
+    </ThemeProvider>
+  );
 };

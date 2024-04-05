@@ -1,5 +1,4 @@
-import { FC, Suspense, useEffect } from 'react';
-import './styles/index.scss';
+import { FC, Suspense } from 'react';
 import { NavBar } from 'widgets/NavBar';
 import { SideBar } from 'widgets/SideBar';
 import { AppRouter } from 'app/providers/Router';

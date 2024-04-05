@@ -22,12 +22,14 @@ module.exports = {
         "@typescript-eslint",
         "prettier",
         "simple-import-sort",
-        "i18next"
+        "i18next",
+        "react-hooks"
     ],
     "rules": {
         "react/react-in-jsx-scope": 0,
-        "react-hooks/exhaustive-deps": 0,
-        "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["to"] }]
+        "react-hooks/exhaustive-deps": 1,
+        "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["to"] }],
+        "react-hooks/rules-of-hooks": "error",
     },
     "settings": {
         "react": {
