@@ -2,6 +2,7 @@ import { FC, ReactNode, useEffect } from 'react';
 import cls from './Modal.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/Portal';
+import { useTheme } from 'app/providers/ThemeProvider';
 
 interface ModalProps {
   children: ReactNode;
