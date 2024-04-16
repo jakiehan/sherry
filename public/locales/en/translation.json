@@ -8,5 +8,7 @@
   "Обновить страницу": "Refresh the page",
   "Короткий язык": "En",
   "Войти": "Log in ",
-  "increment": "increment"
+  "increment": "increment",
+  "Введите пароль": "Enter password",
+  "Введите имя": "Enter username"
 }

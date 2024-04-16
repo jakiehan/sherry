@@ -1,0 +1,11 @@
+.loginForm {
+  display: flex;
+  width: 350px;
+  flex-direction: column;
+  padding-top: 10px;
+  gap: 12px;
+}
+
+.btnLogin {
+  align-self: end;
+}
