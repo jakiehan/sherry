@@ -2,10 +2,13 @@
   display: flex;
   width: 350px;
   flex-direction: column;
-  padding-top: 10px;
-  gap: 12px;
+  gap: 15px;
 }
 
 .btnLogin {
   align-self: end;
+}
+
+.message {
+  min-height: 24px;
 }
