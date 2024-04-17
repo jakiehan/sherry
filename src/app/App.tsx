@@ -11,7 +11,7 @@ export const App: FC = () => {
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={classNames('app', {}, [])}>

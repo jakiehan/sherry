@@ -20,12 +20,6 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (authData) {
-      handleCloseModal();
-    }
-  }, [authData]);
-
   const handleCloseModal = useCallback(() => {
     setIsOpenAuthModal(false);
   }, []);
@@ -36,7 +30,13 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
 
   const handleLogout = useCallback(() => {
     dispatch(userActions.logout());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (authData) {
+      handleCloseModal();
+    }
+  }, [authData, handleCloseModal]);
 
   return (
     <div className={classNames(cls.navBar, {}, [className])}>

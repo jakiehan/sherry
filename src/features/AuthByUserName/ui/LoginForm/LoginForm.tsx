@@ -21,17 +21,23 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
 
   const { t } = useTranslation();
 
-  const handleChangeUsername = useCallback((value: string) => {
-    dispatch(loginActions.setUsername(value));
-  }, []);
+  const handleChangeUsername = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setUsername(value));
+    },
+    [dispatch]
+  );
 
-  const handleChangePassword = useCallback((value: string) => {
-    dispatch(loginActions.setPassword(value));
-  }, []);
+  const handleChangePassword = useCallback(
+    (value: string) => {
+      dispatch(loginActions.setPassword(value));
+    },
+    [dispatch]
+  );
 
   const handleLoginClick = useCallback(() => {
     dispatch(loginByUsername({ username, password }));
-  }, [username, password]);
+  }, [dispatch, username, password]);
 
   const isDisabledLoginButton =
     isLoading || !username.length || !password.length;
