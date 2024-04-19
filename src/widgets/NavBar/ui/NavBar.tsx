@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUserName';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
+import { USER_LOCALE_STORAGE_KEY } from 'shared/constants/localstorage';
 
 interface NavBarProps {
   className?: string;
@@ -30,6 +31,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
 
   const handleLogout = useCallback(() => {
     dispatch(userActions.logout());
+    localStorage.removeItem(USER_LOCALE_STORAGE_KEY);
   }, [dispatch]);
 
   useEffect(() => {
