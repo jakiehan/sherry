@@ -3,6 +3,8 @@ import axios from 'axios';
 import { User, userActions } from 'entities/User';
 import i18n from 'i18next';
 import { USER_LOCALE_STORAGE_KEY } from 'shared/constants/localstorage';
+import { Simulate } from 'react-dom/test-utils';
+import error = Simulate.error;
 
 interface LoginByUsernameProps {
   username: string;
@@ -31,8 +33,6 @@ export const loginByUsername = createAsyncThunk<
     return response.data;
   } catch (e) {
     console.log(e);
-    return thunkAPI.rejectWithValue(
-      i18n.t('Неправильно введен логин или пароль')
-    );
+    return thunkAPI.rejectWithValue('error');
   }
 });
