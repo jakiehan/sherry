@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-interface MainPageProps {}
-
-const MainPage: FC<MainPageProps> = () => {
+const MainPage = memo(() => {
   const { t } = useTranslation('main');
 
   return <div>{t('Главная страница')}</div>;
-};
+});
+
+MainPage.displayName = 'MainPage';
 
 export default MainPage;

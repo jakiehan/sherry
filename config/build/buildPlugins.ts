@@ -9,6 +9,7 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): webpack.WebpackPlu
   const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
+      favicon: './public/favicon.ico'
     }),
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({

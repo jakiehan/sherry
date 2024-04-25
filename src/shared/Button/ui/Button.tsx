@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
@@ -20,31 +20,38 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonTheme;
   size?: ButtonSize;
   square?: boolean;
+  children?: ReactNode;
 }
 
-export const Button: FC<ButtonProps> = ({
-  className,
-  children,
-  variant,
-  size = ButtonSize.M,
-  square,
-  ...otherProps
-}) => {
-  const mods: Record<string, boolean> = {
-    [cls.square]: square,
-  };
+// Использовать memo когда есть prop children не совсем правильно и не имеет смысла
+// (НО тут в 99% в children будет просто строка, поэтому использование memo оправдано)
+export const Button = memo(
+  ({
+    className,
+    children,
+    variant,
+    size = ButtonSize.M,
+    square,
+    ...otherProps
+  }: ButtonProps) => {
+    const mods: Record<string, boolean> = {
+      [cls.square]: square,
+    };
 
-  return (
-    <button
-      type="button"
-      className={classNames(cls.button, mods, [
-        className,
-        cls[variant],
-        cls[size],
-      ])}
-      {...otherProps}
-    >
-      {children}
-    </button>
-  );
-};
+    return (
+      <button
+        type="button"
+        className={classNames(cls.button, mods, [
+          className,
+          cls[variant],
+          cls[size],
+        ])}
+        {...otherProps}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';

@@ -1,25 +1,26 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './NavBar.module.scss';
 import { Button, ButtonTheme } from 'shared/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUserName';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import { USER_LOCALE_STORAGE_KEY } from 'shared/constants/localstorage';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface NavBarProps {
   className?: string;
 }
 
-export const NavBar: FC<NavBarProps> = ({ className }) => {
+export const NavBar = memo(({ className }: NavBarProps) => {
   const [isOpenAuthModal, setIsOpenAuthModal] = useState(false);
 
   const authData = useSelector(getUserAuthData);
 
   const { t } = useTranslation();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleCloseModal = useCallback(() => {
     setIsOpenAuthModal(false);
@@ -33,12 +34,6 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
     dispatch(userActions.logout());
     localStorage.removeItem(USER_LOCALE_STORAGE_KEY);
   }, [dispatch]);
-
-  useEffect(() => {
-    if (authData) {
-      handleCloseModal();
-    }
-  }, [authData, handleCloseModal]);
 
   return (
     <div className={classNames(cls.navBar, {}, [className])}>
@@ -64,4 +59,6 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
       />
     </div>
   );
-};
+});
+
+NavBar.displayName = 'NavBar';

@@ -1,25 +1,21 @@
-import { FC, useState } from 'react';
+import { memo, useState } from 'react';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { LangSwitcher } from 'features/LangSwitcher';
 import cls from './SideBar.module.scss';
 import { Button, ButtonTheme } from 'shared/Button';
 import { ButtonSize } from 'shared/Button/ui/Button';
-import { AppLink, AppLinkVariant } from 'shared/AppLink';
-import { useTranslation } from 'react-i18next';
-import { routePath } from 'app/providers/Router/lib/routeConfig/routeConfig';
-import MainIcon from 'app/styles/assets/icons/home-page.svg';
-import AboutIcon from 'app/styles/assets/icons/about-page.svg';
+import { sideBarItemsList } from '../../model/items';
+import { SideBarItem } from '../../ui/SideBarItem/SideBarItem';
 
 interface SideBarProps {
   className?: string;
 }
 
-export const SideBar: FC<SideBarProps> = ({ className }) => {
+export const SideBar = memo(({ className }: SideBarProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const toggleSideBar = () => setCollapsed((prev) => !prev);
-  const { t } = useTranslation();
 
   return (
     <div
@@ -40,22 +36,13 @@ export const SideBar: FC<SideBarProps> = ({ className }) => {
         {collapsed ? '>' : '<'}
       </Button>
       <nav className={classNames(cls.menu)}>
-        <AppLink
-          to={routePath.main}
-          variant={AppLinkVariant.SECONDARY}
-          className={cls.link}
-        >
-          <MainIcon className={cls.icon} />
-          <span className={cls.title}>{t('Главная страница')}</span>
-        </AppLink>
-        <AppLink
-          to={routePath.about}
-          variant={AppLinkVariant.SECONDARY}
-          className={cls.link}
-        >
-          <AboutIcon className={cls.icon} />
-          <span className={cls.title}>{t('О сайте')}</span>
-        </AppLink>
+        {sideBarItemsList.map((item) => (
+          <SideBarItem
+            item={item}
+            collapsed={collapsed}
+            key={item.path}
+          />
+        ))}
       </nav>
       <div className={cls.switchers}>
         <ThemeSwitcher />
@@ -63,4 +50,6 @@ export const SideBar: FC<SideBarProps> = ({ className }) => {
       </div>
     </div>
   );
-};
+});
+
+SideBar.displayName = 'SideBar';
