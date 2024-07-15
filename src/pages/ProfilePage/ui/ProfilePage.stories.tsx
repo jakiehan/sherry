@@ -3,6 +3,9 @@ import ProfilePage from './ProfilePage';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from '../../../../config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from '../../../../config/storybook/decorators/StoreDecorator';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
+import avatar from 'app/styles/assets/icons/avatar.jpg';
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -19,7 +22,22 @@ export const Light: Story = {
   args: {},
   decorators: [
     (Story) => (
-      <StoreDecorator state={{}}>
+      <StoreDecorator
+        state={{
+          profile: {
+            form: {
+              currency: Currency.RUB,
+              country: Country.Russia,
+              age: 30,
+              city: 'Chita',
+              first: 'Mikhail',
+              lastname: 'Oleynik',
+              username: 'sherry',
+              avatar,
+            },
+          },
+        }}
+      >
         <Story />
       </StoreDecorator>
     ),
@@ -30,13 +48,25 @@ export const Dark: Story = {
   args: {},
   decorators: [
     (Story) => (
-      <ThemeDecorator theme={Theme.DARK}>
-        <Story />
-      </ThemeDecorator>
-    ),
-    (Story) => (
-      <StoreDecorator state={{}}>
-        <Story />
+      <StoreDecorator
+        state={{
+          profile: {
+            form: {
+              currency: Currency.RUB,
+              country: Country.Russia,
+              age: 30,
+              city: 'Chita',
+              first: 'Mikhail',
+              lastname: 'Oleynik',
+              username: 'sherry',
+              avatar,
+            },
+          },
+        }}
+      >
+        <ThemeDecorator theme={Theme.DARK}>
+          <Story />
+        </ThemeDecorator>
       </StoreDecorator>
     ),
   ],

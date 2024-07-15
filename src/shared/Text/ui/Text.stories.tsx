@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from 'shared/Text';
 import { ThemeDecorator } from '../../../../config/storybook/decorators/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { TextTheme } from 'shared/Text/ui/Text';
 
 const meta = {
   title: 'shared/Text',
@@ -26,7 +25,7 @@ export const Error: Story = {
   args: {
     title: 'Title',
     text: 'subtitle',
-    variant: TextTheme.ERROR,
+    variant: 'error',
   },
 };
 

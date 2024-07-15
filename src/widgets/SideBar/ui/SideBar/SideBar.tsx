@@ -3,8 +3,7 @@ import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { LangSwitcher } from 'features/LangSwitcher';
 import cls from './SideBar.module.scss';
-import { Button, ButtonTheme } from 'shared/Button';
-import { ButtonSize } from 'shared/Button/ui/Button';
+import { Button } from 'shared/Button';
 import { sideBarItemsList } from '../../model/items';
 import { SideBarItem } from '../../ui/SideBarItem/SideBarItem';
 
@@ -29,8 +28,8 @@ export const SideBar = memo(({ className }: SideBarProps) => {
         type="button"
         onClick={toggleSideBar}
         className={cls.collapseBtn}
-        variant={ButtonTheme.BACKGROUND_INVERTED}
-        size={ButtonSize.L}
+        variant="backgroundInverted"
+        size="sizeL"
         square
       >
         {collapsed ? '>' : '<'}

@@ -2,13 +2,12 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './LoginForm.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from 'shared/Button';
+import { Button } from 'shared/Button';
 import { Input } from 'shared/Input';
 import { useSelector } from 'react-redux';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { Text } from 'shared/Text';
-import { TextTheme } from 'shared/Text/ui/Text';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginUsername } from '../..//model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
@@ -24,11 +23,11 @@ const initialReducers: ReducersList = {
 };
 
 export interface LoginFormProps {
-  onSuccess: () => void;
+  onSuccess?: () => void;
   className?: string;
 }
 
-const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
+const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
   const dispatch = useAppDispatch();
 
   const password = useSelector(getLoginPassword);
@@ -56,7 +55,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const result = await dispatch(loginByUsername({ username, password }));
 
     if (result.meta.requestStatus === 'fulfilled') {
-      onSuccess();
+      onSuccess && onSuccess();
     }
   }, [dispatch, username, password, onSuccess]);
 
@@ -74,7 +73,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
           {error && (
             <Text
               text={error}
-              variant={TextTheme.ERROR}
+              variant="error"
             />
           )}
         </div>
@@ -90,7 +89,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
           value={password}
         />
         <Button
-          variant={ButtonTheme.OUTLINE}
+          variant="outline"
           className={cls.btnLogin}
           onClick={handleLoginClick}
           disabled={isDisabledLoginButton}
@@ -100,7 +99,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
       </div>
     </DynamicModuleLoader>
   );
-});
+};
 
 LoginForm.displayName = 'LoginForm';
 export default LoginForm;

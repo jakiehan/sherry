@@ -10,6 +10,7 @@ export type BuildPath = {
 export interface BuildEnv {
   mode: BuildMode;
   port: number;
+  apiURL: string;
 }
 
 export interface BuildOptions {
@@ -17,4 +18,6 @@ export interface BuildOptions {
   paths: BuildPath;
   isDev: boolean;
   port: number;
+  apiURL: string;
+  project: 'frontend' | 'storybook' | 'jest';
 }

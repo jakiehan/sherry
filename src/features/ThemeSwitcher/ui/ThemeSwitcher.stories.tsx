@@ -28,3 +28,14 @@ export const Dark: Story = {
     ),
   ],
 };
+
+export const Orange: Story = {
+  args: {},
+  decorators: [
+    (Story) => (
+      <ThemeDecorator theme={Theme.ORANGE}>
+        <Story />
+      </ThemeDecorator>
+    ),
+  ],
+};

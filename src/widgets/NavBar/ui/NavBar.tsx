@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './NavBar.module.scss';
-import { Button, ButtonTheme } from 'shared/Button';
+import { Button } from 'shared/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUserName';
 import { useSelector } from 'react-redux';
@@ -40,7 +40,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
       {authData && (
         <Button
           onClick={handleLogout}
-          variant={ButtonTheme.CLEAR}
+          variant="clear"
         >
           {t('Выйти')}
         </Button>
@@ -48,7 +48,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
       {!authData && (
         <Button
           onClick={handleShowModal}
-          variant={ButtonTheme.CLEAR}
+          variant="clear"
         >
           {t('Войти')}
         </Button>

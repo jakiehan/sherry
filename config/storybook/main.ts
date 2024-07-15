@@ -9,6 +9,8 @@ const config: StorybookConfig = {
   stories: ['../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   // расширяем webpack конфигурацию сторибука
   webpackFinal: async (config) => {
+    const { resolve, module, plugins } = config;
+
     const paths: BuildPath = {
       src: path.resolve(__dirname, '..', '..', 'src'),
       build: '',
@@ -16,21 +18,38 @@ const config: StorybookConfig = {
       html: '',
     };
 
-    config.resolve.modules = [paths.src, 'node_modules'];
-    config.resolve.extensions.push('ts', 'tsx');
-    // отключаем svg loader сторибука, подключаем свой svgr
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-      if (rule.test instanceof RegExp && rule.test.toString().includes('svg')) {
-        return { ...rule, exclude: /\.svg$/i };
-      }
+    if (resolve) {
+      resolve.modules = [paths.src, 'node_modules'];
+      resolve.extensions?.push('ts', 'tsx');
+    }
 
-      return rule;
-    });
+    if (module) {
+      // отключаем svg loader сторибука, подключаем свой svgr
+      // @ts-ignore
+      module.rules = module.rules?.map((rule: RuleSetRule) => {
+        if (
+          rule.test instanceof RegExp &&
+          rule.test.toString().includes('svg')
+        ) {
+          return { ...rule, exclude: /\.svg$/i };
+        }
 
-    config.module.rules.push(buildSvgLoader());
-    config.module.rules.push(buildCssLoader(true));
+        return rule;
+      });
 
-    config.plugins.push(new DefinePlugin({ __IS_DEV__: true }));
+      module.rules?.push(buildSvgLoader());
+      module.rules?.push(buildCssLoader(true));
+    }
+
+    if (plugins) {
+      plugins.push(
+        new DefinePlugin({
+          __IS_DEV__: JSON.stringify(true),
+          __API__: JSON.stringify(''),
+          __PROJECT__: JSON.stringify('storybook'),
+        })
+      );
+    }
 
     return config;
   },
@@ -63,4 +82,5 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
 };
+
 export default config;

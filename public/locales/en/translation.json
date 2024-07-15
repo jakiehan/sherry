@@ -13,5 +13,8 @@
   "Введите имя": "Enter username",
   "Неправильно введен логин или пароль": "The username or password is wrong.",
   "Форма авторизации": "Authorization form",
-  "Выйти": "logout"
+  "Выйти": "logout",
+  "Профиль": "Profile",
+  "Валюта": "Currency",
+  "Страна": "Country"
 }

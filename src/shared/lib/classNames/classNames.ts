@@ -1,10 +1,10 @@
-type Mods = Record<string, boolean | string>;
+export type Mods = Record<string, boolean | string | undefined>;
 
 // что-то похожее на библиотеку classNames-react
 export function classNames(
   cls: string,
   mods: Mods = {},
-  additional: string[] = []
+  additional: Array<string | undefined> = []
 ): string {
   return [
     cls,

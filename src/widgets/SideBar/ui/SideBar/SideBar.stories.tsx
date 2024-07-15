@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SideBar } from 'widgets/SideBar';
 import { ThemeDecorator } from '../../../../../config/storybook/decorators/ThemeDecorator';
+import { StoreDecorator } from '../../../../../config/storybook/decorators/StoreDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 
 const meta = {
@@ -16,15 +17,24 @@ type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
   args: {},
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };
 
 export const Dark: Story = {
   args: {},
   decorators: [
     (Story) => (
-      <ThemeDecorator theme={Theme.DARK}>
-        <Story />
-      </ThemeDecorator>
+      <StoreDecorator state={{}}>
+        <ThemeDecorator theme={Theme.DARK}>
+          <Story />
+        </ThemeDecorator>
+      </StoreDecorator>
     ),
   ],
 };

@@ -41,13 +41,10 @@ export const Dark: Story = {
   args: {},
   decorators: [
     (Story) => (
-      <ThemeDecorator theme={Theme.DARK}>
-        <Story />
-      </ThemeDecorator>
-    ),
-    (Story) => (
       <StoreDecorator state={{}}>
-        <Story />
+        <ThemeDecorator theme={Theme.DARK}>
+          <Story />
+        </ThemeDecorator>
       </StoreDecorator>
     ),
   ],

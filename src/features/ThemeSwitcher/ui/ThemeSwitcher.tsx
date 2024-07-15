@@ -1,10 +1,17 @@
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Theme, useTheme } from 'app/providers/ThemeProvider';
 import ThemeSwitcherDarkIcon from 'app/styles/assets/icons/theme-switcher-dark.svg';
 import ThemeSwitcherLightIcon from 'app/styles/assets/icons/theme-switcher-light.svg';
-import { Button, ButtonTheme } from 'shared/Button';
+import ThemeSwitcherOrangeIcon from 'app/styles/assets/icons/theme-switcher-orange.svg';
+import { Button } from 'shared/Button';
 import cls from './ThemeSwitcher.module.scss';
+
+const activeIconTheme: Record<Theme, ReactNode> = {
+  [Theme.DARK]: <ThemeSwitcherLightIcon />,
+  [Theme.LIGHT]: <ThemeSwitcherOrangeIcon />,
+  [Theme.ORANGE]: <ThemeSwitcherDarkIcon />,
+};
 
 interface ThemeSwitcherProps {
   className?: string;
@@ -18,13 +25,9 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
       className={classNames(cls.themeSwitcher, {}, [className])}
       onClick={toggleTheme}
       type="button"
-      variant={ButtonTheme.CLEAR}
+      variant="clear"
     >
-      {theme === Theme.DARK ? (
-        <ThemeSwitcherDarkIcon className={cls.icon} />
-      ) : (
-        <ThemeSwitcherLightIcon className={cls.icon} />
-      )}
+      {activeIconTheme[theme]}
     </Button>
   );
 });

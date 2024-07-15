@@ -1,0 +1,42 @@
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 2px solid var(--inverted-bg-color);
+  gap: 20px;
+}
+
+.editing {
+  border: 2px solid var(--inverted-color);
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loading,
+.error {
+  display: flex;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hideArrow {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+
+  input[type="number"] {
+    appearance: textfield;
+  }
+}

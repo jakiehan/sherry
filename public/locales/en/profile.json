@@ -1,0 +1,19 @@
+{
+  "Профиль": "Profile",
+  "Редактировать": "Edit",
+  "Ваше имя": "Your name",
+  "Ваша фамилия": "Your last name",
+  "При загрузке данных произошла ошибка": "An error has occurred while uploading the data",
+  "Попробуйте обновить страницу": "Try refreshing the page",
+  "Отменить": "Cancel",
+  "Сохранить": "Save",
+  "Ваш возраст": "Your age",
+  "Город": "City",
+  "Имя пользователя": "Username",
+  "Ссылка на аватар": "Link to the avatar",
+  "Некорректно указан возраст": "The age is specified incorrectly",
+  "Фамилия пользователя не может быть пустым": "The user last name cannot be empty",
+  "Имя пользователя не может быть пустым": "The user first name cannot be empty",
+  "Данные не указаны": "Данные не указаны",
+  "Серверная ошибка при сохранении": "Серверная ошибка при сохранении"
+}

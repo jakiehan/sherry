@@ -1,24 +1,16 @@
 import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
-
-export enum ButtonTheme {
-  CLEAR = 'clear', // чистая кнопка без отступов/бордеров и т.д.
-  OUTLINE = 'outline', // с рамкой
-  BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'backgroundInverted',
-}
-
-export enum ButtonSize {
-  M = 'sizeM',
-  L = 'sizeL',
-  XL = 'sizeXL',
-}
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  variant?: ButtonTheme;
-  size?: ButtonSize;
+  variant?:
+    | 'clear'
+    | 'outline'
+    | 'outlineRed'
+    | 'background'
+    | 'backgroundInverted';
+  size?: 'sizeM' | 'sizeL' | 'sizeXL';
   square?: boolean;
   children?: ReactNode;
 }
@@ -29,12 +21,12 @@ export const Button = memo(
   ({
     className,
     children,
-    variant,
-    size = ButtonSize.M,
-    square,
+    variant = 'outline',
+    size = 'sizeM',
+    square = false,
     ...otherProps
   }: ButtonProps) => {
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
       [cls.square]: square,
     };
 
