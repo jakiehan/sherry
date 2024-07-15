@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import avatar from 'app/styles/assets/icons/avatar.jpg';
+import { AVATAR_URL } from 'shared/Avatar/lib/constants';
 
 const meta = {
   title: 'entities/ProfileCard',
@@ -25,7 +25,7 @@ export const Primary: Story = {
       first: 'Mikhail',
       lastname: 'Oleynik',
       username: 'sherry',
-      avatar,
+      avatar: AVATAR_URL,
     },
   },
 };
