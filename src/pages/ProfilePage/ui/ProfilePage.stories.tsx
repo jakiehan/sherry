@@ -71,3 +71,31 @@ export const Dark: Story = {
     ),
   ],
 };
+
+export const Orange: Story = {
+  args: {},
+  decorators: [
+    (Story) => (
+      <StoreDecorator
+        state={{
+          profile: {
+            form: {
+              currency: Currency.RUB,
+              country: Country.Russia,
+              age: 30,
+              city: 'Chita',
+              first: 'Mikhail',
+              lastname: 'Oleynik',
+              username: 'sherry',
+              avatar,
+            },
+          },
+        }}
+      >
+        <ThemeDecorator theme={Theme.ORANGE}>
+          <Story />
+        </ThemeDecorator>
+      </StoreDecorator>
+    ),
+  ],
+};
