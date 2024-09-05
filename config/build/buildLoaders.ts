@@ -2,8 +2,11 @@ import { RuleSetRule } from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { buildSvgLoader }  from './loaders/buildSvgLoader'
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
-export const buildLoaders = ({ isDev, paths }: BuildOptions): RuleSetRule[] => {
+export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
+  const { isDev } = options;
+
   const assetLoader = {
     test: /\.(png|jpg|jpeg|gif)$/i,
     type: 'asset/resource',
@@ -16,28 +19,9 @@ export const buildLoaders = ({ isDev, paths }: BuildOptions): RuleSetRule[] => {
 
   const svgLoader = buildSvgLoader();
 
-  const cssLoader = buildCssLoader(true);
+  const cssLoader = buildCssLoader(isDev);
 
-  const babelLoader = {
-    test: /\.(js|jsx|tsx)$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
-        plugins: [
-          [
-            'i18next-extract',
-            {
-              locales: ['ru', 'en'],
-              keyAsDefaultValue: true,
-            },
-          ],
-
-        ],
-      },
-    },
-  };
+  const babelLoader = buildBabelLoader(options);
 
   // Если не используем typescript - нужен babel-loader(новый стандарт js перегоняет в старый)
   const typeScriptLoader = {

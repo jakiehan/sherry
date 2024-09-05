@@ -5,7 +5,7 @@ import { ThemeDecorator } from '../../../../config/storybook/decorators/ThemeDec
 import { StoreDecorator } from '../../../../config/storybook/decorators/StoreDecorator';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import { AVATAR_URL } from 'shared/Avatar/lib/constants';
+import avatar from 'app/styles/assets/icons/avatar.jpg';
 
 const meta = {
   title: 'pages/ProfilePage',
@@ -33,7 +33,7 @@ export const Light: Story = {
               first: 'Mikhail',
               lastname: 'Oleynik',
               username: 'sherry',
-              avatar: AVATAR_URL,
+              avatar,
             },
           },
         }}
@@ -59,7 +59,7 @@ export const Dark: Story = {
               first: 'Mikhail',
               lastname: 'Oleynik',
               username: 'sherry',
-              avatar: AVATAR_URL,
+              avatar,
             },
           },
         }}
@@ -87,7 +87,7 @@ export const Orange: Story = {
               first: 'Mikhail',
               lastname: 'Oleynik',
               username: 'sherry',
-              avatar: AVATAR_URL,
+              avatar,
             },
           },
         }}
