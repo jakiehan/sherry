@@ -14,14 +14,7 @@ export const CurrencySelect = memo(
   ({ className, value, onChange, readOnly }: CurrencySelectProps) => {
     const { t } = useTranslation();
 
-    const handleChange = useCallback(
-      (value: string) => {
-        onChange?.(value as Currency);
-      },
-      [onChange]
-    );
-
-    const options: SelectOptions[] = useMemo(() => {
+    const options: SelectOptions<Currency>[] = useMemo(() => {
       return (Object.keys(Currency) as Array<keyof typeof Currency>).map(
         (key) => ({
           value: Currency[key],
@@ -36,7 +29,7 @@ export const CurrencySelect = memo(
         label={t('Валюта')}
         options={options}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         readOnly={readOnly}
       />
     );

@@ -36,7 +36,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
   }, [dispatch]);
 
   return (
-    <div className={classNames(cls.navBar, {}, [className])}>
+    <header className={classNames(cls.navBar, {}, [className])}>
       {authData && (
         <Button
           onClick={handleLogout}
@@ -57,7 +57,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
         isOpen={isOpenAuthModal}
         onClose={handleCloseModal}
       />
-    </div>
+    </header>
   );
 });
 

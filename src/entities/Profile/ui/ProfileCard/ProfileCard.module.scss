@@ -40,3 +40,9 @@
     appearance: textfield;
   }
 }
+
+.select {
+  & > span {
+    min-width: 125px;
+  }
+}

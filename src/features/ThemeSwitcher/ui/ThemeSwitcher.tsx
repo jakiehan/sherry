@@ -8,9 +8,9 @@ import { Button } from 'shared/Button';
 import cls from './ThemeSwitcher.module.scss';
 
 const activeIconTheme: Record<Theme, ReactNode> = {
-  [Theme.DARK]: <ThemeSwitcherLightIcon />,
-  [Theme.LIGHT]: <ThemeSwitcherOrangeIcon />,
-  [Theme.ORANGE]: <ThemeSwitcherDarkIcon />,
+  [Theme.DARK]: <ThemeSwitcherDarkIcon />,
+  [Theme.LIGHT]: <ThemeSwitcherLightIcon />,
+  [Theme.ORANGE]: <ThemeSwitcherOrangeIcon />,
 };
 
 interface ThemeSwitcherProps {
@@ -19,6 +19,8 @@ interface ThemeSwitcherProps {
 
 export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
+
+  console.log(theme);
 
   return (
     <Button

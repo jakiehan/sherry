@@ -17,6 +17,7 @@ export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration
     output: {
       filename: '[name].[contenthash].js', // уникальное(динамическое) имя файла, хешированое
       path: paths.build,
+      publicPath: '/',
       clean: true, // очищать лишние(старые) файлы
     },
     plugins: buildPlugins(options),

@@ -20,5 +20,7 @@ export const StoreProvider: FC<StoreProviderProps> = ({
     asyncReducers as ReducersMapObject<StateSchema>
   );
 
+  console.log('render');
+
   return <Provider store={store}>{children}</Provider>;
 };

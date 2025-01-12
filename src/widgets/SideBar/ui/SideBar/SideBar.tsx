@@ -4,8 +4,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { LangSwitcher } from 'features/LangSwitcher';
 import cls from './SideBar.module.scss';
 import { Button } from 'shared/Button';
-import { sideBarItemsList } from '../../model/items';
 import { SideBarItem } from '../../ui/SideBarItem/SideBarItem';
+import { useSelector } from 'react-redux';
+import { getSideBarItems } from '../../model/selectors/getSideBarItems';
 
 interface SideBarProps {
   className?: string;
@@ -16,8 +17,10 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 
   const toggleSideBar = () => setCollapsed((prev) => !prev);
 
+  const sideBarItemsList = useSelector(getSideBarItems);
+
   return (
-    <div
+    <aside
       data-testid="sidebar"
       className={classNames(cls.sideBar, { [cls.collapsed]: collapsed }, [
         className,
@@ -47,7 +50,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
         <ThemeSwitcher />
         <LangSwitcher shortName={collapsed} />
       </div>
-    </div>
+    </aside>
   );
 });
 

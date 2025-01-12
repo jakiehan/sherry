@@ -1,0 +1,13 @@
+.articleList {
+  display: flex;
+  gap: 25px;
+}
+
+.list {
+  flex-direction: column;
+}
+
+.place {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

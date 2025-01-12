@@ -10,6 +10,7 @@ export enum VALIDATE_ERROR_MESSAGE {
 }
 
 export interface Profile {
+  id?: string | number;
   first?: string;
   lastname?: string;
   age?: number;

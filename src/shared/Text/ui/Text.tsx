@@ -8,6 +8,7 @@ interface TextProps {
   text?: string;
   variant?: 'primary' | 'error';
   align?: 'left' | 'center' | 'right';
+  size?: 'sizeM' | 'sizeL';
 }
 
 export const Text = memo(
@@ -16,7 +17,8 @@ export const Text = memo(
     text,
     title,
     variant = 'primary',
-    align = 'center',
+    align = 'left',
+    size = 'sizeM',
   }: TextProps) => {
     return (
       <div
@@ -24,6 +26,7 @@ export const Text = memo(
           className,
           cls[variant],
           cls[align],
+          cls[size],
         ])}
       >
         {title && <p className={cls.title}>{title}</p>}

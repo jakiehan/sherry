@@ -1,0 +1,11 @@
+.title {
+  margin-top: 20px;
+}
+
+.recommendations {
+  flex-wrap: nowrap;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

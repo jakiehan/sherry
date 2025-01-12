@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { User, UserSchema } from 'entities/User';
+import { User, UserSchema } from '../types/user';
 
-const initialState: UserSchema = {};
+const initialState: UserSchema = {
+  _inited: false,
+};
 
 export const userSlice = createSlice({
   name: 'user',
@@ -12,6 +14,7 @@ export const userSlice = createSlice({
     },
     initAuthData: (state, action: PayloadAction<User>) => {
       state.autData = action.payload;
+      state._inited = true;
     },
     logout: (state) => {
       state.autData = undefined;

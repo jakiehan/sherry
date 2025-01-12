@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { PageError } from 'widgets/PageError';
+import { PageError } from './PageError';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from '../../../../config/storybook/decorators/ThemeDecorator';
 

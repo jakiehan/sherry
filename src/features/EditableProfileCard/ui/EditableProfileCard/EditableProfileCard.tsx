@@ -1,24 +1,20 @@
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import cls from './EditableProfileCard.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfileCard } from 'entities/Profile';
 import { useSelector } from 'react-redux';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { profileActions } from 'features/EditableProfileCard';
+import { profileActions } from '../../model/slice/profileSlice';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
-import { VALIDATE_ERROR_MESSAGE } from 'features/EditableProfileCard/model/types/profile';
+import { VALIDATE_ERROR_MESSAGE } from '../../model/types/profile';
 import { Text } from 'shared/Text';
 
-interface EditableProfileCardProps {}
-
-export const EditableProfileCard: FC<EditableProfileCardProps> = ({}) => {
+export const EditableProfileCard: FC = () => {
   const { t } = useTranslation('profile');
 
   const dispatch = useAppDispatch();

@@ -6,7 +6,7 @@ import { AppRoutesProps } from 'app/providers/Router/lib/routeConfig/routeConfig
 import { RequireAuth } from 'app/providers/Router/ui/RequireAuth';
 
 const routeWithWrapper = (route: AppRoutesProps) => {
-  const element = <div className="pageWrapper">{route.element}</div>;
+  const element = <>{route.element}</>;
 
   return (
     <Route

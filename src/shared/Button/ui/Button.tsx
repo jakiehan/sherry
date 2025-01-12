@@ -2,14 +2,16 @@ import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
+type ButtonVariant =
+  | 'clear'
+  | 'outline'
+  | 'outlineRed'
+  | 'background'
+  | 'backgroundInverted';
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  variant?:
-    | 'clear'
-    | 'outline'
-    | 'outlineRed'
-    | 'background'
-    | 'backgroundInverted';
+  variant?: ButtonVariant;
   size?: 'sizeM' | 'sizeL' | 'sizeXL';
   square?: boolean;
   children?: ReactNode;

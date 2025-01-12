@@ -11,6 +11,8 @@ import {
   profileActions,
   updateProfileData,
 } from 'features/EditableProfileCard';
+import { getUserAuthData } from 'entities/User';
+import { getProfileData } from 'features/EditableProfileCard/model/selectors/getProfileData/getProfileData';
 
 interface ProfilePageHeaderProps {
   className?: string;
@@ -22,6 +24,11 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
   const { t } = useTranslation('profile');
 
   const dispatch = useAppDispatch();
+
+  const authData = useSelector(getUserAuthData);
+  const profileData = useSelector(getProfileData);
+
+  const canEdit = String(authData?.id) === String(profileData?.id);
 
   const editProfile = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
@@ -40,29 +47,33 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
   return (
     <div className={classNames(cls.profilePageHeader, {}, [className])}>
       <Text title={t('Профиль')} />
-      {isReadOnly && (
-        <Button
-          variant="outline"
-          onClick={editProfile}
-        >
-          {t('Редактировать')}
-        </Button>
-      )}
-      {!isReadOnly && (
-        <div className={cls.btnWrapper}>
-          <Button
-            variant="outlineRed"
-            onClick={cancelEditProfile}
-          >
-            {t('Отменить')}
-          </Button>
-          <Button
-            variant="outline"
-            onClick={saveProfile}
-          >
-            {t('Сохранить')}
-          </Button>
-        </div>
+      {canEdit && (
+        <>
+          {isReadOnly && (
+            <Button
+              variant="outline"
+              onClick={editProfile}
+            >
+              {t('Редактировать')}
+            </Button>
+          )}
+          {!isReadOnly && (
+            <div className={cls.btnWrapper}>
+              <Button
+                variant="outlineRed"
+                onClick={cancelEditProfile}
+              >
+                {t('Отменить')}
+              </Button>
+              <Button
+                variant="outline"
+                onClick={saveProfile}
+              >
+                {t('Сохранить')}
+              </Button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

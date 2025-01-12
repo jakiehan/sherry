@@ -33,7 +33,7 @@ export const Input = memo(
 
     return (
       <label className={classNames(cls.inputWrapper, {}, [className])}>
-        <span>{label}</span>
+        {label?.length !== 0 && <span>{label}</span>}
         <input
           className={classNames(cls.input, {}, [cls[variant]])}
           value={value}

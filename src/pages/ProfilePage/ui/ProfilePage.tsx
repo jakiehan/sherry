@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -11,33 +11,35 @@ import {
 } from 'features/EditableProfileCard';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from '../ui/ProfilePageHeader/ProfilePageHeader';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
+import { Page } from 'widgets/Page/Page';
 
 const initialReducers: ReducersList = {
   profile: profileReducer,
 };
 
-const ProfilePage = memo(() => {
+const ProfilePage = () => {
   const dispatch = useAppDispatch();
+  const { id } = useParams();
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(fetchProfileData());
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
     }
-  }, [dispatch]);
+  });
 
   return (
     <DynamicModuleLoader
       reducers={initialReducers}
       removeAfterUnmount
     >
-      <div className={cls.profilePage}>
+      <Page className={cls.profilePage}>
         <ProfilePageHeader />
         <EditableProfileCard />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
-});
+};
 
-ProfilePage.displayName = 'ProfilePage';
-
-export default ProfilePage;
+export default memo(ProfilePage);

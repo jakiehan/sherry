@@ -9,14 +9,24 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { ProfileSchema } from 'features/EditableProfileCard';
+import { ArticleDetailsSchema } from 'entities/Article';
+import { AddCommentFormSchema } from 'features/AddCommentForm';
+import { ArticlePageSchema } from 'pages/ArticlesPage';
+import { SaveScrollSchema } from 'features/ScrollSave';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
+  saveScroll: SaveScrollSchema;
 
   // Асинхронные редусеры
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
+  articleDetails?: ArticleDetailsSchema;
+  articleDetailsPage?: ArticleDetailsPageSchema; // сгруппированы комменты и рекомендации
+  addCommentForm?: AddCommentFormSchema;
+  articlePage?: ArticlePageSchema;
 }
 
 export interface ReducerManager {

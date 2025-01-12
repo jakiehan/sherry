@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NavBar } from 'widgets/NavBar';
+import { NavBar } from './NavBar';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from '../../../../config/storybook/decorators/ThemeDecorator';
 import { StoreDecorator } from '../../../../config/storybook/decorators/StoreDecorator';

@@ -15,7 +15,17 @@
   display: flex;
 }
 
-.pageWrapper {
-  flex-grow: 1;
-  padding: 20px;
+*::-webkit-scrollbar {
+  width: 8px;               /* ширина scrollbar */
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--card-bg);        /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 1px solid var(--inverted-color);  /* padding вокруг плашки */
+  border-radius: 20px;       /* закругления плашки */
+  background-color: var(--primary-color);    /* цвет плашки */
 }

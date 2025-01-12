@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Avatar } from './Avatar';
-import { AVATAR_URL } from 'shared/Avatar/lib/constants';
+import { AVATAR_URL } from '../lib/constants';
 
 const meta = {
   title: 'shared/Avatar',

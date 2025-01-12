@@ -2,10 +2,10 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './SideBarItem.module.scss';
 import { AppLink, AppLinkVariant } from 'shared/AppLink';
-import { SideBarItemType } from 'widgets/SideBar/model/items';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { SideBarItemType } from '../../model/types/sideBar';
 
 interface SideBarItemProps {
   item: SideBarItemType;
