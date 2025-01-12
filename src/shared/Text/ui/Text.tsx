@@ -9,6 +9,7 @@ interface TextProps {
   variant?: 'primary' | 'error';
   align?: 'left' | 'center' | 'right';
   size?: 'sizeM' | 'sizeL';
+  tagTitle?: keyof HTMLElementTagNameMap;
 }
 
 export const Text = memo(
@@ -19,7 +20,10 @@ export const Text = memo(
     variant = 'primary',
     align = 'left',
     size = 'sizeM',
+    tagTitle = 'p',
   }: TextProps) => {
+    const Tag = tagTitle;
+
     return (
       <div
         className={classNames(cls.textContainer, {}, [
@@ -29,7 +33,7 @@ export const Text = memo(
           cls[size],
         ])}
       >
-        {title && <p className={cls.title}>{title}</p>}
+        {title && <Tag className={cls.title}>{title}</Tag>}
         {text && <p className={cls.text}>{text}</p>}
       </div>
     );

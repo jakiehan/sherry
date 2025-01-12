@@ -128,13 +128,11 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             onChange={onChangeAvatar}
           />
           <CurrencySelect
-            className={cls.select}
             value={data?.currency}
             onChange={onChangeCurrency}
             readOnly={readOnly}
           />
           <CountrySelect
-            className={cls.select}
             value={data?.country}
             onChange={onChangeCountry}
             readOnly={readOnly}

@@ -6,13 +6,17 @@
   cursor: pointer;
   outline: none;
 
+  &:hover {
+    opacity: 0.8;
+  }
+
   &:disabled {
     opacity: 0.6;
     pointer-events: none;
-  }
 
-  &:hover {
-    opacity: 0.8;
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }
 

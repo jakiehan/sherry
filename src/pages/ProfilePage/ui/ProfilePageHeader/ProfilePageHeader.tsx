@@ -46,7 +46,10 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
 
   return (
     <div className={classNames(cls.profilePageHeader, {}, [className])}>
-      <Text title={t('Профиль')} />
+      <Text
+        title={t('Профиль')}
+        tagTitle="h2"
+      />
       {canEdit && (
         <>
           {isReadOnly && (

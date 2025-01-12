@@ -1,0 +1,54 @@
+.listBox {
+  position: relative;
+  width: max-content;
+}
+
+.options {
+  position: absolute;
+  z-index: 10000;
+  min-width: 100%;
+  border-radius: 8px;
+  background-color: var(--listbox-bg);
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%);
+
+  &.top {
+    bottom: 100%;
+  }
+}
+
+.option {
+  padding: 10px;
+}
+
+.activeOption {
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.selectedOption {
+  background-color: var(--inverted-color);
+}
+
+.disabled {
+  cursor: initial;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.icon {
+  fill: var(--primary-color);
+  vertical-align: bottom;
+}
+
+.open {
+  transform: rotate(180deg);
+  vertical-align: top;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.btn {
+  padding: 1px 10px;
+}

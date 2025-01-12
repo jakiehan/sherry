@@ -126,6 +126,7 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
           text={article?.subtitle}
           align="left"
           size="sizeL"
+          tagTitle="h2"
         />
         <div>
           <div className={cls.articleInfo}>

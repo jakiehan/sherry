@@ -23,11 +23,11 @@ export const App: FC = () => {
     <div className={classNames('app', {}, [])}>
       <Suspense fallback="">
         <NavBar />
-        <div className="contentPage">
+        <main className="contentPage">
           <SideBar />
           {/*{inited && <AppRouter />}*/}
           <AppRouter />
-        </div>
+        </main>
       </Suspense>
     </div>
   );
