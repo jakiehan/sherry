@@ -43,7 +43,7 @@ const renderSkeleton = (view: View) => {
 export const ArticleList = memo(
   ({
     className,
-    articles,
+    articles = [],
     view = 'place',
     isLoading,
     target,

@@ -6,6 +6,7 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 import { api } from 'shared/api/api';
 import { ThunkExtraArg } from 'app/providers/StoreProvider/config/stateSchema';
 import { saveScrollReducer } from 'features/ScrollSave';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export const createReduxStore = (
   initialState?: StateSchema,
@@ -16,6 +17,7 @@ export const createReduxStore = (
     counter: counterReducer,
     user: userReducer,
     saveScroll: saveScrollReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer,
   };
 
   const extraArg: ThunkExtraArg = {
@@ -33,7 +35,7 @@ export const createReduxStore = (
         thunk: {
           extraArgument: extraArg,
         },
-      }),
+      }).concat(rtkApi.middleware),
   });
 
   //@ts-ignore

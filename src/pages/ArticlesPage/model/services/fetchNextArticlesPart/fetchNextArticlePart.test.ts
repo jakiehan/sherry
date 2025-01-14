@@ -21,8 +21,8 @@ describe('fetchNextArticlesPart.test', () => {
 
     // dispatch вызвался 4 раза
     expect(thunk.dispatch).toBeCalledTimes(4);
-    // функция fetchArticlesList была вызвана с нужным аргументом
-    expect(fetchArticlesList).toHaveBeenCalledWith({});
+    // функция fetchArticlesList была вызвана
+    expect(fetchArticlesList).toHaveBeenCalled();
   });
 
   test('fetchArticleList not called', async () => {

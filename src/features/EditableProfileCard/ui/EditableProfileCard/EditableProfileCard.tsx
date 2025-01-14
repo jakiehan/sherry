@@ -6,15 +6,30 @@ import { getProfileError } from '../../model/selectors/getProfileError/getProfil
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { profileActions } from '../../model/slice/profileSlice';
+import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { VALIDATE_ERROR_MESSAGE } from '../../model/types/profile';
 import { Text } from 'shared/Text';
+import {
+  DynamicModuleLoader,
+  ReducersList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
+import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 
-export const EditableProfileCard: FC = () => {
+const initialReducers: ReducersList = {
+  profile: profileReducer,
+};
+
+interface EditableProfileCardProps {
+  id?: string;
+}
+
+export const EditableProfileCard: FC<EditableProfileCardProps> = ({ id }) => {
   const { t } = useTranslation('profile');
 
   const dispatch = useAppDispatch();
@@ -24,6 +39,12 @@ export const EditableProfileCard: FC = () => {
   const isLoading = useSelector(getProfileIsLoading);
   const isReadOnly = useSelector(getProfileReadOnly);
   const validateErrors = useSelector(getProfileValidateErrors);
+
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
+    }
+  });
 
   const validateErrorsTranslate = {
     [VALIDATE_ERROR_MESSAGE.INCORRECT_PROFILE_FIRSTNAME]: t(
@@ -96,7 +117,11 @@ export const EditableProfileCard: FC = () => {
   );
 
   return (
-    <>
+    <DynamicModuleLoader
+      reducers={initialReducers}
+      removeAfterUnmount
+    >
+      <EditableProfileCardHeader />
       {validateErrors?.length &&
         validateErrors.map((error) => (
           <Text
@@ -119,6 +144,6 @@ export const EditableProfileCard: FC = () => {
         onChangeCurrency={handleChangeCurrency}
         onChangeCountry={handleChangeCountry}
       />
-    </>
+    </DynamicModuleLoader>
   );
 };

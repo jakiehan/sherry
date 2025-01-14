@@ -3,7 +3,13 @@
   width: 100%;
   height: var(--navbar-height);
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   padding: 20px;
   background-color: var(--inverted-bg-color);
+}
+
+.title {
+  h1 {
+    color: var(--inverted-color);
+  }
 }

@@ -1,11 +1,10 @@
-import { Fragment, memo, ReactNode, useState } from 'react';
+import { Fragment, memo, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import cls from './ListBox.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/Button';
 import ArrowIcon from 'app/styles/assets/icons/arrow-down.svg';
-
-type ListBoxDirections = 'top' | 'bottom';
+import { Directions } from 'shared/types/ui';
 
 interface ListBoxOption<T extends string> {
   value: T;
@@ -22,7 +21,7 @@ interface ListBoxProps<T extends string> {
   onChange?: (value: T) => void;
   readOnly?: boolean;
   label?: string;
-  direction?: ListBoxDirections;
+  direction?: Directions;
 }
 
 const genericMemo: <T>(component: T) => T = memo;

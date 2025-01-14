@@ -1,0 +1,36 @@
+.dropdown {
+  position: relative;
+}
+
+.btn {
+  width: max-content;
+  border: none;
+  background-color: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  outline: none;
+}
+
+.menu {
+  position: absolute;
+  z-index: 10000;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--dropdown-bg);
+  outline: none;
+
+  &.bottomLeft {
+    top: 100%;
+    right: 0;
+  }
+}
+
+.option {
+  padding: 10px;
+}
+
+.activeOption {
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}

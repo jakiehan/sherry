@@ -1,24 +1,22 @@
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import cls from './ProfilePageHeader.module.scss';
+import cls from './EditableProfileCardHeader.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/Text';
 import { Button } from 'shared/Button';
 import { useSelector } from 'react-redux';
-import { getProfileReadOnly } from 'features/EditableProfileCard';
+import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-  profileActions,
-  updateProfileData,
-} from 'features/EditableProfileCard';
+import { profileActions } from '../../model/slice/profileSlice';
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getUserAuthData } from 'entities/User';
-import { getProfileData } from 'features/EditableProfileCard/model/selectors/getProfileData/getProfileData';
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 
-interface ProfilePageHeaderProps {
+interface EditableProfileCardHeaderProps {
   className?: string;
 }
 
-export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
+export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = ({
   className,
 }) => {
   const { t } = useTranslation('profile');
@@ -45,7 +43,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = ({
   const isReadOnly = useSelector(getProfileReadOnly);
 
   return (
-    <div className={classNames(cls.profilePageHeader, {}, [className])}>
+    <div className={classNames(cls.editableProfileCardHeader, {}, [className])}>
       <Text
         title={t('Профиль')}
         tagTitle="h2"
