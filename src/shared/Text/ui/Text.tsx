@@ -10,6 +10,7 @@ interface TextProps {
   align?: 'left' | 'center' | 'right';
   size?: 'sizeM' | 'sizeL';
   tagTitle?: keyof HTMLElementTagNameMap;
+  'data-testid'?: string;
 }
 
 export const Text = memo(
@@ -21,6 +22,7 @@ export const Text = memo(
     align = 'left',
     size = 'sizeM',
     tagTitle = 'p',
+    'data-testid': dataTestId = 'Text',
   }: TextProps) => {
     const Tag = tagTitle;
 
@@ -33,8 +35,22 @@ export const Text = memo(
           cls[size],
         ])}
       >
-        {title && <Tag className={cls.title}>{title}</Tag>}
-        {text && <p className={cls.text}>{text}</p>}
+        {title && (
+          <Tag
+            className={cls.title}
+            data-testid={`${dataTestId}.Header`}
+          >
+            {title}
+          </Tag>
+        )}
+        {text && (
+          <p
+            className={cls.text}
+            data-testid={`${dataTestId}.Paragraph`}
+          >
+            {text}
+          </p>
+        )}
       </div>
     );
   }

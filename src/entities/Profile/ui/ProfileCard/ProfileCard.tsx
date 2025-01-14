@@ -89,6 +89,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             readOnly={readOnly}
             minLength={2}
             onChange={onChangeFirstName}
+            data-testid="ProfileCard.Firstname"
           />
           <Input
             label={t('Ваша фамилия')}
@@ -96,6 +97,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             variant="outlined"
             readOnly={readOnly}
             onChange={onChangeLastName}
+            data-testid="ProfileCard.Lastname"
           />
           <Input
             label={t('Ваш возраст')}

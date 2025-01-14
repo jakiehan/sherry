@@ -54,6 +54,7 @@ export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = ({
             <Button
               variant="outline"
               onClick={editProfile}
+              data-testid="EditableProfileCard.EditButton"
             >
               {t('Редактировать')}
             </Button>
@@ -63,12 +64,14 @@ export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = ({
               <Button
                 variant="outlineRed"
                 onClick={cancelEditProfile}
+                data-testid="EditableProfileCard.CancelButton"
               >
                 {t('Отменить')}
               </Button>
               <Button
                 variant="outline"
                 onClick={saveProfile}
+                data-testid="EditableProfileCard.SaveButton"
               >
                 {t('Сохранить')}
               </Button>
