@@ -1,13 +1,6 @@
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-
-export enum VALIDATE_ERROR_MESSAGE {
-  INCORRECT_PROFILE_FIRSTNAME = 'INCORRECT_PROFILE_FIRSTNAME',
-  INCORRECT_PROFILE_LASTNAME = 'INCORRECT_PROFILE_LASTNAME',
-  INCORRECT_PROFILE_AGE = 'INCORRECT_PROFILE_AGE',
-  NO_DATA = 'NO_DATA',
-  SERVER_ERROR = 'SERVER_ERROR',
-}
+import { VALIDATE_ERROR_MESSAGE } from '../constants/constants';
 
 export interface Profile {
   id?: string | number;

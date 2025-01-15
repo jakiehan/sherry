@@ -37,14 +37,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
     navigate(routePath.articles);
   }, [navigate]);
 
-  if (!id) {
-    return (
-      <Page className={classNames('', {}, [className])}>
-        {t('Статья не найдена')}
-      </Page>
-    );
-  }
-
   return (
     <DynamicModuleLoader
       reducers={reducers}

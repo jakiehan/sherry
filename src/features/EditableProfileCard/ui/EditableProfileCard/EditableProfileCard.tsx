@@ -11,7 +11,6 @@ import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileF
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
-import { VALIDATE_ERROR_MESSAGE } from '../../model/types/profile';
 import { Text } from 'shared/Text';
 import {
   DynamicModuleLoader,
@@ -20,6 +19,7 @@ import {
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
+import { VALIDATE_ERROR_MESSAGE } from '../../model/constants/constants';
 
 const initialReducers: ReducersList = {
   profile: profileReducer,

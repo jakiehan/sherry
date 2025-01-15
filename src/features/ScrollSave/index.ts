@@ -1,4 +1,4 @@
-export { SaveScrollSchema } from './model/types/saveScrollSchema';
+export type { SaveScrollSchema } from './model/types/saveScrollSchema';
 
 export { getScrollByPath } from './model/selectors/selectSaveScroll';
 

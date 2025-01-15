@@ -1,4 +1,5 @@
-import { Profile, VALIDATE_ERROR_MESSAGE } from '../../types/profile';
+import { Profile } from '../../types/profile';
+import { VALIDATE_ERROR_MESSAGE } from '../../constants/constants';
 
 //TODO простенькая валидация, будет время переделать
 export const validateProfileData = (profile?: Profile) => {

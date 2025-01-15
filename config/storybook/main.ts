@@ -45,7 +45,7 @@ const config: StorybookConfig = {
       plugins.push(
         new DefinePlugin({
           __IS_DEV__: JSON.stringify(true),
-          __API__: JSON.stringify(''),
+          __API__: JSON.stringify('https://localhost:8000'),
           __PROJECT__: JSON.stringify('storybook'),
         })
       );
@@ -58,6 +58,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
+    'storybook-addon-mock',
   ],
   framework: {
     name: '@storybook/react-webpack5',
@@ -66,6 +67,9 @@ const config: StorybookConfig = {
         useSWC: true,
       },
     },
+  },
+  features: {
+    storyStoreV7: false,
   },
   // чтобы работали переводы в storybook
   // staticDirs: ['../../public'],

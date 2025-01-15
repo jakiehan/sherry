@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleDetailsComments } from './ArticleDetailsComments';
+import { StoreDecorator } from '../../../../../config/storybook/decorators/StoreDecorator';
 
 const meta = {
   title: 'shared/ArticleDetailsComments',
@@ -12,7 +13,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/*
 export const Primary: Story = {
-  args: {},
-};*/
+  args: { id: '1' },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
+};

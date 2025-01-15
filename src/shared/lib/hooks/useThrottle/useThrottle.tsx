@@ -16,7 +16,7 @@ export const useThrottle = (
   }, []);
 
   return useCallback(
-    (...args) => {
+    (...args: any[]) => {
       if (!throttleRef.current) {
         callback(...args);
         throttleRef.current = true;

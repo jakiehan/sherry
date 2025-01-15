@@ -7,7 +7,7 @@ export const useDebounce = (
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   return useCallback(
-    (...args) => {
+    (...args: any[]) => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
       }

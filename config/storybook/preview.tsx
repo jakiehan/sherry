@@ -3,6 +3,7 @@ import '../../src/app/styles/index.scss';
 import { ThemeDecorator } from './decorators/ThemeDecorator';
 import { Theme } from '../../src/app/providers/ThemeProvider';
 import { RouterDecorator } from './decorators/RouterDecorator';
+import { SuspenseDecorator } from './decorators/SuspenseDecorator';
 
 const preview: Preview = {
   parameters: {
@@ -17,9 +18,11 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <RouterDecorator>
-        <ThemeDecorator theme={Theme.LIGHT}>
-          <Story />
-        </ThemeDecorator>
+        <SuspenseDecorator>
+          <ThemeDecorator theme={Theme.LIGHT}>
+            <Story />
+          </ThemeDecorator>
+        </SuspenseDecorator>
       </RouterDecorator>
     ),
   ],
