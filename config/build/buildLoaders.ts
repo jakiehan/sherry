@@ -21,20 +21,22 @@ export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
 
   const cssLoader = buildCssLoader(isDev);
 
-  const babelLoader = buildBabelLoader(options);
+  const codeBabelLoader = buildBabelLoader({ ...options, isTSX: false });
+  const tsxBabelLoader = buildBabelLoader({ ...options, isTSX: true });
 
   // Если не используем typescript - нужен babel-loader(новый стандарт js перегоняет в старый)
-  const typeScriptLoader = {
+/*  const typeScriptLoader = {
     test: /\.tsx?$/, // отлавливаем ts файлы
     use: 'ts-loader', // поле use - указываем лоадер, который необходим для этих файлов
     exclude: /node_modules/, // исключаем директорию
-  };
+  };*/
 
   return [
     assetLoader,
     fontLoader,
-    babelLoader,
-    typeScriptLoader,
+    //typeScriptLoader,
+    codeBabelLoader,
+    tsxBabelLoader,
     cssLoader,
     svgLoader,
   ];
