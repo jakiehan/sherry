@@ -1,6 +1,7 @@
 import { Fragment, memo, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import cls from './ListBox.module.scss';
+import clsPopups from '../../Popups.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/Button';
 import ArrowIcon from 'app/styles/assets/icons/arrow-down.svg';
@@ -47,8 +48,9 @@ export const ListBox = genericMemo(
           value={value}
           onChange={onChange}
           as="div"
-          className={classNames(cls.listBox, { [cls.disabled]: readOnly }, [
+          className={classNames('', { [cls.disabled]: readOnly }, [
             className,
+            clsPopups.position,
           ])}
           disabled={readOnly}
         >
@@ -78,9 +80,9 @@ export const ListBox = genericMemo(
                     {({ active, selected }) => (
                       <li
                         className={classNames(
-                          cls.option,
+                          clsPopups.option,
                           {
-                            [cls.activeOption]: active,
+                            [clsPopups.activeOption]: active,
                             [cls.selectedOption]: selected,
                             [cls.disabledOption]: option?.disabled,
                           },

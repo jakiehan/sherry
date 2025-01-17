@@ -1,0 +1,16 @@
+.icon {
+  width: 20px;
+  height: 20px;
+
+  & path {
+    fill: var(--inverted-color);
+  }
+}
+
+.notifications {
+  width: 500px;
+  min-height: 150px;
+  max-height: 300px;
+  padding-right: 5px;
+  overflow-y: auto;
+}

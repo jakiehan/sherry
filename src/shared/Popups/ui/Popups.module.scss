@@ -1,0 +1,22 @@
+.position {
+  position: relative;
+}
+
+.option {
+  padding: 10px;
+}
+
+.activeOption {
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.trigger {
+  width: max-content;
+  border: none;
+  background-color: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  outline: none;
+}

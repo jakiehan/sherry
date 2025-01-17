@@ -9,7 +9,7 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 import { Text } from 'shared/Text';
 
 interface ArticleListProps {
-  articles: Article[];
+  articles?: Article[];
   isLoading?: boolean;
   view?: View;
   className?: string;

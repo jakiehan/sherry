@@ -1,5 +1,6 @@
 import { Fragment, memo, ReactNode } from 'react';
 import cls from './Dropdown.module.scss';
+import clsPopups from '../../Popups.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Menu } from '@headlessui/react';
 import { Directions } from 'shared/types/ui';
@@ -30,11 +31,14 @@ export const Dropdown = memo(
     return (
       <Menu
         as="div"
-        className={classNames(cls.dropdown, {}, [className])}
+        className={classNames(cls.dropdown, {}, [
+          className,
+          clsPopups.position,
+        ])}
       >
         <Menu.Button
           as="div"
-          className={cls.btn}
+          className={clsPopups.trigger}
         >
           {trigger}
         </Menu.Button>
@@ -42,12 +46,12 @@ export const Dropdown = memo(
           {options.map((option) => {
             const content = ({ active }: { active: boolean }) => (
               <li
-                className={classNames(cls.option, {
-                  [cls.activeOption]: active,
+                className={classNames(clsPopups.option, {
+                  [clsPopups.activeOption]: active,
                 })}
               >
                 <button
-                  className={cls.btn}
+                  className={clsPopups.trigger}
                   onClick={option.onClick}
                   type="button"
                   disabled={option.disabled}

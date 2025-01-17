@@ -1,0 +1,13 @@
+.menu {
+  position: absolute;
+  z-index: 10000;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--dropdown-bg);
+  outline: none;
+
+  &.bottomLeft {
+    top: 100%;
+    right: 0;
+  }
+}
