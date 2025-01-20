@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { routeConfig } from '../lib/routeConfig/routeConfig';
-import { PageLoader } from 'widgets/PageLoader';
-import { AppRoutesProps } from 'app/providers/Router/lib/routeConfig/routeConfig';
-import { RequireAuth } from 'app/providers/Router/ui/RequireAuth';
+import { PageLoader } from '@/widgets/PageLoader';
+import { AppRoutesProps } from '@/app/providers/Router/lib/routeConfig/routeConfig';
+import { RequireAuth } from '@/app/providers/Router/ui/RequireAuth';
 
 const routeWithWrapper = (route: AppRoutesProps) => {
   const element = <>{route.element}</>;

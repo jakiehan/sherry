@@ -1,12 +1,12 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './AddCommentForm.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Input } from 'shared/Input';
-import { Button } from 'shared/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Input } from '@/shared/Input';
+import { Button } from '@/shared/Button';
 import { useSelector } from 'react-redux';
 import { getAddCommentsFormText } from '../../model/selectors/selectAddCommentForm';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
   addCommentFormActions,
   addCommentFormReducer,
@@ -14,7 +14,7 @@ import {
 import {
   DynamicModuleLoader,
   ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 export interface AddCommentFormProps {
   onSendCommit: (value: string) => void;

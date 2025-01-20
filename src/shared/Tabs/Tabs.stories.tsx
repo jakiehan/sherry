@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Tabs } from './Tabs';
 import { action } from '@storybook/addon-actions';
-import { ArticleType } from 'entities/Article/model/types/article';
+import { ArticleType } from '@/entities/Article/model/types/article';
 
 const meta = {
   title: 'shared/Tabs',

@@ -1,13 +1,13 @@
 import { memo } from 'react';
-import { ArticleList } from 'entities/Article';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ArticleList } from '@/entities/Article';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { getArticles } from '../../model/slice/articlePageSlice';
 import {
   getArticlesIsLoading,
   getArticlesViews,
 } from '../../model/selectors/articlesList';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { useSearchParams } from 'react-router-dom';
 

@@ -51,6 +51,8 @@ const config: StorybookConfig = {
       );
     }
 
+    config.resolve!.alias = { '@': paths.src };
+
     return config;
   },
   addons: [

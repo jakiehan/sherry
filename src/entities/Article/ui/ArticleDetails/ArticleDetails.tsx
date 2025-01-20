@@ -1,13 +1,13 @@
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './ArticleDetails.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailsReducer } from '../../model/slice/ArticleDetailsSlice';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { useSelector } from 'react-redux';
 import {
@@ -15,11 +15,11 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
-import { Skeleton } from 'shared/Skeleton/ui/Skeleton';
-import { Text } from 'shared/Text';
-import { Avatar } from 'shared/Avatar';
-import EyeIcon from 'app/styles/assets/icons/eye.svg';
-import DatePickerIcon from 'app/styles/assets/icons/calendar.svg';
+import { Skeleton } from '@/shared/Skeleton/ui/Skeleton';
+import { Text } from '@/shared/Text';
+import { Avatar } from '@/shared/Avatar';
+import EyeIcon from '@/app/styles/assets/icons/eye.svg';
+import DatePickerIcon from '@/app/styles/assets/icons/calendar.svg';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';

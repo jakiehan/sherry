@@ -1,5 +1,5 @@
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 import { VALIDATE_ERROR_MESSAGE } from '../constants/constants';
 
 export interface Profile {

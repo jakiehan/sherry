@@ -3,13 +3,13 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ArticleSortField, View } from 'entities/Article';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Article, ArticleSortField, View } from '@/entities/Article';
 import { ArticlePageSchema } from '../types/articlePageSchema';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
-import { VIEW_LOCALE_STORAGE_KEY } from 'shared/constants/localstorage';
-import { SortOrder } from 'shared/types';
-import { ArticleType } from 'entities/Article/model/types/article';
+import { VIEW_LOCALE_STORAGE_KEY } from '@/shared/constants/localstorage';
+import { SortOrder } from '@/shared/types';
+import { ArticleType } from '@/entities/Article/model/types/article';
 
 const initialView: View =
   (localStorage.getItem(VIEW_LOCALE_STORAGE_KEY) as View) ?? 'place';

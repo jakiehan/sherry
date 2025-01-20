@@ -6,5 +6,7 @@ export const buildResolves = (options: BuildOptions): ResolveOptions => ({
   preferAbsolute: true, // абсолютные пути в приоритете
   modules: [options.paths.src, 'node_modules'],
   mainFiles: ['index'],
-  alias: {},
+  alias: {
+    '@': options.paths.src
+  },
 });

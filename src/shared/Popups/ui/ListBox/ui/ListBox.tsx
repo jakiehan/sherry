@@ -2,10 +2,10 @@ import { Fragment, memo, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import cls from './ListBox.module.scss';
 import clsPopups from '../../Popups.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/Button';
-import ArrowIcon from 'app/styles/assets/icons/arrow-down.svg';
-import { Directions } from 'shared/types/ui';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/Button';
+import ArrowIcon from '@/app/styles/assets/icons/arrow-down.svg';
+import { Directions } from '@/shared/types/ui';
 
 interface ListBoxOption<T extends string> {
   value: T;

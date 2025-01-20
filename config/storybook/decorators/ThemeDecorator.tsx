@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Theme, ThemeProvider } from 'app/providers/ThemeProvider';
+import { Theme, ThemeProvider } from '@/app/providers/ThemeProvider';
 
 interface ThemeDecoratorProps {
   children: ReactNode;

@@ -1,10 +1,10 @@
 import { memo, ReactNode } from 'react';
 import cls from './ArticleViewSwitcher.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { View } from 'entities/Article';
-import PlaceIcon from 'app/styles/assets/icons/place.svg';
-import ListIcon from 'app/styles/assets/icons/list.svg';
-import { Button } from 'shared/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { View } from '@/entities/Article';
+import PlaceIcon from '@/app/styles/assets/icons/place.svg';
+import ListIcon from '@/app/styles/assets/icons/list.svg';
+import { Button } from '@/shared/Button';
 
 interface ArticleViewSwitcherProps {
   className?: string;

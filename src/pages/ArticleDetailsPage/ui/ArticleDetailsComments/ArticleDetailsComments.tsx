@@ -1,19 +1,19 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './ArticleDetailsComments.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/Text';
-import { AddCommentForm } from 'features/AddCommentForm';
-import { CommentList } from 'entities/Comment';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/Text';
+import { AddCommentForm } from '@/features/AddCommentForm';
+import { CommentList } from '@/entities/Comment';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice';
 import {
   getArticleCommentsError,
   getArticleCommentsIsLoading,
 } from '../../model/selectors/comments';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 interface ArticleDetailsCommentsProps {

@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import AddCommentForm from './AddCommentForm';
 import { action } from '@storybook/addon-actions';
 import { StoreDecorator } from '../../../../../config/storybook/decorators/StoreDecorator';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
-import { AVATAR_URL } from 'shared/Avatar/lib/constants';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import { AVATAR_URL } from '@/shared/Avatar/lib/constants';
 
 const meta = {
   title: 'feature/AddCommentForm',

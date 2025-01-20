@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { EditableProfileCard } from 'features/EditableProfileCard';
+import { EditableProfileCard } from '@/features/EditableProfileCard';
 import cls from './ProfilePage.module.scss';
 import { useParams } from 'react-router-dom';
-import { Page } from 'widgets/Page/Page';
+import { Page } from '@/widgets/Page/Page';
 
 const ProfilePage = () => {
   const { id } = useParams();

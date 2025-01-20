@@ -1,9 +1,9 @@
 import { memo, ReactNode } from 'react';
 import cls from './Popover.module.scss';
 import clsPopups from '../../Popups.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Popover as HPopover } from '@headlessui/react';
-import { Directions } from 'shared/types/ui';
+import { Directions } from '@/shared/types/ui';
 
 interface PopoverProps {
   className?: string;

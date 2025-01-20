@@ -1,10 +1,10 @@
 import { memo, ReactNode } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Theme, useTheme } from 'app/providers/ThemeProvider';
-import ThemeSwitcherDarkIcon from 'app/styles/assets/icons/theme-switcher-dark.svg';
-import ThemeSwitcherLightIcon from 'app/styles/assets/icons/theme-switcher-light.svg';
-import ThemeSwitcherOrangeIcon from 'app/styles/assets/icons/theme-switcher-orange.svg';
-import { Button } from 'shared/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Theme, useTheme } from '@/app/providers/ThemeProvider';
+import ThemeSwitcherDarkIcon from '@/app/styles/assets/icons/theme-switcher-dark.svg';
+import ThemeSwitcherLightIcon from '@/app/styles/assets/icons/theme-switcher-light.svg';
+import ThemeSwitcherOrangeIcon from '@/app/styles/assets/icons/theme-switcher-orange.svg';
+import { Button } from '@/shared/Button';
 import cls from './ThemeSwitcher.module.scss';
 
 const activeIconTheme: Record<Theme, ReactNode> = {

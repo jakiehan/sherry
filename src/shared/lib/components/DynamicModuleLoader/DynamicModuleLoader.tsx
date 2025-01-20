@@ -4,7 +4,7 @@ import {
   ReduxStoreWithManager,
   StateSchema,
   StateSchemaKey,
-} from 'app/providers/StoreProvider/config/stateSchema';
+} from '@/app/providers/StoreProvider/config/stateSchema';
 import { Reducer } from '@reduxjs/toolkit';
 
 export type ReducersList = {

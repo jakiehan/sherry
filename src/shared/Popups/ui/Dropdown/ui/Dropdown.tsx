@@ -1,10 +1,10 @@
 import { Fragment, memo, ReactNode } from 'react';
 import cls from './Dropdown.module.scss';
 import clsPopups from '../../Popups.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Menu } from '@headlessui/react';
-import { Directions } from 'shared/types/ui';
-import { AppLink } from 'shared/AppLink';
+import { Directions } from '@/shared/types/ui';
+import { AppLink } from '@/shared/AppLink';
 
 interface DropdownOption {
   value?: string;

@@ -1,6 +1,6 @@
 import { ChangeEvent, InputHTMLAttributes, memo } from 'react';
 import cls from './Input.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 // Omit - берем все пропсы за исключением value и onchange
 type HtmlInputProps = Omit<

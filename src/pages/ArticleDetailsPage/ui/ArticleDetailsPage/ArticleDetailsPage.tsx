@@ -1,20 +1,20 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleDetails } from 'entities/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ArticleDetails } from '@/entities/Article';
 import { useParams } from 'react-router-dom';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
-import { getArticleDetailsError } from 'entities/Article/model/selectors/articleDetails';
-import { Button } from 'shared/Button';
+import { getArticleDetailsError } from '@/entities/Article/model/selectors/articleDetails';
+import { Button } from '@/shared/Button';
 import { useNavigate } from 'react-router-dom';
-import { routePath } from 'app/providers/Router/lib/routeConfig/routeConfig';
-import { Page } from 'widgets/Page/Page';
+import { routePath } from '@/app/providers/Router/lib/routeConfig/routeConfig';
+import { Page } from '@/widgets/Page/Page';
 import { articleDetailsPageReducer } from '../../model/slice';
-import { ArticleRecommendationsList } from 'features/ArticleRecommendationsList';
+import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 
 interface ArticleDetailsPageProps {

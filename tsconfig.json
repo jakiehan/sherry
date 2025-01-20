@@ -13,7 +13,7 @@
     "esModuleInterop": true, // позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import (module.export это common.js)
     "baseUrl": ".", // для абсолютного импорта
     "paths": {
-      "*": ["./src/*"]
+      "@/*": ["./src/*"]
     },
     // если какая-то библиотека не имеет default export, лоадеры вроде ts-loader автоматически создают их,
     // это позволяет писать вместо import * as React from 'react'

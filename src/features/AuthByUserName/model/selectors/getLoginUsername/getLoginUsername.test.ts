@@ -1,5 +1,5 @@
 import { getLoginUsername } from '../getLoginUsername/getLoginUsername';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 describe('getLoginUsername', () => {
   test('should return the correct username', () => {

@@ -7,14 +7,14 @@ import {
   useLayoutEffect,
 } from 'react';
 import cls from './Page.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useInfinityScroll } from 'shared/lib/hooks/useInfinityScroll/useInfinityScroll';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getScrollByPath, saveScrollActions } from 'features/ScrollSave';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useInfinityScroll } from '@/shared/lib/hooks/useInfinityScroll/useInfinityScroll';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getScrollByPath, saveScrollActions } from '@/features/ScrollSave';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { StateSchema } from 'app/providers/StoreProvider';
-import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 
 interface PageProps {
   children: ReactNode;
