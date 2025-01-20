@@ -1,6 +1,7 @@
 node_modules
 tsconfig.json
 webpack.config.ts
+vite.config.ts
 dist
 build
 config
