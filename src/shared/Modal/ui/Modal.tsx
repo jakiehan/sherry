@@ -1,7 +1,9 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC, ReactNode } from 'react';
 import cls from './Modal.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/Portal';
+import { Overlay } from 'shared/Overlay';
+import { useModal } from 'shared/lib/hooks/useModal/useModal';
 
 interface ModalProps {
   children: ReactNode;
@@ -18,36 +20,7 @@ export const Modal: FC<ModalProps> = ({
   onClose,
   lazy = false,
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      setIsMounted(true);
-    }
-
-    return () => setIsMounted(false);
-  }, [isOpen]);
-
-  const closeHandler = () => {
-    onClose && onClose();
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      closeHandler();
-    }
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('keydown', onKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [isOpen, onKeyDown]);
+  const { isMounted, close } = useModal({ onClose, isOpen });
 
   if (lazy && !isMounted) {
     return null;
@@ -58,17 +31,8 @@ export const Modal: FC<ModalProps> = ({
       <div
         className={classNames(cls.modal, { [cls.opened]: isOpen }, [className])}
       >
-        <div
-          className={cls.overlay}
-          onClick={closeHandler}
-        >
-          <div
-            className={cls.content}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {children}
-          </div>
-        </div>
+        <Overlay onClick={close} />
+        <div className={cls.content}>{children}</div>
       </div>
     </Portal>
   );
