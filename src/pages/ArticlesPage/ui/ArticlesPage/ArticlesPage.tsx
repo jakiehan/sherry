@@ -6,7 +6,7 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articlePageReducer } from '../../model/slice/articlePageSlice';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 import { fetchNextArticlesPart } from '../../model/services/fetchNextArticlesPart/fetchNextArticlesPart';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import cls from './ArticlesPage.module.scss';

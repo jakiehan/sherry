@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './LoginForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -17,6 +17,8 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+
+const LABEL_WIDTH = 180;
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
@@ -82,11 +84,14 @@ const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
           onChange={handleChangeUsername}
           value={username}
           autoFocus
+          labelWidth={LABEL_WIDTH}
         />
         <Input
           label={t('Введите пароль')}
           onChange={handleChangePassword}
           value={password}
+          labelWidth={LABEL_WIDTH}
+          type="password"
         />
         <Button
           variant="outline"

@@ -1239,14 +1239,58 @@
       "avatar": "https://images.unsplash.com/photo-1652726338770-9f77609f2562?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "статья пойдет",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 3,
+      "feedback": "статья средняя",
+      "articleId": "2",
+      "userId": "1"
+    },
+    {
+      "articleId": "19",
+      "userId": "1",
+      "rate": 5,
+      "feedback": "",
+      "id": "g2OxMdb"
+    },
+    {
+      "articleId": "13",
+      "userId": "1",
+      "rate": 4,
+      "feedback": "гуд",
+      "id": "nbLQCov"
+    },
+    {
+      "articleId": "12",
+      "userId": "1",
+      "rate": 5,
+      "feedback": "пушка!",
+      "id": "pIBk5gH"
+    },
+    {
+      "articleId": "4",
+      "userId": "1",
+      "rate": 5,
+      "feedback": "грусть",
+      "id": "C22VtnK"
+    }
+  ],
   "profile": [
     {
       "id": 1,
       "first": "Михаил",
       "lastname": "Олейник",
       "age": 30,
-      "currency": "EUR",
-      "country": "China",
+      "currency": "RUB",
+      "country": "Russia",
       "city": "Ulyanovsk",
       "username": "ehanjaki",
       "avatar": "https://images.unsplash.com/photo-1649000313856-7360316a546c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

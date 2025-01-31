@@ -4,7 +4,7 @@ import { StoreDecorator } from '../../../../config/storybook/decorators/StoreDec
 import { Article } from '@/entities/Article';
 
 const meta = {
-  title: 'shared/ArticleRecommendationsList',
+  title: 'features/ArticleRecommendationsList',
   component: ArticleRecommendationsList,
   parameters: {
     layout: 'fullscreen',
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 const article: Article = {
   id: '1',
-  img: '',
+  img: 'https://img.goodfon.ru/wallpaper/big/a/69/kartinka-3d-dikaya-koshka.webp',
   createdAt: '',
   views: 123,
   user: { id: '1', username: '123', avatar: '' },

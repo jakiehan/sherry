@@ -8,14 +8,15 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
-import { getArticleDetailsError } from '@/entities/Article/model/selectors/articleDetails';
+import { getArticleDetailsError } from '@/entities/Article';
 import { Button } from '@/shared/Button';
 import { useNavigate } from 'react-router-dom';
 import { routePath } from '@/app/providers/Router/lib/routeConfig/routeConfig';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
+import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -37,6 +38,10 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
     navigate(routePath.articles);
   }, [navigate]);
 
+  if (!id && __PROJECT__ === 'frontend') {
+    return null;
+  }
+
   return (
     <DynamicModuleLoader
       reducers={reducers}
@@ -53,6 +58,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
           {t('Назад к списку')}
         </Button>
         <ArticleDetails id={id} />
+        <ArticleRating articleId={id!} />
         <ArticleRecommendationsList />
         {!errorArticle && <ArticleDetailsComments id={id} />}
       </Page>

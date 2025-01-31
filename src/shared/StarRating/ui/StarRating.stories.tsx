@@ -1,18 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AvatarDropdown } from './AvatarDropdown';
+import { StarRating } from './StarRating';
 
 const meta = {
-  title: 'shared/AvatarDropdown',
-  component: AvatarDropdown,
+  title: 'shared/StarRating',
+  component: StarRating,
   parameters: {
     layout: 'fullscreen',
   },
-} satisfies Meta<typeof AvatarDropdown>;
+} satisfies Meta<typeof StarRating>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/*
 export const Primary: Story = {
   args: {},
-};*/
+};

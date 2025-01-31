@@ -1,10 +1,11 @@
 .inputWrapper {
   display: flex;
   align-items: end;
+}
 
-  & > span {
-    min-width: var(--label-min-width);
-  }
+.label {
+  min-width: max-content;
+  color: var(--primary-color);
 }
 
 .input {

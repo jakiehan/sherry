@@ -15,6 +15,7 @@ interface InputProps extends HtmlInputProps {
   label?: string;
   variant?: 'outlined' | 'primary';
   readOnly?: boolean;
+  labelWidth?: number | string;
 }
 
 export const Input = memo(
@@ -25,6 +26,7 @@ export const Input = memo(
     variant = 'primary',
     label = '',
     readOnly,
+    labelWidth,
     ...otherProps
   }: InputProps) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +35,14 @@ export const Input = memo(
 
     return (
       <label className={classNames(cls.inputWrapper, {}, [className])}>
-        {label?.length !== 0 && <span>{label}</span>}
+        {label?.length !== 0 && (
+          <span
+            style={{ width: labelWidth }}
+            className={cls.label}
+          >
+            {label}
+          </span>
+        )}
         <input
           className={classNames(cls.input, {}, [cls[variant]])}
           value={value}

@@ -9,7 +9,7 @@ import { ArticlePageSchema } from '../types/articlePageSchema';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { VIEW_LOCALE_STORAGE_KEY } from '@/shared/constants/localstorage';
 import { SortOrder } from '@/shared/types';
-import { ArticleType } from '@/entities/Article/model/types/article';
+import { ArticleType } from '@/entities/Article';
 
 const initialView: View =
   (localStorage.getItem(VIEW_LOCALE_STORAGE_KEY) as View) ?? 'place';

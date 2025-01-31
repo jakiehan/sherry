@@ -6,7 +6,6 @@ import { NotificationsList } from '@/entities/Notifications';
 import { Popover } from '@/shared/Popups';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { Drawer } from '@/shared/Drawer';
-import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 
 interface NotificationsButtonProps {
   className?: string;

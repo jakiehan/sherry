@@ -15,6 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'sizeM' | 'sizeL' | 'sizeXL';
   square?: boolean;
   children?: ReactNode;
+  fullWidth?: boolean;
 }
 
 // Использовать memo когда есть prop children не совсем правильно и не имеет смысла
@@ -26,10 +27,12 @@ export const Button = memo(
     variant = 'outline',
     size = 'sizeM',
     square = false,
+    fullWidth,
     ...otherProps
   }: ButtonProps) => {
     const mods: Mods = {
       [cls.square]: square,
+      [cls.fullWidth]: fullWidth,
     };
 
     return (

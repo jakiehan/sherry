@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import { StoreDecorator } from '../../../../../config/storybook/decorators/StoreDecorator';
 
 const meta = {
-  title: 'feature/LoginForm',
+  title: 'features/LoginForm',
   component: LoginForm,
   parameters: {
     layout: 'fullscreen',

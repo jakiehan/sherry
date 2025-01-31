@@ -1,18 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NotificationsButton } from './NotificationsButton';
+import { RatingCard } from './RatingCard';
 
 const meta = {
-  title: 'shared/NotificationsButton',
-  component: NotificationsButton,
+  title: 'shared/RatingCard',
+  component: RatingCard,
   parameters: {
     layout: 'fullscreen',
   },
-} satisfies Meta<typeof NotificationsButton>;
+} satisfies Meta<typeof RatingCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/*
 export const Primary: Story = {
   args: {},
-};*/
+};

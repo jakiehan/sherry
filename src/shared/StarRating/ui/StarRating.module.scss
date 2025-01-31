@@ -1,0 +1,16 @@
+.starRating {
+  display: flex;
+  gap: 5px;
+}
+
+.starIcon {
+  cursor: pointer;
+}
+
+.hovered {
+  fill: var(--primary-color);
+}
+
+.selected {
+  cursor: auto;
+}

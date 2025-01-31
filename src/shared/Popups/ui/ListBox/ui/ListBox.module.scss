@@ -23,12 +23,12 @@
 
 .icon {
   fill: var(--primary-color);
-  vertical-align: bottom;
+  vertical-align: center;
 }
 
 .open {
+  margin-bottom: 2px;
   transform: rotate(180deg);
-  vertical-align: top;
 }
 
 .wrapper {

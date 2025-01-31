@@ -10,6 +10,8 @@ import { Avatar } from '@/shared/Avatar';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Country, CountrySelect } from '@/entities/Country';
 
+const LABEL_WIDTH = 150;
+
 interface ProfileCardProps {
   className?: string;
   data?: Profile;
@@ -90,6 +92,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             minLength={2}
             onChange={onChangeFirstName}
             data-testid="ProfileCard.Firstname"
+            labelWidth={LABEL_WIDTH}
           />
           <Input
             label={t('Ваша фамилия')}
@@ -98,6 +101,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             readOnly={readOnly}
             onChange={onChangeLastName}
             data-testid="ProfileCard.Lastname"
+            labelWidth={LABEL_WIDTH}
           />
           <Input
             label={t('Ваш возраст')}
@@ -107,6 +111,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             readOnly={readOnly}
             onChange={onChangeAge}
             className={cls.hideArrow}
+            labelWidth={LABEL_WIDTH}
           />
           <Input
             label={t('Город')}
@@ -114,6 +119,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             variant="outlined"
             readOnly={readOnly}
             onChange={onChangeCity}
+            labelWidth={LABEL_WIDTH}
           />
           <Input
             label={t('Имя пользователя')}
@@ -121,6 +127,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             variant="outlined"
             readOnly={readOnly}
             onChange={onChangeUsername}
+            labelWidth={LABEL_WIDTH}
           />
           <Input
             label={t('Ссылка на аватар')}
@@ -128,6 +135,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
             variant="outlined"
             readOnly={readOnly}
             onChange={onChangeAvatar}
+            labelWidth={LABEL_WIDTH}
           />
           <CurrencySelect
             value={data?.currency}
