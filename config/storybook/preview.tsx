@@ -1,9 +1,9 @@
 import type { Preview } from '@storybook/react';
 import '../../src/app/styles/index.scss';
-import { ThemeDecorator } from './decorators/ThemeDecorator';
+import { ThemeDecorator } from '../../src/app/decorators/ThemeDecorator';
 import { Theme } from '../../src/app/providers/ThemeProvider';
-import { RouterDecorator } from './decorators/RouterDecorator';
-import { SuspenseDecorator } from './decorators/SuspenseDecorator';
+import { RouterDecorator } from '../../src/app/decorators/RouterDecorator';
+import { SuspenseDecorator } from '../../src/app/decorators/SuspenseDecorator';
 
 const preview: Preview = {
   parameters: {

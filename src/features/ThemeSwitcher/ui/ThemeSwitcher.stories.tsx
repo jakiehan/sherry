@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { Theme } from '@/app/providers/ThemeProvider';
-import { ThemeDecorator } from '../../../../config/storybook/decorators/ThemeDecorator';
+import { ThemeDecorator } from '@/app/decorators/ThemeDecorator';
 
 const meta = {
   title: 'features/ThemeSwitcher',

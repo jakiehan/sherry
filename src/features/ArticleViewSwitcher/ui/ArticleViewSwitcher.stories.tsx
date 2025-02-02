@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleViewSwitcher } from './ArticleViewSwitcher';
-import { ThemeDecorator } from '../../../../config/storybook/decorators/ThemeDecorator';
+import { ThemeDecorator } from '@/app/decorators/ThemeDecorator';
 import { Theme } from '@/app/providers/ThemeProvider';
 
 const meta = {

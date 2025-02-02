@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ArticleRating from './ArticleRating';
-import { StoreDecorator } from '../../../../config/storybook/decorators/StoreDecorator';
+import { StoreDecorator } from '@/app/decorators/StoreDecorator';
 
 const meta = {
   title: 'features/ArticleRating',
