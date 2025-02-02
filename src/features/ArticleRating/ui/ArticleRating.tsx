@@ -5,7 +5,7 @@ import {
   useGetArticleRatingQuery,
   useRateArticleMutation,
 } from '../api/articleRatingApi';
-import { Skeleton } from '@/shared/Skeleton/ui/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 

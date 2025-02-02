@@ -11,7 +11,7 @@ import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileF
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
-import { Text } from '@/shared/Text';
+import { Text } from '@/shared/ui/Text';
 import {
   DynamicModuleLoader,
   ReducersList,

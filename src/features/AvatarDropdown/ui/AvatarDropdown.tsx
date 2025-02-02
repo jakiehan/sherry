@@ -1,9 +1,8 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Avatar } from '@/shared/Avatar';
-import { Dropdown } from '@/shared/Popups';
-import { routePath } from '@/app/providers/Router/lib/routeConfig/routeConfig';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Dropdown } from '@/shared/ui/Popups';
 import {
   getUserAuthData,
   isAdminRole,
@@ -13,6 +12,7 @@ import {
 import { USER_LOCALE_STORAGE_KEY } from '@/shared/constants/localstorage';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { routePath } from '@/app/providers/Router/constants/router';
 
 interface AvatarDropdownProps {
   className?: string;

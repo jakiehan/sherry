@@ -2,11 +2,11 @@ import { memo } from 'react';
 import cls from './CommentCard.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Comment } from '../../model/types';
-import { Avatar } from '@/shared/Avatar';
-import { Text } from '@/shared/Text';
-import { Skeleton } from '@/shared/Skeleton/ui/Skeleton';
-import { AppLink } from '@/shared/AppLink';
-import { routePath } from '@/app/providers/Router/lib/routeConfig/routeConfig';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Text } from '@/shared/ui/Text';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { AppLink } from '@/shared/ui/AppLink';
+import { routePath } from '@/app/providers/Router/constants/router';
 
 interface CommentCardProps {
   comment: Comment;

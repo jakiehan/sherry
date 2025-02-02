@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleViewSwitcher } from './ArticleViewSwitcher';
-import { ThemeDecorator } from '@/app/decorators/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
+import { ThemeDecorator } from '@/shared/decorators/ThemeDecorator';
+import { Theme } from '@/shared/constants/theme';
 
 const meta = {
   title: 'features/ArticleViewSwitcher',

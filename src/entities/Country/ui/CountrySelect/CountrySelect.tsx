@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SelectOptions } from '@/shared/Select';
+import { SelectOptions } from '@/shared/ui/Select';
 import { Country } from '../../model/types/country';
-import { ListBox } from '@/shared/Popups';
+import { ListBox } from '@/shared/ui/Popups';
 import cls from './CountrySelect.module.scss';
 
 interface CountrySelectProps {

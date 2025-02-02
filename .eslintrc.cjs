@@ -32,7 +32,11 @@ module.exports = {
         "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["to", "target"] }],
         "react-hooks/rules-of-hooks": "error",
         "sherry-plugin/sherry-path-checker-fsd": ["error", { alias: '@' }],
-        "sherry-plugin/sherry-public-api-imports": ["error", { alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'] }]
+        "sherry-plugin/sherry-public-api-imports": ["error", { alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.stories.*', '**/StoreDecorator.tsx'] }],
+        "sherry-plugin/sherry-layers-imports-fsd": ["error", { alias: '@', ignoreImportPatterns: [
+          '**/StoreProvider', '**/StoreDecorator', '**/router', '**/testing', '**/stateSchema', '**/i18nForTests', '**/EditableProfileCard', '**/Article'
+            ]
+        }],
     },
     "settings": {
         "react": {

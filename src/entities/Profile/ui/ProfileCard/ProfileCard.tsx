@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './ProfileCard.module.scss';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/Text';
-import { Input } from '@/shared/Input';
-import { Loader } from '@/shared/Loader';
+import { Text } from '@/shared/ui/Text';
+import { Input } from '@/shared/ui/Input';
+import { Loader } from '@/shared/ui/Loader';
 import { Profile } from '@/features/EditableProfileCard';
-import { Avatar } from '@/shared/Avatar';
+import { Avatar } from '@/shared/ui/Avatar';
 import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Country, CountrySelect } from '@/entities/Country';
 

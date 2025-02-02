@@ -8,14 +8,14 @@ import {
   ArticleTextBlock,
   View,
 } from '../../model/types/article';
-import { Text } from '@/shared/Text';
-import EyeIcon from '@/app/styles/assets/icons/eye.svg';
-import { Card } from '@/shared/Card';
-import { Avatar } from '@/shared/Avatar';
-import { Button } from '@/shared/Button';
+import { Text } from '@/shared/ui/Text';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { Card } from '@/shared/ui/Card';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Button } from '@/shared/ui/Button';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { routePath } from '@/app/providers/Router/lib/routeConfig/routeConfig';
-import { AppLink } from '@/shared/AppLink';
+import { AppLink } from '@/shared/ui/AppLink';
+import { routePath } from '@/app/providers/Router/constants/router';
 
 interface ArticleListItemProps {
   article: Article;

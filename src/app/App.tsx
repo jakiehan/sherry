@@ -1,7 +1,7 @@
 import { FC, Suspense, useEffect } from 'react';
 import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
-import { AppRouter } from '@/app/providers/Router';
+import { AppRouter } from './providers/Router/ui/AppRouter';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInited, userActions } from '@/entities/User';
