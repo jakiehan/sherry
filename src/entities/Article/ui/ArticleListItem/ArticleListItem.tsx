@@ -15,7 +15,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { Button } from '@/shared/ui/Button';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { AppLink } from '@/shared/ui/AppLink';
-import { routePath } from '@/app/providers/Router/constants/router';
+import { getRouteArticleDetails } from '@/app/providers/Router/constants/router';
 
 interface ArticleListItemProps {
   article: Article;
@@ -86,7 +86,7 @@ export const ArticleListItem = memo(
             />
             <div className={cls.footer}>
               <AppLink
-                to={routePath.article_details + article.id}
+                to={getRouteArticleDetails(article.id)}
                 target={target}
               >
                 <Button variant="outline">{`${t('Читать далее')}...`}</Button>
@@ -101,7 +101,7 @@ export const ArticleListItem = memo(
     return (
       <AppLink
         className={classNames(cls.articleListItem, {}, [className, cls[view]])}
-        to={routePath.article_details + article.id}
+        to={getRouteArticleDetails(article.id)}
         target={target}
       >
         <Card className={cls.card}>

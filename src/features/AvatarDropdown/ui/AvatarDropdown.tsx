@@ -12,7 +12,10 @@ import {
 import { USER_LOCALE_STORAGE_KEY } from '@/shared/constants/localstorage';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { routePath } from '@/app/providers/Router/constants/router';
+import {
+  getRouteAdmin,
+  getRouteProfile,
+} from '@/app/providers/Router/constants/router';
 
 interface AvatarDropdownProps {
   className?: string;
@@ -40,14 +43,14 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
           {
             content: t('Админ панель'),
             value: '1',
-            href: routePath.admin_panel,
+            href: getRouteAdmin(),
           },
         ]
       : []),
     {
       content: t('Профиль'),
       value: '2',
-      href: routePath.profile + authData?.id,
+      href: getRouteProfile(authData?.id ?? ''),
     },
     {
       content: t('Выйти'),

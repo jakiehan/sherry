@@ -7,45 +7,55 @@ import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
 import { UserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
-import { AppRoutes, routePath } from '../../constants/router';
+import {
+  AppRoutes,
+  getRouteAbout,
+  getRouteAdmin,
+  getRouteArticleDetails,
+  getRouteArticles,
+  getRouteForbidden,
+  getRouteMain,
+  getRouteNotFound,
+  getRouteProfile,
+} from '../../constants/router';
 import { AppRoutesProps } from '../../types/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
-    path: routePath.main,
+    path: getRouteMain(),
     element: <MainPage />,
   },
   [AppRoutes.ABOUT]: {
-    path: routePath.about,
+    path: getRouteAbout(),
     element: <AboutPage />,
   },
   [AppRoutes.PROFILE]: {
-    path: `${routePath.profile}:id`,
+    path: getRouteProfile(':id'),
     element: <ProfilePage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLES]: {
-    path: routePath.articles,
+    path: getRouteArticles(),
     element: <ArticlesPage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLE_DETAILS]: {
-    path: `${routePath['article_details']}:id`,
+    path: getRouteArticleDetails(':id'),
     element: <ArticleDetailsPage />,
     authOnly: true,
   },
-  [AppRoutes.NOT_FOUND]: {
-    path: routePath['not_found'],
-    element: <NotFoundPage />,
-  },
   [AppRoutes.ADMIN_PANEL]: {
-    path: routePath['admin_panel'],
+    path: getRouteAdmin(),
     element: <AdminPanelPage />,
     roles: [UserRole.ADMIN, UserRole.MANAGER],
     authOnly: true,
   },
   [AppRoutes.FORBIDDEN]: {
-    path: routePath['forbidden'],
+    path: getRouteForbidden(),
     element: <ForbiddenPage />,
+  },
+  [AppRoutes.NOT_FOUND]: {
+    path: getRouteNotFound(),
+    element: <NotFoundPage />,
   },
 };

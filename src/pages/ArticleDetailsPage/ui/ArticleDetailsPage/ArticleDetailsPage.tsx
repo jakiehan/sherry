@@ -16,7 +16,7 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
-import { routePath } from '@/app/providers/Router/constants/router';
+import { getRouteArticles } from '@/app/providers/Router/constants/router';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -35,7 +35,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
   const errorArticle = useSelector(getArticleDetailsError);
 
   const handleClickBackToList = useCallback(() => {
-    navigate(routePath.articles);
+    navigate(getRouteArticles());
   }, [navigate]);
 
   if (!id && __PROJECT__ === 'frontend') {
