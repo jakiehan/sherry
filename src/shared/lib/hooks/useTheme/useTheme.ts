@@ -3,6 +3,10 @@ import { ThemeContext } from '../../context/ThemeContext';
 import { LOCALE_STORAGE_THEME_KEY } from '../../../constants/localstorage';
 import { Theme } from '../../../constants/theme';
 
+/**
+ * Хук переключения темы приложения
+ */
+
 interface UseThemeResult {
   toggleTheme: () => void;
   theme: Theme;
