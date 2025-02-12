@@ -1,35 +1,36 @@
 import { FC } from 'react';
 import { Button } from '@/shared/ui/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { counterActions } from '../model/slice/counterSlice';
-import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
+import { useCounterActions } from '../model/slice/counterSlice';
+import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { useTranslation } from 'react-i18next';
 
 export const Counter: FC = () => {
-  const dispatch = useDispatch();
-  const value = useSelector(getCounterValue);
-
   const { t } = useTranslation();
 
-  const increment = () => {
-    dispatch(counterActions.increment());
+  //использование хука обертки над useSelector
+  const value = useCounterValue();
+
+  const { decrement, increment } = useCounterActions();
+
+  const handleIncrement = () => {
+    increment();
   };
 
-  const decrement = () => {
-    dispatch(counterActions.decrement());
+  const handleDecrement = () => {
+    decrement();
   };
 
   return (
     <div>
       <h2 data-testid="value-title">{value}</h2>
       <Button
-        onClick={increment}
+        onClick={handleIncrement}
         data-testid="increment-btn"
       >
         {t('increment')}
       </Button>
       <Button
-        onClick={decrement}
+        onClick={handleDecrement}
         data-testid="decrement-btn"
       >
         {t('decrement')}

@@ -1,8 +1,11 @@
-import { createSelector } from '@reduxjs/toolkit';
-import { getCounter } from '../getCounter/getCounter';
+import { buildSelectors } from '@/shared/lib/store';
 
 //пример как работает реселект
-export const getCounterValue = createSelector(
+/*export const getCounterValue = createSelector(
   getCounter,
   (counter) => counter.value
+);*/
+
+export const [useCounterValue, getCounterValue] = buildSelectors(
+  (state) => state.counter.value
 );

@@ -12,6 +12,7 @@ export function buildBabelLoader({ isDev, isTSX }: BuildBabelLoaderOptions) {
     use: {
       loader: 'babel-loader',
       options: {
+        cacheDirectory: true,
         presets: ['@babel/preset-env'],
         plugins: [
           [
@@ -26,7 +27,7 @@ export function buildBabelLoader({ isDev, isTSX }: BuildBabelLoaderOptions) {
             { isTSX }
           ],
           "@babel/plugin-transform-runtime",
-          isTSX && [
+          isTSX && !isDev && [
             babelRemovePropsPlugin(),
             {
               props: ['data-testid']

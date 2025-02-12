@@ -15,10 +15,6 @@ export const buildPlugins = ({ paths, isDev, apiURL, project }: BuildOptions): w
       favicon: './public/favicon.ico'
     }),
     new webpack.ProgressPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:8]',
-      chunkFilename: 'css/[name].[contenthash:8]',
-    }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiURL),
@@ -40,6 +36,13 @@ export const buildPlugins = ({ paths, isDev, apiURL, project }: BuildOptions): w
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }));
     plugins.push(new CircularDependencyPlugin({ exclude: /node_modules/, failOnError: true }));
+  }
+
+  if (!isDev) {
+    plugins.push(new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8]',
+      chunkFilename: 'css/[name].[contenthash:8]',
+    }));
   }
 
   return plugins
