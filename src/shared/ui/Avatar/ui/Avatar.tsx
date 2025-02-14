@@ -1,7 +1,9 @@
 import { CSSProperties, FC, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import cls from './Avatar.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppImage } from '../../AppImage';
+import FallbackAvatar from '@/shared/assets/icons/avatar.svg';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface AvatarProps {
   src?: string;
@@ -16,8 +18,6 @@ export const Avatar: FC<AvatarProps> = ({
   alt = 'Фото профиля',
   size = 100,
 }) => {
-  const { t } = useTranslation();
-
   const sizeAvatar = useMemo<CSSProperties>(
     () => ({
       width: size,
@@ -27,11 +27,24 @@ export const Avatar: FC<AvatarProps> = ({
   );
 
   return (
-    <img
+    <AppImage
+      className={classNames(cls.avatar, {}, [className])}
       src={src}
       alt={alt}
       style={sizeAvatar}
-      className={classNames(cls.avatar, {}, [className])}
+      fallback={
+        <Skeleton
+          width={size}
+          height={size}
+        />
+      }
+      errorFallback={
+        <FallbackAvatar
+          className={cls.fallbackAvatar}
+          height={size}
+          width={size}
+        />
+      }
     />
   );
 };
