@@ -4,7 +4,7 @@ import { ThemeDecorator } from '@/shared/decorators/ThemeDecorator';
 import { StoreDecorator } from '@/shared/decorators/StoreDecorator';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-import { AVATAR_URL } from '@/shared/Avatar/lib/constants';
+import { AVATAR_URL } from '@/shared/ui/Avatar/lib/constants';
 import { Theme } from '@/shared/constants/theme';
 
 const meta = {
