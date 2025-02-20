@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { EditableProfileCard } from './EditableProfileCard';
 import { componentRender } from '@/shared/lib/tests/componentRender';
 import { Profile } from '../../model/types/profile';
@@ -45,9 +45,11 @@ describe('EditableProfileCard', () => {
 
   test('switch readonly mode', async () => {
     await userEvent.click(screen.getByTestId('EditableProfileCard.EditButton'));
-    expect(
-      screen.getByTestId('EditableProfileCard.CancelButton')
-    ).toBeInTheDocument();
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('EditableProfileCard.CancelButton')
+      ).toBeInTheDocument();
+    });
   });
 
   test('reset the values', async () => {
@@ -59,13 +61,17 @@ describe('EditableProfileCard', () => {
     await userEvent.type(screen.getByTestId('ProfileCard.Firstname'), 'value1');
     await userEvent.type(screen.getByTestId('ProfileCard.Lastname'), 'value2');
 
-    expect(screen.getByTestId('ProfileCard.Firstname')).toHaveValue('value1');
+    await waitFor(() => {
+      expect(screen.getByTestId('ProfileCard.Firstname')).toHaveValue('value1');
+    });
 
     await userEvent.click(
       screen.getByTestId('EditableProfileCard.CancelButton')
     );
 
-    expect(screen.getByTestId('ProfileCard.Firstname')).toHaveValue('Михаил');
+    await waitFor(() => {
+      expect(screen.getByTestId('ProfileCard.Firstname')).toHaveValue('Михаил');
+    });
   });
 
   test('show validate error', async () => {
@@ -75,9 +81,11 @@ describe('EditableProfileCard', () => {
 
     await userEvent.click(screen.getByTestId('EditableProfileCard.SaveButton'));
 
-    expect(
-      screen.getByTestId('EditableProfileCard.Error.Paragraph')
-    ).toBeInTheDocument();
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('EditableProfileCard.Error.Paragraph')
+      ).toBeInTheDocument();
+    });
   });
 
   test('there are no errors, a PUT request has been sent', async () => {
@@ -87,6 +95,8 @@ describe('EditableProfileCard', () => {
     await userEvent.type(screen.getByTestId('ProfileCard.Firstname'), 'user');
     await userEvent.click(screen.getByTestId('EditableProfileCard.SaveButton'));
 
-    expect(mockReq).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(mockReq).toHaveBeenCalled();
+    });
   });
 });

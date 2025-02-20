@@ -15,7 +15,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
-import { TestProps } from '@/shared/types/test';
+import { TestProps } from '@/shared/types/testing';
 
 interface PageProps extends TestProps {
   children: ReactNode;
