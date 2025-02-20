@@ -36,6 +36,7 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
         className={classNames(cls.articlesPage, {}, [className])}
         onScrollEnd={loadNextPart}
         isSaveScrollPosition
+        data-testid="article-page"
       >
         <ArticlesPageFilters />
         <ArticleInfinityList />

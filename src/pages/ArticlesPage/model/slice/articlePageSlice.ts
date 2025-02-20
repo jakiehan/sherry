@@ -8,7 +8,7 @@ import { Article, ArticleSortField, View } from '@/entities/Article';
 import { ArticlePageSchema } from '../types/articlePageSchema';
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { VIEW_LOCALE_STORAGE_KEY } from '@/shared/constants/localstorage';
-import { SortOrder } from '@/shared/types';
+import { SortOrder } from '@/shared/types/sort';
 import { ArticleType } from '@/entities/Article';
 
 const initialView: View =

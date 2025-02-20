@@ -50,6 +50,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
       <Page
         className={classNames('', {}, [className])}
         isSaveScrollPosition
+        data-testid="article-details-page"
       >
         <Button
           onClick={handleClickBackToList}

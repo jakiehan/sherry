@@ -3,7 +3,7 @@ import cls from './Avatar.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppImage } from '../../AppImage';
 import FallbackAvatar from '@/shared/assets/icons/avatar.svg';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { Skeleton } from '../../Skeleton';
 
 interface AvatarProps {
   src?: string;

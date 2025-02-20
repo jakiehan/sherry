@@ -15,8 +15,9 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { TestProps } from '@/shared/types/test';
 
-interface PageProps {
+interface PageProps extends TestProps {
   children: ReactNode;
   onScrollEnd?: () => void;
   className?: string;
@@ -28,6 +29,7 @@ export const Page: FC<PageProps> = ({
   children,
   onScrollEnd,
   isSaveScrollPosition = false,
+  'data-testid': dataTestId,
 }) => {
   const wrapperRef = useRef(null) as MutableRefObject<HTMLElement | null>;
   const triggerRef = useRef(null) as MutableRefObject<HTMLDivElement | null>;
@@ -67,6 +69,7 @@ export const Page: FC<PageProps> = ({
       ref={wrapperRef}
       className={classNames(cls.page, {}, [className])}
       onScroll={handleScroll}
+      data-testid={dataTestId ?? 'page'}
     >
       {children}
       {onScrollEnd && (
