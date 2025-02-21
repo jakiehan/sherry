@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import { App } from '@/app/App';
@@ -7,14 +7,7 @@ import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
 import '@/app/styles/index.scss';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 
-const container = document.getElementById('root');
-
-if (!container) {
-  throw new Error('Container is missing');
-}
-
-const root = createRoot(container);
-root.render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <StoreProvider>
     <BrowserRouter>
       <ErrorBoundary>
@@ -25,4 +18,3 @@ root.render(
     </BrowserRouter>
   </StoreProvider>
 );
-export { Theme } from '@/shared/constants/theme';

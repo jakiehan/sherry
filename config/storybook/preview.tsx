@@ -1,9 +1,11 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
-import '@/app/styles/index.scss';
-import { ThemeDecorator } from '@/shared/decorators/ThemeDecorator';
-import { RouterDecorator } from '@/shared/decorators/RouterDecorator';
-import { SuspenseDecorator } from '@/shared/decorators/SuspenseDecorator';
-import { Theme } from '../../src';
+
+import '../../src/app/styles/index.scss';
+import { ThemeDecorator } from '../../src/shared/decorators/ThemeDecorator';
+import { RouterDecorator } from '../../src/shared/decorators/RouterDecorator';
+import { SuspenseDecorator } from '../../src/shared/decorators/SuspenseDecorator';
+import { Theme } from '../../src/shared/constants/theme';
 
 const preview: Preview = {
   parameters: {
