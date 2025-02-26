@@ -53,15 +53,24 @@ const AddCommentForm = memo(
         reducers={reducers}
         removeAfterUnmount
       >
-        <div className={classNames(cls.addCommentForm, {}, [className])}>
+        <div
+          className={classNames(cls.addCommentForm, {}, [className])}
+          data-testid="addCommentForm"
+        >
           <Input
             value={text}
             onChange={handleChangeCommentText}
             label={`${t('Введите текст комментария')}:`}
             variant="outlined"
             className={cls.input}
+            data-testid="addCommentForm.Input"
           />
-          <Button onClick={submitForm}>{t('Отправить')}</Button>
+          <Button
+            onClick={submitForm}
+            data-testid="addCommentForm.Button"
+          >
+            {t('Отправить')}
+          </Button>
         </div>
       </DynamicModuleLoader>
     );

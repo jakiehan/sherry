@@ -115,7 +115,10 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
     );
   } else {
     content = (
-      <div className={cls.contentWrapper}>
+      <div
+        className={cls.contentWrapper}
+        data-testid="articleDetails"
+      >
         <Avatar
           src={article?.img}
           size={200}

@@ -38,8 +38,15 @@ export const CommentCard = memo(
       );
     }
 
+    if (!comment) {
+      return null;
+    }
+
     return (
-      <div className={classNames(cls.commentCard, {}, [className])}>
+      <div
+        className={classNames(cls.commentCard, {}, [className])}
+        data-testid="commentCard"
+      >
         <AppLink
           to={getRouteProfile(comment.user.id)}
           className={cls.header}

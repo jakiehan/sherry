@@ -71,12 +71,16 @@ export const RatingCard = memo(
           labelWidth={120}
           value={feedback}
           onChange={setFeedback}
+          data-testid="ratingCard.Input"
         />
       </>
     );
 
     return (
-      <Card className={className}>
+      <Card
+        className={className}
+        data-testid="ratingCard"
+      >
         <VStack
           gap="24"
           align="center"
@@ -104,10 +108,16 @@ export const RatingCard = memo(
                 <Button
                   onClick={handleClickCancel}
                   variant="outlineRed"
+                  data-testid="ratingCard.Close"
                 >
                   {t('Закрыть')}
                 </Button>
-                <Button onClick={handleClickSend}>{t('Отправить')}</Button>
+                <Button
+                  onClick={handleClickSend}
+                  data-testid="ratingCard.Send"
+                >
+                  {t('Отправить')}
+                </Button>
               </HStack>
             </VStack>
           </Modal>

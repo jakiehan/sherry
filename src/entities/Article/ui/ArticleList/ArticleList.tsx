@@ -54,6 +54,7 @@ export const ArticleList = memo(
       return (
         <div
           className={classNames(cls.articleList, {}, [className, cls[view]])}
+          data-testid="articleList"
         >
           <Text
             size="sizeL"
@@ -64,7 +65,10 @@ export const ArticleList = memo(
     }
 
     return (
-      <div className={classNames(cls.articleList, {}, [className, cls[view]])}>
+      <div
+        className={classNames(cls.articleList, {}, [className, cls[view]])}
+        data-testid="articleList"
+      >
         {articles.length !== 0 &&
           articles.map((article) => renderArticle(article, view, target))}
         {isLoading && renderSkeleton(view)}

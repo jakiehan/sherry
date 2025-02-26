@@ -20,7 +20,10 @@ export const ArticleRecommendationsList = memo(
       useGetArticleRecommendationsQuery(LIMIT);
 
     return (
-      <div className={classNames('', {}, [className])}>
+      <div
+        className={classNames('', {}, [className])}
+        data-testid="articleRecommendationsList"
+      >
         <Text
           className={cls.title}
           title={t('Рекомендуем')}

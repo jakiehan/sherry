@@ -1324,6 +1324,17 @@
       "city": "Ulyanovsk",
       "username": "nailya",
       "avatar": "https://images.unsplash.com/photo-1652726338770-9f77609f2562?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 4,
+      "first": "test",
+      "lastname": "user",
+      "age": 99,
+      "currency": "EUR",
+      "country": "Russia",
+      "city": "Ulyanovsk",
+      "username": "testuser",
+      "avatar": "https://images.unsplash.com/photo-1652726692250-45965ba38a70?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ]
 }
