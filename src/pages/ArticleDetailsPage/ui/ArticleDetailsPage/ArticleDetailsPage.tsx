@@ -17,6 +17,8 @@ import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsLis
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
 import { getRouteArticles } from '@/app/providers/Router/constants/router';
+import { Card } from '@/shared/ui/Card';
+import { useToggleFeatures } from '@/shared/lib/hooks/useToggleFeatures/useToggleFeatures';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -33,6 +35,12 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
   const navigate = useNavigate();
 
   const errorArticle = useSelector(getArticleDetailsError);
+
+  const articleRatingCard = useToggleFeatures({
+    name: 'isArticleRatingEnabled',
+    on: () => <ArticleRating articleId={id!} />,
+    off: () => <Card>{t('Оценка статей скоро появится')}</Card>,
+  });
 
   const handleClickBackToList = useCallback(() => {
     navigate(getRouteArticles());
@@ -59,7 +67,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
           {t('Назад к списку')}
         </Button>
         <ArticleDetails id={id} />
-        <ArticleRating articleId={id!} />
+        {articleRatingCard}
         <ArticleRecommendationsList />
         {!errorArticle && <ArticleDetailsComments id={id} />}
       </Page>

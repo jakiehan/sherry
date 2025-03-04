@@ -38,9 +38,9 @@ export const NavBar = memo(({ className }: NavBarProps) => {
         className={cls.title}
       />
       {authData && (
-        <HStack gap="32">
+        <HStack gap="24">
           <NotificationsButton />
-          <AvatarDropdown />
+          <AvatarDropdown className={cls.avatar} />
         </HStack>
       )}
       {!authData && (

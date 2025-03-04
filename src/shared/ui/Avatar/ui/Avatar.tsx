@@ -36,6 +36,7 @@ export const Avatar: FC<AvatarProps> = ({
         <Skeleton
           width={size}
           height={size}
+          borderRadius="50%"
         />
       }
       errorFallback={

@@ -11,10 +11,7 @@ export const userSlice = createSlice({
   reducers: {
     setAuthData: (state, action: PayloadAction<User>) => {
       state.autData = action.payload;
-    },
-    initAuthData: (state, action: PayloadAction<User>) => {
-      state.autData = action.payload;
-      state._inited = true;
+      //setFeatureFlags(action.payload?.features);
     },
     logout: (state) => {
       state.autData = undefined;

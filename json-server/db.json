@@ -1218,7 +1218,14 @@
       "roles": [
         "ADMIN"
       ],
-      "avatar": "https://images.unsplash.com/photo-1649000313856-7360316a546c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "avatar": "https://images.unsplash.com/photo-1649000313856-7360316a546c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isCounterEnabled": false
+      },
+      "jsonSettings": {
+        "theme": "appDarkTheme"
+      }
     },
     {
       "id": "2",
@@ -1227,7 +1234,14 @@
       "roles": [
         "MANAGER"
       ],
-      "avatar": "https://images.unsplash.com/photo-1652726692250-45965ba38a70?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "avatar": "https://images.unsplash.com/photo-1652726692250-45965ba38a70?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "features": {
+        "isArticleRatingEnabled": false,
+        "isCounterEnabled": true
+      },
+      "jsonSettings": {
+        "theme": "appOrangeTheme"
+      }
     },
     {
       "id": "3",
@@ -1235,7 +1249,15 @@
       "password": "123",
       "roles": [
         "USER"
-      ]
+      ],
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_NoDT3xgFg1tPCcjyNdHHrbcFp3MVFl_78A&s",
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isCounterEnabled": true
+      },
+      "jsonSettings": {
+        "theme": "appDarkTheme"
+      }
     },
     {
       "id": "4",
@@ -1244,7 +1266,14 @@
       "roles": [
         "USER"
       ],
-      "avatar": "https://images.unsplash.com/photo-1652726692250-45965ba38a70?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "avatar": "https://images.unsplash.com/photo-1652726692250-45965ba38a70?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isCounterEnabled": true
+      },
+      "jsonSettings": {
+        "theme": "appDarkTheme"
+      }
     }
   ],
   "article-ratings": [
@@ -1296,7 +1325,7 @@
       "id": 1,
       "first": "Михаил",
       "lastname": "Олейник",
-      "age": 30,
+      "age": 31,
       "currency": "RUB",
       "country": "Russia",
       "city": "Ulyanovsk",
@@ -1318,12 +1347,12 @@
       "id": 3,
       "first": "Наиля",
       "lastname": "Олейник",
-      "age": 27,
+      "age": 28,
       "currency": "EUR",
       "country": "Russia",
       "city": "Ulyanovsk",
       "username": "nailya",
-      "avatar": "https://images.unsplash.com/photo-1652726338770-9f77609f2562?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_NoDT3xgFg1tPCcjyNdHHrbcFp3MVFl_78A&s"
     },
     {
       "id": 4,

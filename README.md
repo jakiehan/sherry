@@ -135,3 +135,22 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 [DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx)
 
 ----
+
+### Работа с feature-flags
+
+Разрешено использование feature flags только с помощью хука useToggleFeatures
+
+в него передается объект с опциями
+
+{  
+name: название фича-флага,  
+on: функция которая отработает после включения фичи,  
+off: функция которая отработает после выключения фичи  
+}
+
+Для автоматического удаления фичи использовать скрипт removeFeature.ts,
+который принимает 2 аргумента
+1. Название удаляемого фича-флага
+2. Состояние (on\off)
+
+----

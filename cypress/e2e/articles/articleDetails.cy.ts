@@ -13,29 +13,40 @@ describe('Тестирование детальной страницы стат�
     cy.removeArticle(articleId);
   });
 
-  it('Загрузилась страница со статьей', () => {
-    cy.getByTestId('articleDetails').should('exist');
+  // Ниже проверяется загрузка данных о статье, поэтому работа на реальном API
+  describe('Тестирование на реальном API', () => {
+    it('Загрузилась страница со статьей', () => {
+      cy.getByTestId('articleDetails').should('exist');
+    });
+
+    it('Отправляем комментарий', () => {
+      const comment = 'Тестовый комментарий';
+
+      cy.getByTestId('articleDetails');
+      cy.getByTestId('addCommentForm').scrollIntoView();
+      cy.addComment(comment);
+      cy.getByTestId('commentCard').should('have.length', 1);
+    });
   });
 
-  it('загрузился список рекомендаций', () => {
-    cy.getByTestId('articleRecommendationsList').should('exist');
-  });
+  // Фикстуры нужны, ждя того чтобы не гонять реальные запросы на бэк
+  // В ниже идущих тестах проверяется загрузка рекомендаций и оценка
+  // И для этого будет достаточно фикструр (стабов)
+  describe('Тестирование на фикстурах', () => {
+    beforeEach(() => {
+      cy.intercept('GET', '**/articles/*', { fixture: 'articleDetails.json' });
+    });
 
-  it('Отправляем комментарий', () => {
-    const comment = 'Тестовый комментарий';
+    it('загрузился список рекомендаций', () => {
+      cy.getByTestId('articleRecommendationsList').should('exist');
+    });
 
-    cy.getByTestId('articleDetails');
-    cy.getByTestId('addCommentForm').scrollIntoView();
-    cy.addComment(comment);
-    cy.getByTestId('commentCard').should('have.length', 1);
-  });
-
-  it('Ставим оценку', () => {
-    const rate = 3;
-
-    cy.getByTestId('articleDetails');
-    cy.getByTestId('ratingCard').scrollIntoView();
-    cy.setRate(rate, 'feedback');
-    cy.get('[data-selected=true]').should('have.length', rate);
+    it('Ставим оценку', () => {
+      const rate = 3;
+      cy.getByTestId('articleDetails');
+      cy.getByTestId('ratingCard').scrollIntoView();
+      cy.setRate(rate, 'feedback');
+      cy.get('[data-selected=true]').should('have.length', rate);
+    });
   });
 });
