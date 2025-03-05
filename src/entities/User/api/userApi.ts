@@ -9,6 +9,8 @@ interface SetJsonSettingsRequest {
 
 const userApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
+    // jsonSettings нужны например для хранения темы пользователя(чтобы в любом браузере была одна)
+    // какие то флаги - первое посещение сайта, просмотр определенного блока и т.д.
     setJsonSettings: build.mutation<User, SetJsonSettingsRequest>({
       query: ({ jsonSettings, userId }) => ({
         url: `/users/${userId}`,
