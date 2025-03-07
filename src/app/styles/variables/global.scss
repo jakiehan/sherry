@@ -13,6 +13,7 @@
   // size components
   --navbar-height: 50px;
   --sidebar-width: 300px;
+  --sidebar-width-redesigned: 250px;
   --sidebar-width-collapsed: 80px;
   --label-min-width: 135px;
 
@@ -23,4 +24,11 @@
   --overlay-color: rgb(0 0 0 / 70%);
   --error-light-color: #ce1111;
   --error-dark-color: #900707;
+
+  // redesigned
+  --font-family-text-redesigned: "Nunito Sans", sans-serif;
+  --font-family-header-redesigned: "Roboto", sans-serif;
+  --font-m-redesigned: var(--font-size-m) / var(--font-line-m) var(--font-family-text-redesigned);
+  --font-l-redesigned: var(--font-size-l) / var(--font-line-l) var(--font-family-header-redesigned);
+  --font-xl-redesigned: var(--font-size-xl) / var(--font-line-xl) var(--font-family-header-redesigned);
 }

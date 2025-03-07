@@ -7,6 +7,8 @@ import { useGetUserDataByIdQuery, userActions } from '@/entities/User';
 import { USER_LOCALE_STORAGE_KEY } from '@/shared/constants/localstorage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 const userId = localStorage.getItem(USER_LOCALE_STORAGE_KEY);
 
@@ -30,14 +32,31 @@ export const App: FC = () => {
   }
 
   return (
-    <div className={classNames('app', {}, [])}>
-      <Suspense fallback="">
-        <NavBar />
-        <main className="contentPage">
-          <SideBar />
-          <AppRouter />
-        </main>
-      </Suspense>
-    </div>
+    <ToggleFeatures
+      name="isAppRedesigned"
+      off={
+        <div className={classNames('app', {}, [])}>
+          <Suspense fallback="">
+            <NavBar />
+            <main className="contentPage">
+              <SideBar />
+              <AppRouter />
+            </main>
+          </Suspense>
+        </div>
+      }
+      on={
+        <div className={classNames('appRedesigned', {}, [])}>
+          <Suspense fallback="">
+            <MainLayout
+              header={<NavBar />}
+              content={<AppRouter />}
+              sidebar={<SideBar />}
+              toolbar={<div>1</div>}
+            />
+          </Suspense>
+        </div>
+      }
+    />
   );
 };

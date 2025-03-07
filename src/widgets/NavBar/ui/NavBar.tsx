@@ -10,6 +10,7 @@ import { Text } from '@/shared/ui/Text';
 import { HStack } from '@/shared/ui/Flex';
 import { NotificationsButton } from '@/features/NotificationsButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
 
 interface NavBarProps {
   className?: string;
@@ -30,32 +31,59 @@ export const NavBar = memo(({ className }: NavBarProps) => {
   }, []);
 
   return (
-    <header className={classNames(cls.navBar, {}, [className])}>
-      <Text
-        title="Sherry App"
-        tagTitle="h1"
-        size="sizeL"
-        className={cls.title}
-      />
-      {authData && (
-        <HStack gap="24">
-          <NotificationsButton />
-          <AvatarDropdown className={cls.avatar} />
-        </HStack>
-      )}
-      {!authData && (
-        <Button
-          onClick={handleShowModal}
-          variant="clear"
-        >
-          {t('Войти')}
-        </Button>
-      )}
-      <LoginModal
-        isOpen={isOpenAuthModal}
-        onClose={handleCloseModal}
-      />
-    </header>
+    <ToggleFeatures
+      name="isAppRedesigned"
+      on={
+        <div className={classNames(cls.navBarRedesigned, {}, [className])}>
+          {authData && (
+            <HStack gap="24">
+              <NotificationsButton />
+              <AvatarDropdown className={cls.avatar} />
+            </HStack>
+          )}
+          {!authData && (
+            <Button
+              onClick={handleShowModal}
+              variant="clear"
+            >
+              {t('Войти')}
+            </Button>
+          )}
+          <LoginModal
+            isOpen={isOpenAuthModal}
+            onClose={handleCloseModal}
+          />
+        </div>
+      }
+      off={
+        <header className={classNames(cls.navBar, {}, [className])}>
+          <Text
+            title="Sherry App"
+            tagTitle="h1"
+            size="sizeL"
+            className={cls.title}
+          />
+          {authData && (
+            <HStack gap="24">
+              <NotificationsButton />
+              <AvatarDropdown className={cls.avatar} />
+            </HStack>
+          )}
+          {!authData && (
+            <Button
+              onClick={handleShowModal}
+              variant="clear"
+            >
+              {t('Войти')}
+            </Button>
+          )}
+          <LoginModal
+            isOpen={isOpenAuthModal}
+            onClose={handleCloseModal}
+          />
+        </header>
+      }
+    />
   );
 });
 

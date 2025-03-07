@@ -11,6 +11,13 @@
   font-size: var(--font-m);
 }
 
+.appRedesigned {
+  min-height: 100vh;
+  background: var(--bg-redesigned);
+  color: var(--text-redesigned);
+  font: var(--font-m-redesigned);
+}
+
 .contentPage {
   display: flex;
 }

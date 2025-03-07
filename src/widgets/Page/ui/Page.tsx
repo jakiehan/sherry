@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestProps } from '@/shared/types/testing';
+import { useToggleFeatures } from '@/shared/lib/hooks/useToggleFeatures/useToggleFeatures';
 
 interface PageProps extends TestProps {
   children: ReactNode;
@@ -47,6 +48,12 @@ export const Page: FC<PageProps> = ({
     wrapperRef,
   });
 
+  const pageFeatureClass = useToggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => cls.pageRedesigned,
+    off: () => cls.page,
+  });
+
   useLayoutEffect(() => {
     if (isSaveScrollPosition && wrapperRef.current) {
       wrapperRef.current.scrollTop = scrollPosition;
@@ -67,7 +74,7 @@ export const Page: FC<PageProps> = ({
   return (
     <section
       ref={wrapperRef}
-      className={classNames(cls.page, {}, [className])}
+      className={classNames(pageFeatureClass, {}, [className])}
       onScroll={handleScroll}
       data-testid={dataTestId ?? 'page'}
     >

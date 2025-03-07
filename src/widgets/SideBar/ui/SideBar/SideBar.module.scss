@@ -38,3 +38,14 @@
     align-items: center;
   }
 }
+
+.sideBarRedesigned {
+  width: var(--sidebar-width-redesigned);
+  height: 100%;
+  border-radius: 24px;
+  background-color: var(--light-bg-redesigned);
+}
+
+.appLogo {
+  padding-top: 24px;
+}
