@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 import { ArticleRatingProps } from './ArticleRating';
 
 // Лэзи компонент(code-splitting) разделение билда, на чанки(загружаем только те компоненты на которые перешли)

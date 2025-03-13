@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-import { AVATAR_URL } from '@/shared/ui/Avatar/lib/constants';
+import { AVATAR_URL } from '@/shared/ui/deprecated/Avatar/lib/constants';
 
 const meta = {
   title: 'entities/ProfileCard',

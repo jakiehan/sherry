@@ -1,8 +1,8 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Dropdown } from '@/shared/ui/Popups';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import {
   getUserAuthData,
   isAdminRole,
@@ -16,6 +16,9 @@ import {
   getRouteAdmin,
   getRouteProfile,
 } from '@/app/providers/Router/constants/router';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { Dropdown } from '@/shared/ui/redesigned/Popups';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
 
 interface AvatarDropdownProps {
   className?: string;
@@ -60,15 +63,32 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
   ];
 
   return (
-    <Dropdown
-      className={classNames('', {}, [className])}
-      trigger={
-        <Avatar
-          src={authData?.avatar}
-          size={35}
+    <ToggleFeatures
+      name="isAppRedesigned"
+      on={
+        <Dropdown
+          className={classNames('', {}, [className])}
+          trigger={
+            <Avatar
+              src={authData?.avatar}
+              size={35}
+            />
+          }
+          options={options}
         />
       }
-      options={options}
+      off={
+        <DropdownDeprecated
+          className={classNames('', {}, [className])}
+          trigger={
+            <AvatarDeprecated
+              src={authData?.avatar}
+              size={35}
+            />
+          }
+          options={options}
+        />
+      }
     />
   );
 });

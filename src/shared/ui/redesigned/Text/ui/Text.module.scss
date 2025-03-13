@@ -1,0 +1,61 @@
+.title {
+  color: var(--text-redesigned);
+  font: var(--font-l-redesigned);
+}
+
+.text {
+  color: var(--text-redesigned);
+  font: var(--font-m-redesigned);
+}
+
+.error {
+  .title {
+    color: var(--cancel-redesigned);
+  }
+
+  .text {
+    color: var(--cancel-redesigned);
+  }
+}
+
+.accent {
+  .title {
+    color: var(--accent-redesigned);
+  }
+
+  .text {
+    color: var(--accent-redesigned);
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.sizeM {
+  .title {
+    font: var(--font-l-redesigned);
+  }
+
+  .text {
+    font: var(--font-m-redesigned);
+  }
+}
+
+.sizeL {
+  .title {
+    font: var(--font-xl-redesigned);
+  }
+
+  .text {
+    font: var(--font-l-redesigned);
+  }
+}

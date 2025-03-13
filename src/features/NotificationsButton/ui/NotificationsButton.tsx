@@ -1,11 +1,15 @@
 import { memo, useCallback, useState } from 'react';
 import cls from './NotificationsButton.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import NotificationsIcon from '@/shared/assets/icons/notifications.svg';
+import NotificationsIconDeprecated from '@/shared/assets/icons/notifications.svg';
+import NotificationsIcon from '@/shared/assets/icons/notifications-v2.svg';
 import { NotificationsList } from '@/entities/Notifications';
-import { Popover } from '@/shared/ui/Popups';
+import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popups';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
-import { Drawer } from '@/shared/ui/Drawer';
+import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Popover } from '@/shared/ui/redesigned/Popups';
 
 interface NotificationsButtonProps {
   className?: string;
@@ -20,9 +24,21 @@ export const NotificationsButton = memo(
     }, [isOpen]);
 
     const trigger = (
-      <NotificationsIcon
-        className={cls.icon}
-        onClick={toggleDrawer}
+      <ToggleFeatures
+        name="isAppRedesigned"
+        on={
+          <Icon
+            Svg={NotificationsIcon}
+            onClick={toggleDrawer}
+            clickable
+          />
+        }
+        off={
+          <NotificationsIconDeprecated
+            className={cls.icon}
+            onClick={toggleDrawer}
+          />
+        }
       />
     );
     const isMobile = useDevice();
@@ -30,12 +46,25 @@ export const NotificationsButton = memo(
     return (
       <>
         {!isMobile && (
-          <Popover
-            className={classNames('', {}, [className])}
-            trigger={trigger}
-          >
-            <NotificationsList className={cls.notifications} />
-          </Popover>
+          <ToggleFeatures
+            name="isAppRedesigned"
+            on={
+              <Popover
+                className={classNames('', {}, [className])}
+                trigger={trigger}
+              >
+                <NotificationsList className={cls.notifications} />
+              </Popover>
+            }
+            off={
+              <PopoverDeprecated
+                className={classNames('', {}, [className])}
+                trigger={trigger}
+              >
+                <NotificationsList className={cls.notifications} />
+              </PopoverDeprecated>
+            }
+          />
         )}
         {isMobile && (
           <>

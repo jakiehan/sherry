@@ -83,7 +83,7 @@ const replaceToggleFunction = (node: Node) => {
 
 const getAttributeNodeByName = (
   jsxAttributes: JsxAttribute[],
-  name: string,
+  name: string
 ) => {
   return jsxAttributes.find((node) => node.getName() === name);
 };
@@ -130,14 +130,14 @@ const replaceComponent = (node: Node) => {
 files.forEach((file) => {
   file.forEachDescendant((node: Node) => {
     if (node.isKind(SyntaxKind.CallExpression) && isToggleFunctions(node)) {
-      replaceToggleFunction(node);
+      return replaceToggleFunction(node);
     }
 
     if (
       node.isKind(SyntaxKind.JsxSelfClosingElement) &&
       isToggleComponent(node)
     ) {
-      replaceComponent(node);
+      return replaceComponent(node);
     }
   });
 });

@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { View } from '@/entities/Article';
 import PlaceIcon from '@/shared/assets/icons/place.svg';
 import ListIcon from '@/shared/assets/icons/list.svg';
-import { Button } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui/deprecated/Button';
 
 interface ArticleViewSwitcherProps {
   className?: string;

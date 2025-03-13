@@ -1,0 +1,40 @@
+.options {
+  position: absolute;
+  z-index: 10000;
+  min-width: 100%;
+  border-radius: 16px;
+  background-color: var(--dark-bg-redesigned);
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%);
+
+  &.top {
+    bottom: 100%;
+  }
+}
+
+.selectedOption {
+  background-color: var(--light-bg-redesigned);
+}
+
+.disabled {
+  cursor: initial;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.icon {
+  fill: var(--dark-bg-redesigned);
+  vertical-align: center;
+}
+
+.open {
+  margin-bottom: 2px;
+  transform: rotate(180deg);
+}
+
+.wrapper {
+  display: flex;
+}
+
+.btn {
+  padding: 1px 10px;
+}

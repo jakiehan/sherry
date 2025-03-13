@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { SelectOptions } from '@/shared/ui/Select';
+import { SelectOptions } from '@/shared/ui/deprecated/Select';
 import { Currency } from '../../model/types/currency';
-import { ListBox } from '@/shared/ui/Popups';
+import { ListBox } from '@/shared/ui/deprecated/Popups';
 import cls from './CurrencySelect.module.scss';
 
 interface CurrencySelectProps {

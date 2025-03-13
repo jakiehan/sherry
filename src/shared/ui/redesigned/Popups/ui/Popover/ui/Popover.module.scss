@@ -1,0 +1,14 @@
+.panel {
+  position: absolute;
+  z-index: 10000;
+  padding: 10px;
+  border: 1px solid var(--accent-redesigned);
+  border-radius: 16px;
+  background-color: var(--dark-bg-redesigned);
+  outline: none;
+
+  &.bottomLeft {
+    top: 100%;
+    right: 0;
+  }
+}
