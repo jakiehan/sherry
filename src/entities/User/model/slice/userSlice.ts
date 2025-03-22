@@ -13,6 +13,7 @@ export const userSlice = createSlice({
     setAuthData: (state, action: PayloadAction<User>) => {
       state.autData = action.payload;
       setFeatureFlags(action.payload?.features);
+      state._inited = true;
     },
     logout: (state) => {
       state.autData = undefined;

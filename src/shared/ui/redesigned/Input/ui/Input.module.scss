@@ -1,0 +1,64 @@
+.inputWrapper {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 32px;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid var(--icon-redesigned);
+  border-radius: 48px;
+}
+
+.focused {
+  border-color: var(--accent-redesigned);
+
+  .addonLeft svg,
+  .addonRight svg {
+    color: var(--accent-redesigned);
+  }
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  color: var(--text-redesigned);
+  outline: none;
+
+  &:read-only {
+    opacity: 0.6;
+  }
+
+  &::placeholder {
+    color: var(--hint-redesigned);
+  }
+
+  /* Обход слета стилей при автозаполнении */
+  &:-webkit-autofill {
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 50px var(--bg-redesigned);
+    -webkit-text-fill-color: var(--text-redesigned);
+  }
+}
+
+.addonLeft,
+.addonRight {
+  display: flex;
+}
+
+.addonLeftPadding {
+  padding-left: 0;
+}
+
+.addonRightPadding {
+  padding-right: 0;
+}
+
+.addonRight {
+  padding-right: 8px;
+}
+
+.addonLeft {
+  padding-left: 8px;
+}

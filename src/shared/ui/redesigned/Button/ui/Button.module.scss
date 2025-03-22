@@ -21,6 +21,12 @@
   background-color: transparent;
 }
 
+.filled {
+  padding: 8px 16px;
+  border-radius: 24px;
+  background: var(--light-bg-redesigned);
+}
+
 .square {
   padding: 0;
 }

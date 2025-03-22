@@ -5,6 +5,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Select, SelectOptions } from '@/shared/ui/deprecated/Select';
 import { ArticleSortField } from '../../../entities/Article/model/types/article';
 import { SortOrder } from '@/shared/types/sort';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface ArticleSortSelectorProps {
   sort: ArticleSortField;
@@ -57,20 +60,44 @@ export const ArticleSortSelector = memo(
     );
 
     return (
-      <div className={classNames(cls.articleSortSelector, {}, [className])}>
-        <Select
-          value={sort}
-          options={sortFieldOptions}
-          label={t('Сортировать по')}
-          onChange={onChangeSort}
-        />
-        <Select
-          value={order}
-          options={orderOptions}
-          label={t('по')}
-          onChange={onChangeOrder}
-        />
-      </div>
+      <ToggleFeatures
+        name="isAppRedesigned"
+        on={
+          <div
+            className={classNames(cls.articleSortSelectorRedesigned, {}, [
+              className,
+            ])}
+          >
+            <Text text={`${t('Сортировать по')}:`} />
+            <ListBox
+              value={sort}
+              options={sortFieldOptions}
+              onChange={onChangeSort}
+            />
+            <ListBox
+              value={order}
+              options={orderOptions}
+              onChange={onChangeOrder}
+            />
+          </div>
+        }
+        off={
+          <div className={classNames(cls.articleSortSelector, {}, [className])}>
+            <Select
+              value={sort}
+              options={sortFieldOptions}
+              label={t('Сортировать по')}
+              onChange={onChangeSort}
+            />
+            <Select
+              value={order}
+              options={orderOptions}
+              label={t('по')}
+              onChange={onChangeOrder}
+            />
+          </div>
+        }
+      />
     );
   }
 );

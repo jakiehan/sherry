@@ -4,6 +4,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useSelector } from 'react-redux';
 import { getArticles } from '../../model/slice/articlePageSlice';
 import {
+  getArticlesInited,
   getArticlesIsLoading,
   getArticlesViews,
 } from '../../model/selectors/articlesList';
@@ -23,6 +24,7 @@ export const ArticleInfinityList = memo(
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesIsLoading);
     const view = useSelector(getArticlesViews);
+    const isInited = useSelector(getArticlesInited);
 
     useInitialEffect(() => {
       dispatch(initArticlesPage(searchParams));
@@ -33,6 +35,7 @@ export const ArticleInfinityList = memo(
         view={view}
         isLoading={isLoading}
         articles={articles}
+        inited={isInited}
       />
     );
   }

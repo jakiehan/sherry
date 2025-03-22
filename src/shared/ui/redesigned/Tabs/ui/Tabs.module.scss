@@ -1,0 +1,18 @@
+.tabs {
+  display: flex;
+  gap: 8px;
+  list-style-type: none;
+}
+
+.tab {
+  padding: 8px 16px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.column {
+  flex-direction: column;
+}

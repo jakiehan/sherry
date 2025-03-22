@@ -1,11 +1,19 @@
-.icon {
-  width: 24px;
-  height: 24px;
-  fill: var(--secondary-color);
+.articleViewSwitcher {
+  .icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--secondary-color);
+  }
+
+  .selected {
+    .icon {
+      fill: var(--primary-color);
+    }
+  }
 }
 
-.selected {
-  .icon {
-    fill: var(--primary-color);
+.articleViewSwitcherRedesigned {
+  .notSelected {
+    color: var(--light-bg-redesigned);
   }
 }

@@ -3,7 +3,7 @@ import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end';
+export type FlexAlign = 'start' | 'center' | 'end' | 'baseline';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = '4' | '8' | '16' | '24' | '32';
 
@@ -18,6 +18,7 @@ const alignClasses: Record<FlexAlign, string> = {
   start: cls.alignStart,
   center: cls.alignCenter,
   end: cls.alignEnd,
+  baseline: cls.baseline,
 };
 
 const directionClasses: Record<FlexDirection, string> = {
@@ -47,7 +48,8 @@ export interface FlexProps extends DivProps {
   gap?: FlexGap;
   max?: boolean;
 }
-
+// Где-то вместо использования VStack или HStack лучше использовать просто добавление класса
+// (либо задать класс в глобальных настройках css либо написать функции хелперы, которые будут возвращать необходимые свойства)
 export const Flex = (props: FlexProps) => {
   const {
     className,

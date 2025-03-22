@@ -14,6 +14,7 @@ interface ArticleListProps {
   view?: View;
   className?: string;
   target?: HTMLAttributeAnchorTarget;
+  inited?: boolean;
 }
 
 const renderArticle = (
@@ -47,10 +48,11 @@ export const ArticleList = memo(
     view = 'place',
     isLoading,
     target,
+    inited,
   }: ArticleListProps) => {
     const { t } = useTranslation();
 
-    if (articles.length === 0 && !isLoading) {
+    if (articles.length === 0 && !isLoading && inited) {
       return (
         <div
           className={classNames(cls.articleList, {}, [className, cls[view]])}
@@ -71,7 +73,7 @@ export const ArticleList = memo(
       >
         {articles.length !== 0 &&
           articles.map((article) => renderArticle(article, view, target))}
-        {isLoading && renderSkeleton(view)}
+        {(isLoading || !inited) && renderSkeleton(view)}
       </div>
     );
   }

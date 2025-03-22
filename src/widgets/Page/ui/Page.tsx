@@ -32,8 +32,8 @@ export const Page: FC<PageProps> = ({
   isSaveScrollPosition = false,
   'data-testid': dataTestId,
 }) => {
-  const wrapperRef = useRef(null) as MutableRefObject<HTMLElement | null>;
-  const triggerRef = useRef(null) as MutableRefObject<HTMLDivElement | null>;
+  const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
+  const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
@@ -42,10 +42,16 @@ export const Page: FC<PageProps> = ({
     getScrollByPath(state, pathname)
   );
 
+  const wrapper = useToggleFeatures({
+    name: 'isAppRedesigned',
+    on: () => undefined,
+    off: () => wrapperRef,
+  });
+
   useInfinityScroll({
     callback: onScrollEnd,
     triggerRef,
-    wrapperRef,
+    wrapperRef: wrapper,
   });
 
   const pageFeatureClass = useToggleFeatures({
@@ -55,7 +61,7 @@ export const Page: FC<PageProps> = ({
   });
 
   useLayoutEffect(() => {
-    if (isSaveScrollPosition && wrapperRef.current) {
+    if (isSaveScrollPosition) {
       wrapperRef.current.scrollTop = scrollPosition;
     }
   }, [isSaveScrollPosition, scrollPosition]);

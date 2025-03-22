@@ -2,7 +2,7 @@ import { FC, HTMLAttributes, ReactNode } from 'react';
 import cls from './Card.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-type CardVariant = 'primary' | 'outlined';
+type CardVariant = 'primary' | 'outlined' | 'light';
 type CardPadding = '0' | '8' | '16' | '24';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -29,7 +29,7 @@ export const Card: FC<CardProps> = ({
   const clsPadding = mapPaddingToClass[padding];
 
   return (
-    <div
+    <article
       className={classNames(cls.card, {}, [
         className,
         cls[variant],
@@ -38,6 +38,6 @@ export const Card: FC<CardProps> = ({
       {...otherProps}
     >
       {children}
-    </div>
+    </article>
   );
 };

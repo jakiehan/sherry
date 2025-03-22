@@ -1,5 +1,6 @@
 .sideBarRedesigned {
   position: relative;
+  overflow: hidden;
   width: var(--sidebar-width-redesigned);
   height: 100%;
   border-radius: 24px;
@@ -23,6 +24,9 @@
     position: absolute;
     top: 48%;
     right: 21px;
+  }
+
+  .icon {
     transform: rotate(90deg);
   }
 
@@ -40,6 +44,10 @@
   width: var(--sidebar-width-collapsed-redesigned);
 
   .collapseBtn {
+    right: 15px;
+  }
+
+  .icon {
     transform: rotate(-90deg);
   }
 

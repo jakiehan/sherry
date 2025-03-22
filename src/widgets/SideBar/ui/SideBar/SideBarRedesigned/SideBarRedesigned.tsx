@@ -46,11 +46,12 @@ export const SideBarRedesigned = memo(
           ))}
         </nav>
         <Icon
+          width={15}
+          height={15}
           Svg={ArrowIcon}
           onClick={toggleSidebar}
-          className={cls.collapseBtn}
-          width={12}
-          height={12}
+          classNameBtn={cls.collapseBtn}
+          className={cls.icon}
           clickable
         />
         <div className={cls.switchers}>

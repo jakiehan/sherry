@@ -1,6 +1,5 @@
 import { FeatureFlags } from '@/shared/types/featureFlags';
 import { useFeatureFlag } from '../useGetFeatureFlag/useGetFeatureFlag';
-import { ReactNode } from 'react';
 
 interface ToggleFeatureProps<T> {
   name: keyof FeatureFlags;
@@ -8,11 +7,11 @@ interface ToggleFeatureProps<T> {
   off: () => T;
 }
 
-export const useToggleFeatures = <T extends ReactNode>({
+export const useToggleFeatures = <T extends any>({
   name,
   off,
   on,
-}: ToggleFeatureProps<T>) => {
+}: ToggleFeatureProps<T>): T => {
   const isOn = useFeatureFlag(name);
 
   if (isOn) {

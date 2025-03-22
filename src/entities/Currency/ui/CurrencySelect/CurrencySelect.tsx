@@ -2,8 +2,10 @@ import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SelectOptions } from '@/shared/ui/deprecated/Select';
 import { Currency } from '../../model/types/currency';
-import { ListBox } from '@/shared/ui/deprecated/Popups';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
 import cls from './CurrencySelect.module.scss';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface CurrencySelectProps {
   className?: string;
@@ -26,14 +28,29 @@ export const CurrencySelect = memo(
     }, []);
 
     return (
-      <ListBox
-        value={value}
-        options={options}
-        defaultValue={t('Валюта')}
-        label={t('Валюта')}
-        onChange={onChange}
-        classNameLabel={cls.label}
-        readOnly={readOnly}
+      <ToggleFeatures
+        name="isAppRedesigned"
+        on={
+          <ListBox
+            value={value}
+            options={options}
+            defaultValue={t('Валюта')}
+            label={`${t('Валюта')}:`}
+            onChange={onChange}
+            readOnly={readOnly}
+          />
+        }
+        off={
+          <ListBoxDeprecated
+            value={value}
+            options={options}
+            defaultValue={t('Валюта')}
+            label={t('Валюта')}
+            onChange={onChange}
+            classNameLabel={cls.label}
+            readOnly={readOnly}
+          />
+        }
       />
     );
   }

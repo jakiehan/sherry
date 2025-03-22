@@ -11,6 +11,7 @@ interface TextProps {
   size?: 'sizeM' | 'sizeL';
   tagTitle?: keyof HTMLElementTagNameMap;
   'data-testid'?: string;
+  max?: boolean;
 }
 
 export const Text = memo(
@@ -23,13 +24,20 @@ export const Text = memo(
     size = 'sizeM',
     tagTitle = 'p',
     'data-testid': dataTestId = 'Text',
+    max,
   }: TextProps) => {
     const Tag = tagTitle;
 
     const additionalClasses = [className, cls[variant], cls[align], cls[size]];
 
     return (
-      <div className={classNames(cls.textContainer, {}, additionalClasses)}>
+      <div
+        className={classNames(
+          cls.textContainer,
+          { [cls.maxWidth]: max },
+          additionalClasses
+        )}
+      >
         {title && (
           <Tag
             className={cls.title}

@@ -2,18 +2,22 @@ import { RuleSetRule } from 'webpack';
 
 export function buildSvgLoader():RuleSetRule {
   return {
-    test: /\.svg$/i,
-    issuer: /\.[jt]sx?$/,
+    test: /\.svg$/,
     use: [{
       loader: '@svgr/webpack',
       options: {
-        icon: true, // позволяет задавать высоту и ширину svg содержимому
-        svgoConfig: [{
-          name: 'convertColors',
-          params: { currentColor: true }, // задавать цвет сразу и для fill и для stroke
-        },
-        ],
-      },
+        icon: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'convertColors',
+              params: {
+                currentColor: true,
+              }
+            }
+          ]
+        }
+      }
     }],
   }
-};
+}

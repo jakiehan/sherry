@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Icon.module.scss';
 
 interface IconBaseProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
+  classNameBtn?: string;
   Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
 }
 
@@ -21,6 +22,7 @@ type IconProps = NonClickableIconProps | ClickableBaseProps;
 export const Icon = memo(
   ({
     className,
+    classNameBtn,
     Svg,
     width = 32,
     height = 32,
@@ -30,8 +32,8 @@ export const Icon = memo(
   }: IconProps) => {
     const icon = (
       <Svg
-        className={classNames(cls.icon, {}, [!clickable ? className : ''])}
-        style={{ minWidth: width, minHeight: height }}
+        className={classNames(cls.icon, {}, [className])}
+        style={{ width: width, height: height }}
         onClick={undefined}
         {...otherProps}
       />
@@ -41,7 +43,7 @@ export const Icon = memo(
       return (
         <button
           type="button"
-          className={classNames(cls.button, {}, [clickable ? className : ''])}
+          className={classNames(cls.button, {}, [classNameBtn])}
           onClick={onClick}
           style={{ height, width }}
         >

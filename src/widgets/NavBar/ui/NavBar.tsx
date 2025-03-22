@@ -36,7 +36,10 @@ export const NavBar = memo(({ className }: NavBarProps) => {
       on={
         <div className={classNames(cls.navBarRedesigned, {}, [className])}>
           {authData && (
-            <HStack gap="24">
+            <HStack
+              gap="24"
+              align="baseline"
+            >
               <NotificationsButton />
               <AvatarDropdown className={cls.avatar} />
             </HStack>

@@ -5,6 +5,7 @@ import cls from './Button.module.scss';
 type ButtonVariant =
   | 'clear'
   | 'outline'
+  | 'filled'
   | 'outlineRed'
   | 'background'
   | 'backgroundInverted';

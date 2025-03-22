@@ -1,16 +1,22 @@
 import { FC, useEffect } from 'react';
-import { useGetUserDataByIdQuery, userActions } from '@/entities/User';
+import {
+  getUserInited,
+  useGetUserDataByIdQuery,
+  userActions,
+} from '@/entities/User';
 import { USER_LOCALE_STORAGE_KEY } from '@/shared/constants/localstorage';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
 import { AppRedesigned } from './AppRedesigned';
 import { AppDeprecated } from './AppDeprecated';
+import { useSelector } from 'react-redux';
 
 const userId = localStorage.getItem(USER_LOCALE_STORAGE_KEY);
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
+  const isInited = useSelector(getUserInited);
 
   const id = userId?.length ? JSON.parse(userId) : '';
 
@@ -24,7 +30,7 @@ export const App: FC = () => {
     }
   }, [data, dispatch]);
 
-  if (isFetching) {
+  if (isFetching || (userId?.length && !isInited)) {
     return <PageLoader />;
   }
 

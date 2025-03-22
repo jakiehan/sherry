@@ -14,7 +14,7 @@ import { ArticleType } from '@/entities/Article';
 const initialView: View =
   (localStorage.getItem(VIEW_LOCALE_STORAGE_KEY) as View) ?? 'place';
 
-const initialLimit = initialView === 'place' ? 18 : 4;
+const initialLimit = initialView === 'place' ? 12 : 3;
 
 const initialState: ArticlePageSchema = {
   ids: [],
@@ -89,6 +89,7 @@ const articlePageSlice = createSlice({
       .addCase(fetchArticlesList.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        state._inited = false;
       });
   },
 });
