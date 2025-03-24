@@ -7,22 +7,10 @@ import { SideBarItem } from '../../../ui/SideBarItem/SideBarItem';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import ArrowIcon from '@/shared/assets/icons/arrow-down.svg';
-import { SideBarItemType } from '../../../model/types/sideBar';
-
-interface SideBarRedesignedProps {
-  className?: string;
-  sidebarItems: SideBarItemType[];
-  toggleSidebar: () => void;
-  collapsed: boolean;
-}
+import { SideBarProps } from '../SideBar';
 
 export const SideBarRedesigned = memo(
-  ({
-    className,
-    toggleSidebar,
-    sidebarItems,
-    collapsed,
-  }: SideBarRedesignedProps) => {
+  ({ className, toggleSidebar, sidebarItems, collapsed }: SideBarProps) => {
     return (
       <div
         data-testid="sidebar"

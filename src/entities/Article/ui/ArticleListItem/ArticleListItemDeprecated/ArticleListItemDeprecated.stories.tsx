@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ArticleListItem } from './ArticleListItem';
-import { Article } from '../../model/types/article';
+import { ArticleListItemDeprecated } from './ArticleListItemDeprecated';
+import { Article } from '../../../model/types/article';
 
 const article = {
   id: '1',
@@ -80,11 +80,11 @@ const article = {
 
 const meta = {
   title: 'entities/ArticleListItem',
-  component: ArticleListItem,
+  component: ArticleListItemDeprecated,
   parameters: {
     layout: 'fullscreen',
   },
-} satisfies Meta<typeof ArticleListItem>;
+} satisfies Meta<typeof ArticleListItemDeprecated>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -1,10 +1,16 @@
 import { rtkApi } from '@/shared/api/rtkApi';
 import { User } from '../model/types/user';
 import { JsonSettings } from '@/shared/types/jsonSettings';
+import { FeatureFlags } from '@/shared/types/featureFlags';
 
 interface SetJsonSettingsRequest {
   userId: string;
   jsonSettings: JsonSettings;
+}
+
+interface SetFeaturesFlagsRequest {
+  userId: string;
+  features: FeatureFlags;
 }
 
 const userApi = rtkApi.injectEndpoints({
@@ -20,13 +26,28 @@ const userApi = rtkApi.injectEndpoints({
         },
       }),
     }),
+    setFeaturesFlags: build.mutation<User, SetFeaturesFlagsRequest>({
+      query: ({ features, userId }) => ({
+        url: `/users/${userId}`,
+        method: 'PATCH',
+        body: {
+          features,
+        },
+      }),
+      invalidatesTags: ['user'],
+    }),
     getUserDataById: build.query<User, string>({
       query: (userId) => ({
         url: `/users/${userId}`,
         method: 'GET',
       }),
+      providesTags: ['user'],
     }),
   }),
 });
 
-export const { useSetJsonSettingsMutation, useGetUserDataByIdQuery } = userApi;
+export const {
+  useSetJsonSettingsMutation,
+  useGetUserDataByIdQuery,
+  useSetFeaturesFlagsMutation,
+} = userApi;

@@ -30,7 +30,7 @@ export const App: FC = () => {
     }
   }, [data, dispatch]);
 
-  if (isFetching || (userId?.length && !isInited)) {
+  if ((isFetching && !userId) || (userId?.length && !isInited)) {
     return <PageLoader />;
   }
 

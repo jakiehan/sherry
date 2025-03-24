@@ -3,16 +3,9 @@ import { Button } from '@/shared/ui/deprecated/Button';
 import { SideBarItem } from '../../SideBarItem/SideBarItem';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
-import { SideBarItemType } from '../../../model/types/sideBar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './SideBarDeprecated.module.scss';
-
-interface SideBarDeprecatedProps {
-  className?: string;
-  sidebarItems?: SideBarItemType[];
-  toggleSidebar?: () => void;
-  collapsed: boolean;
-}
+import { SideBarProps } from '../SideBar';
 
 /**
  * Устарел, больше не поддерживается
@@ -24,7 +17,7 @@ export const SideBarDeprecated = memo(
     toggleSidebar,
     sidebarItems = [],
     collapsed,
-  }: SideBarDeprecatedProps) => {
+  }: SideBarProps) => {
     return (
       <aside
         data-testid="sidebar"

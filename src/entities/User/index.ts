@@ -15,4 +15,5 @@ export { UserRole } from './model/constants/constants';
 export {
   useSetJsonSettingsMutation,
   useGetUserDataByIdQuery,
+  useSetFeaturesFlagsMutation,
 } from './api/userApi';

@@ -1,4 +1,4 @@
-import { Fragment, memo, ReactNode } from 'react';
+import { Fragment, memo, ReactNode, useMemo } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import cls from './ListBox.module.scss';
 import clsPopups from '../../Popups.module.scss';
@@ -42,6 +42,11 @@ export const ListBox = genericMemo(
     label,
     direction = 'bottom',
   }: ListBoxProps<T>) => {
+    const selectedValue = useMemo(
+      () => options?.find((item) => item.value === value),
+      [options, value]
+    );
+
     return (
       <label className={cls.wrapper}>
         {label?.length !== 0 && (
@@ -64,7 +69,7 @@ export const ListBox = genericMemo(
                   className={cls.btn}
                   disabled={readOnly}
                 >
-                  {value ?? defaultValue}{' '}
+                  {selectedValue?.content ?? defaultValue}{' '}
                   <ArrowIcon
                     className={classNames(cls.icon, { [cls.open]: open })}
                   />
@@ -76,7 +81,7 @@ export const ListBox = genericMemo(
                 {options?.map((option) => (
                   <HListBox.Option
                     key={option.value}
-                    value={option.content}
+                    value={option.value}
                     disabled={option.disabled}
                     as={Fragment}
                   >

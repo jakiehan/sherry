@@ -4,31 +4,33 @@ import { SideBarRedesigned } from './SideBarRedesigned/SideBarRedesigned';
 import { SideBarDeprecated } from './SideBarDeprecated/SideBarDeprecated';
 import { useSelector } from 'react-redux';
 import { getSideBarItems } from '../../model/selectors/getSideBarItems';
+import { SideBarItemType } from '../../model/types/sideBar';
+
+export interface SideBarProps {
+  className?: string;
+  sidebarItems: SideBarItemType[];
+  toggleSidebar: () => void;
+  collapsed: boolean;
+}
 
 export const SideBar = memo(() => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const toggleSideBar = useCallback(() => setCollapsed((prev) => !prev), []);
+  const toggleSidebar = useCallback(() => setCollapsed((prev) => !prev), []);
 
-  const sideBarItemsList = useSelector(getSideBarItems);
+  const sidebarItems = useSelector(getSideBarItems);
+
+  const props = {
+    collapsed,
+    toggleSidebar,
+    sidebarItems,
+  };
 
   return (
     <ToggleFeatures
       name="isAppRedesigned"
-      on={
-        <SideBarRedesigned
-          collapsed={collapsed}
-          toggleSidebar={toggleSideBar}
-          sidebarItems={sideBarItemsList}
-        />
-      }
-      off={
-        <SideBarDeprecated
-          collapsed={collapsed}
-          toggleSidebar={toggleSideBar}
-          sidebarItems={sideBarItemsList}
-        />
-      }
+      on={<SideBarRedesigned {...props} />}
+      off={<SideBarDeprecated {...props} />}
     />
   );
 });

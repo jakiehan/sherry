@@ -27,6 +27,16 @@
   background: var(--light-bg-redesigned);
 }
 
+.outline {
+  border: 1px solid var(--icon-redesigned);
+  border-radius: 24px;
+  background: none;
+
+  &:hover {
+    border-color: var(--accent-redesigned);
+  }
+}
+
 .square {
   padding: 0;
 }

@@ -5,8 +5,8 @@ import { ProfilePage } from '@/pages/ProfilePage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
-import { UserRole } from '@/entities/User';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import { SettingsPage } from '@/pages/SettingsPage';
 import {
   AppRoutes,
   getRouteAbout,
@@ -17,7 +17,9 @@ import {
   getRouteMain,
   getRouteNotFound,
   getRouteProfile,
+  getRouteSettings,
 } from '../../constants/router';
+import { UserRole } from '@/entities/User';
 import { AppRoutesProps } from '../../types/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -53,6 +55,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.FORBIDDEN]: {
     path: getRouteForbidden(),
     element: <ForbiddenPage />,
+  },
+  [AppRoutes.SETTINGS]: {
+    path: getRouteSettings(),
+    element: <SettingsPage />,
   },
   [AppRoutes.NOT_FOUND]: {
     path: getRouteNotFound(),
