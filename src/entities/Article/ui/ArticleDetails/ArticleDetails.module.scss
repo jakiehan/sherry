@@ -12,6 +12,12 @@
   margin: 0 auto;
 }
 
+.image {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
 .articleInfo {
   display: flex;
   align-items: center;

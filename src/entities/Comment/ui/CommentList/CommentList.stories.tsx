@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CommentList } from './CommentList';
 import { Comment } from '../../model/types';
+import { StoreDecorator } from '@/shared/decorators/StoreDecorator';
 
 const meta = {
   title: 'entities/CommentList',
@@ -50,6 +51,13 @@ export const Primary: Story = {
   args: {
     comments,
   },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };
 
 export const IsLoading: Story = {
@@ -57,4 +65,11 @@ export const IsLoading: Story = {
     isLoading: true,
     comments,
   },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };

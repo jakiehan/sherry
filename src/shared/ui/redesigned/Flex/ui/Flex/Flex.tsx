@@ -3,7 +3,7 @@ import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import cls from './Flex.module.scss';
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end' | 'baseline';
+export type FlexAlign = 'start' | 'center' | 'end' | 'baseline' | 'normal';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = '4' | '8' | '16' | '24' | '32';
 
@@ -19,6 +19,7 @@ const alignClasses: Record<FlexAlign, string> = {
   center: cls.alignCenter,
   end: cls.alignEnd,
   baseline: cls.baseline,
+  normal: cls.normal,
 };
 
 const directionClasses: Record<FlexDirection, string> = {

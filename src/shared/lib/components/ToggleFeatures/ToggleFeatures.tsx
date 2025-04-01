@@ -9,7 +9,7 @@ interface ToggleFeaturesProps {
 }
 
 export const ToggleFeatures: FC<ToggleFeaturesProps> = ({ on, off, name }) => {
-  const isOn = useFeatureFlag(name);
+  const isOn = useFeatureFlag(name) ?? true;
 
   if (isOn) {
     return on;
@@ -17,5 +17,3 @@ export const ToggleFeatures: FC<ToggleFeaturesProps> = ({ on, off, name }) => {
 
   return off;
 };
-
-ToggleFeatures.displayName = 'ToggleFeatures';

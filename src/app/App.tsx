@@ -11,16 +11,18 @@ import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
 import { AppRedesigned } from './AppRedesigned';
 import { AppDeprecated } from './AppDeprecated';
 import { useSelector } from 'react-redux';
+import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { withThemeProvider } from './providers/ThemeProvider/ui/withThemeProvider';
 
-const userId = localStorage.getItem(USER_LOCALE_STORAGE_KEY);
+const App: FC = () => {
+  const userId = localStorage.getItem(USER_LOCALE_STORAGE_KEY);
 
-export const App: FC = () => {
   const dispatch = useAppDispatch();
   const isInited = useSelector(getUserInited);
 
   const id = userId?.length ? JSON.parse(userId) : '';
 
-  const { data, isFetching } = useGetUserDataByIdQuery(id, {
+  const { data } = useGetUserDataByIdQuery(id, {
     skip: !userId,
   });
 
@@ -28,10 +30,24 @@ export const App: FC = () => {
     if (data) {
       dispatch(userActions.setAuthData(data));
     }
-  }, [data, dispatch]);
 
-  if ((isFetching && !userId) || (userId?.length && !isInited)) {
-    return <PageLoader />;
+    if (!userId) {
+      dispatch(userActions.setInited());
+    }
+  }, [data, dispatch, userId]);
+
+  if (!isInited) {
+    return (
+      <ToggleFeatures
+        name="isAppRedesigned"
+        on={
+          <div className={'appRedesigned'}>
+            <AppLoaderLayout />
+          </div>
+        }
+        off={<PageLoader />}
+      />
+    );
   }
 
   return (
@@ -42,3 +58,5 @@ export const App: FC = () => {
     />
   );
 };
+
+export default withThemeProvider(App);

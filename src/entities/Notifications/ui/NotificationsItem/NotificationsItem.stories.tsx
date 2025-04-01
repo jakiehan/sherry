@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { NotificationsItem } from './NotificationsItem';
+import { StoreDecorator } from '@/shared/decorators/StoreDecorator';
 
 const meta = {
   title: 'shared/NotificationsItem',
@@ -21,4 +22,11 @@ export const Primary: Story = {
       userId: '1',
     },
   },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };

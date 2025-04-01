@@ -12,7 +12,7 @@ export const useToggleFeatures = <T extends any>({
   off,
   on,
 }: ToggleFeatureProps<T>): T => {
-  const isOn = useFeatureFlag(name);
+  const isOn = useFeatureFlag(name) ?? true;
 
   if (isOn) {
     return on();

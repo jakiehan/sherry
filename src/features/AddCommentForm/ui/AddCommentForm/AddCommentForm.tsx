@@ -1,9 +1,4 @@
 import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import cls from './AddCommentForm.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Button } from '@/shared/ui/deprecated/Button';
 import { useSelector } from 'react-redux';
 import { getAddCommentsFormText } from '../../model/selectors/selectAddCommentForm';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -15,10 +10,19 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { AddCommentFormDeprecated } from './AddCommentFormDeprecated/AddCommentFormDeprecated';
+import { AddCommentFormRedesigned } from './AddCommentFormRedesigned/AddCommentFormRedesigned';
 
 export interface AddCommentFormProps {
-  onSendCommit: (value: string) => void;
+  onSendCommit?: (value: string) => void;
   className?: string;
+}
+
+export interface AddCommentFormState extends AddCommentFormProps {
+  text?: string;
+  onChangeCommentText?: (value: string) => void;
+  onSubmit?: () => void;
 }
 
 const reducers: ReducersList = {
@@ -27,8 +31,6 @@ const reducers: ReducersList = {
 
 const AddCommentForm = memo(
   ({ className, onSendCommit }: AddCommentFormProps) => {
-    const { t } = useTranslation('comments');
-
     const dispatch = useAppDispatch();
 
     const text = useSelector(getAddCommentsFormText);
@@ -43,35 +45,28 @@ const AddCommentForm = memo(
 
     const submitForm = useCallback(() => {
       if (text) {
-        onSendCommit(text);
+        onSendCommit?.(text);
         handleChangeCommentText('');
       }
     }, [handleChangeCommentText, onSendCommit, text]);
+
+    const commonProps = {
+      className,
+      text,
+      onChangeCommentText: handleChangeCommentText,
+      onSubmit: submitForm,
+    };
 
     return (
       <DynamicModuleLoader
         reducers={reducers}
         removeAfterUnmount
       >
-        <div
-          className={classNames(cls.addCommentForm, {}, [className])}
-          data-testid="addCommentForm"
-        >
-          <Input
-            value={text}
-            onChange={handleChangeCommentText}
-            label={`${t('Введите текст комментария')}:`}
-            variant="outlined"
-            className={cls.input}
-            data-testid="addCommentForm.Input"
-          />
-          <Button
-            onClick={submitForm}
-            data-testid="addCommentForm.Button"
-          >
-            {t('Отправить')}
-          </Button>
-        </div>
+        <ToggleFeatures
+          name="isAppRedesigned"
+          on={<AddCommentFormRedesigned {...commonProps} />}
+          off={<AddCommentFormDeprecated {...commonProps} />}
+        />
       </DynamicModuleLoader>
     );
   }

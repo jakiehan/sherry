@@ -12,6 +12,7 @@
 
 .content {
   width: 100%;
+  min-width: 700px;
   max-width: 1200px;
   padding: 32px 24px 24px;
   grid-area: content;
@@ -25,6 +26,7 @@
   grid-area: rightbar;
 
   .toolbar {
+    width: 50%;
     height: 100%;
   }
 }

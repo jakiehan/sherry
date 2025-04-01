@@ -13,6 +13,7 @@ import { HStack } from '@/shared/ui/redesigned/Flex';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { LOCALE_STORAGE_DESIGN_KEY } from '@/shared/constants/localstorage';
 
 interface UIDesignSwitcherProps {
   className?: string;
@@ -26,7 +27,7 @@ export const UIDesignSwitcher = memo(({ className }: UIDesignSwitcherProps) => {
   const allFeatures = useAllFeaturesFlags();
 
   const [setFeatures, { isLoading }] = useSetFeaturesFlagsMutation();
-  const { isFetching } = useGetUserDataByIdQuery(userId, {
+  const { isFetching } = useGetUserDataByIdQuery(userId!, {
     skip: !userId,
   });
 

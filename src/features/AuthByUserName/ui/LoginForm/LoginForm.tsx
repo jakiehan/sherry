@@ -1,13 +1,7 @@
 import { useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import cls from './LoginForm.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { Input } from '@/shared/ui/deprecated/Input';
 import { useSelector } from 'react-redux';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
-import { Text } from '@/shared/ui/deprecated/Text';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginUsername } from '../..//model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
@@ -17,8 +11,9 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-
-const LABEL_WIDTH = 180;
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { LoginFormDeprecated } from './LoginFormDeprecated/LoginFormDeprecated';
+import { LoginFormRedesigned } from './LoginFormRedesigned/LoginFormRedesigned';
 
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
@@ -29,6 +24,17 @@ export interface LoginFormProps {
   className?: string;
 }
 
+export interface LoginFormState extends LoginFormProps {
+  password?: string;
+  username?: string;
+  error?: string;
+  isLoading?: boolean;
+  onChangeUsername?: (value: string) => void;
+  onChangePassword?: (value: string) => void;
+  onLoginClick?: () => Promise<void>;
+  isDisabledLoginButton?: boolean;
+}
+
 const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
   const dispatch = useAppDispatch();
 
@@ -36,8 +42,6 @@ const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
   const username = useSelector(getLoginUsername);
   const error = useSelector(getLoginError);
   const isLoading = useSelector(getLoginIsLoading);
-
-  const { t } = useTranslation();
 
   const handleChangeUsername = useCallback(
     (value: string) => {
@@ -64,44 +68,27 @@ const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
   const isDisabledLoginButton =
     isLoading || !username.length || !password.length;
 
+  const commonProps = {
+    password,
+    username,
+    error,
+    isLoading,
+    onChangeUsername: handleChangeUsername,
+    onChangePassword: handleChangePassword,
+    onLoginClick: handleLoginClick,
+    isDisabledLoginButton,
+  };
+
   return (
     <DynamicModuleLoader
       reducers={initialReducers}
       removeAfterUnmount
     >
-      <div className={classNames(cls.loginForm, {}, [className])}>
-        <Text title={t('Форма авторизации')} />
-        <div className={cls.message}>
-          {error && (
-            <Text
-              text={error}
-              variant="error"
-            />
-          )}
-        </div>
-        <Input
-          label={t('Введите имя')}
-          onChange={handleChangeUsername}
-          value={username}
-          autoFocus
-          labelWidth={LABEL_WIDTH}
-        />
-        <Input
-          label={t('Введите пароль')}
-          onChange={handleChangePassword}
-          value={password}
-          labelWidth={LABEL_WIDTH}
-          type="password"
-        />
-        <Button
-          variant="outline"
-          className={cls.btnLogin}
-          onClick={handleLoginClick}
-          disabled={isDisabledLoginButton}
-        >
-          {t('Войти')}
-        </Button>
-      </div>
+      <ToggleFeatures
+        name="isAppRedesigned"
+        on={<LoginFormRedesigned {...commonProps} />}
+        off={<LoginFormDeprecated {...commonProps} />}
+      />
     </DynamicModuleLoader>
   );
 };

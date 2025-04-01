@@ -11,12 +11,15 @@
   "названию": "name",
   "возрастанию": "ascending order",
   "убыванию": "descending order",
-  "Все статьи": "Все статьи",
+  "Все статьи": "All",
   "Айти": "It",
   "Животные": "Animals",
   "Экономика": "Economy",
   "Наука": "Science",
   "Рекомендуем": "Recommendations",
   "Оценка статей скоро появится": "The evaluation of articles will appear soon",
-  "Найти": "Search"
+  "Найти": "Search",
+  "{{count}} просмотров_zero": "{{count}} views",
+  "{{count}} просмотров_one": "{{count}} view",
+  "{{count}} просмотров_other": "{{count}} views"
 }

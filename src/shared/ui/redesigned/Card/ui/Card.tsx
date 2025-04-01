@@ -10,6 +10,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   variant?: CardVariant;
   padding?: CardPadding;
+  max?: boolean;
 }
 
 const mapPaddingToClass: Record<CardPadding, string> = {
@@ -24,13 +25,14 @@ export const Card: FC<CardProps> = ({
   children,
   variant = 'primary',
   padding = '8',
+  max = false,
   ...otherProps
 }) => {
   const clsPadding = mapPaddingToClass[padding];
 
   return (
     <article
-      className={classNames(cls.card, {}, [
+      className={classNames(cls.card, { [cls.fullWidth]: max }, [
         className,
         cls[variant],
         cls[clsPadding],

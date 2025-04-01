@@ -8,6 +8,8 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { Text } from '@/shared/ui/deprecated/Text';
 
+type ViewNumber = Partial<Record<View, number>>;
+
 interface ArticleListProps {
   articles?: Article[];
   isLoading?: boolean;
@@ -15,6 +17,7 @@ interface ArticleListProps {
   className?: string;
   target?: HTMLAttributeAnchorTarget;
   inited?: boolean;
+  viewNumber?: ViewNumber;
 }
 
 const renderArticle = (
@@ -32,13 +35,15 @@ const renderArticle = (
   );
 };
 
-const renderSkeleton = (view: View) => {
-  return new Array(view === 'place' ? 9 : 3).fill(0).map((item, i) => (
-    <ArticleListItemSkeleton
-      key={i}
-      view={view}
-    />
-  ));
+const renderSkeleton = (view: View, viewNumber?: ViewNumber) => {
+  return new Array(view === 'place' ? (viewNumber?.['place'] ?? 9) : 3)
+    .fill(0)
+    .map((item, i) => (
+      <ArticleListItemSkeleton
+        key={i}
+        view={view}
+      />
+    ));
 };
 
 export const ArticleList = memo(
@@ -49,6 +54,7 @@ export const ArticleList = memo(
     isLoading,
     target,
     inited,
+    viewNumber,
   }: ArticleListProps) => {
     const { t } = useTranslation();
 
@@ -73,7 +79,7 @@ export const ArticleList = memo(
       >
         {articles.length !== 0 &&
           articles.map((article) => renderArticle(article, view, target))}
-        {(isLoading || !inited) && renderSkeleton(view)}
+        {isLoading && renderSkeleton(view, viewNumber)}
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NavBar.module.scss';
-import { Button } from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from '@/features/AuthByUserName';
 import { useSelector } from 'react-redux';
@@ -73,12 +74,12 @@ export const NavBar = memo(({ className }: NavBarProps) => {
             </HStack>
           )}
           {!authData && (
-            <Button
+            <ButtonDeprecated
               onClick={handleShowModal}
               variant="clear"
             >
               {t('Войти')}
-            </Button>
+            </ButtonDeprecated>
           )}
           <LoginModal
             isOpen={isOpenAuthModal}

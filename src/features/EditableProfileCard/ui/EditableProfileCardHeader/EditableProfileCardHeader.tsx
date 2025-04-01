@@ -1,9 +1,5 @@
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import cls from './EditableProfileCardHeader.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
-import { Button } from '@/shared/ui/deprecated/Button';
 import { useSelector } from 'react-redux';
 import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -11,9 +7,21 @@ import { profileActions } from '../../model/slice/profileSlice';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getUserAuthData } from '@/entities/User';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { EditableProfileCardHeaderDeprecated } from './EditableProfileCardHeaderDeprecated/EditableProfileCardHeaderDeprecated';
+import { EditableProfileCardHeaderRedesigned } from './EditableProfileCardHeaderRedesigned/EditableProfileCardHeaderRedesigned';
 
 interface EditableProfileCardHeaderProps {
   className?: string;
+}
+
+export interface EditableProfileCardHeaderState
+  extends EditableProfileCardHeaderProps {
+  canEdit?: boolean;
+  isReadOnly?: boolean;
+  onEditProfile?: () => void;
+  onCancelEditProfile: () => void;
+  onSaveProfile: () => void;
 }
 
 export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = ({
@@ -42,43 +50,20 @@ export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = ({
 
   const isReadOnly = useSelector(getProfileReadOnly);
 
+  const commonProps = {
+    className,
+    canEdit,
+    isReadOnly,
+    onEditProfile: editProfile,
+    onCancelEditProfile: cancelEditProfile,
+    onSaveProfile: saveProfile,
+  };
+
   return (
-    <div className={classNames(cls.editableProfileCardHeader, {}, [className])}>
-      <Text
-        title={t('Профиль')}
-        tagTitle="h2"
-      />
-      {canEdit && (
-        <>
-          {isReadOnly && (
-            <Button
-              variant="outline"
-              onClick={editProfile}
-              data-testid="EditableProfileCard.EditButton"
-            >
-              {t('Редактировать')}
-            </Button>
-          )}
-          {!isReadOnly && (
-            <div className={cls.btnWrapper}>
-              <Button
-                variant="outlineRed"
-                onClick={cancelEditProfile}
-                data-testid="EditableProfileCard.CancelButton"
-              >
-                {t('Отменить')}
-              </Button>
-              <Button
-                variant="outline"
-                onClick={saveProfile}
-                data-testid="EditableProfileCard.SaveButton"
-              >
-                {t('Сохранить')}
-              </Button>
-            </div>
-          )}
-        </>
-      )}
-    </div>
+    <ToggleFeatures
+      name="isAppRedesigned"
+      on={<EditableProfileCardHeaderRedesigned {...commonProps} />}
+      off={<EditableProfileCardHeaderDeprecated {...commonProps} />}
+    />
   );
 };

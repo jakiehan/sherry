@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleList } from './ArticleList';
 import { Article } from '../../model/types/article';
+import { StoreDecorator } from '@/shared/decorators/StoreDecorator';
 
 const article = {
   id: '1',
@@ -91,10 +92,24 @@ type Story = StoryObj<typeof meta>;
 
 export const LoadingPlace: Story = {
   args: { isLoading: true, view: 'place', articles: [] },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };
 
 export const LoadingList: Story = {
   args: { isLoading: true, view: 'list', articles: [] },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };
 
 export const List: Story = {
@@ -106,6 +121,13 @@ export const List: Story = {
       id: String(i),
     })),
   },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };
 
 export const Place: Story = {
@@ -117,4 +139,11 @@ export const Place: Story = {
       id: String(i),
     })),
   },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };

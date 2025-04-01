@@ -99,14 +99,14 @@ export const ProfileCardRedesigned: FC<ProfileCardProps> = ({
             readOnly={readOnly}
             minLength={2}
             onChange={onChangeFirstName}
-            data-testid="ProfileCardRedesigned.Firstname"
+            data-testid="ProfileCard.Firstname"
           />
           <Input
             label={`${t('Фамилия')}:`}
             value={data?.lastname}
             readOnly={readOnly}
             onChange={onChangeLastName}
-            data-testid="ProfileCardRedesigned.Lastname"
+            data-testid="ProfileCard.Lastname"
           />
           <Input
             label={`${t('Возраст')}:`}

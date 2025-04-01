@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleCodeBlock } from '../../model/types/article';
-import { Code } from '@/shared/ui/deprecated/Code';
+import { Code as CodeDeprecated } from '@/shared/ui/deprecated/Code';
+import { Code } from '@/shared/ui/redesigned/Code';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
 
 interface ArticleCodeBlockComponentProps {
   className?: string;
@@ -12,7 +14,11 @@ export const ArticleCodeBlockComponent = memo(
   ({ className, block }: ArticleCodeBlockComponentProps) => {
     return (
       <div className={classNames('', {}, [className])}>
-        <Code text={block.code} />
+        <ToggleFeatures
+          name="isAppRedesigned"
+          on={<Code text={block.code} />}
+          off={<CodeDeprecated text={block.code} />}
+        />
       </div>
     );
   }

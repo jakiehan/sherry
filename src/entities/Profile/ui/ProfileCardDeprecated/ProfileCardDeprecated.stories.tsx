@@ -3,9 +3,10 @@ import { ProfileCardDeprecated } from './ProfileCardDeprecated';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { AVATAR_URL } from '@/shared/ui/deprecated/Avatar/lib/constants';
+import { StoreDecorator } from '@/shared/decorators/StoreDecorator';
 
 const meta = {
-  title: 'entities/ProfileCard',
+  title: 'entities/ProfileCardDeprecated',
   component: ProfileCardDeprecated,
   parameters: {
     layout: 'fullscreen',
@@ -28,16 +29,11 @@ export const Primary: Story = {
       avatar: AVATAR_URL,
     },
   },
-};
-
-export const Error: Story = {
-  args: {
-    error: 'error',
-  },
-};
-
-export const Loading: Story = {
-  args: {
-    isLoading: true,
-  },
+  decorators: [
+    (Story) => (
+      <StoreDecorator state={{}}>
+        <Story />
+      </StoreDecorator>
+    ),
+  ],
 };

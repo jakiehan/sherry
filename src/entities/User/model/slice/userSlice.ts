@@ -19,6 +19,9 @@ export const userSlice = createSlice({
       state.autData = undefined;
       setFeatureFlags({});
     },
+    setInited: (state) => {
+      state._inited = true;
+    },
   },
 });
 

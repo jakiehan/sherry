@@ -138,7 +138,7 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 ### Работа с feature-flags
 
-Разрешено использование feature flags только с помощью хука useToggleFeatures
+Разрешено использование feature flags только с помощью хука useToggleFeatures и функции toggleFeatures
 
 в него передается объект с опциями
 

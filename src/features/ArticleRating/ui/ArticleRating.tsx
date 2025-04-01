@@ -5,9 +5,11 @@ import {
   useGetArticleRatingQuery,
   useRateArticleMutation,
 } from '../api/articleRatingApi';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
 
 export interface ArticleRatingProps {
   className?: string;
@@ -54,9 +56,20 @@ const ArticleRating = memo(({ className, articleId }: ArticleRatingProps) => {
 
   if (isFetching) {
     return (
-      <Skeleton
-        width="100%"
-        height={120}
+      <ToggleFeatures
+        name="isAppRedesigned"
+        on={
+          <Skeleton
+            width="100%"
+            height={120}
+          />
+        }
+        off={
+          <SkeletonDeprecated
+            width="100%"
+            height={120}
+          />
+        }
       />
     );
   }

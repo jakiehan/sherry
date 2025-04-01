@@ -1,5 +1,4 @@
 import { memo, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import cls from './ArticleDetails.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
@@ -15,56 +14,24 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
-import EyeIcon from '@/shared/assets/icons/eye.svg';
-import DatePickerIcon from '@/shared/assets/icons/calendar.svg';
-import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
-import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { ArticleDetailsDeprecated } from './ArticleDetailsDeprecated/ArticleDetailsDeprecated';
+import { Article } from '../../model/types/article';
+import { ArticleDetailsRedesigned } from './ArticleDetailsRedesigned/ArticleDetailsRedesigned';
 
-interface ArticleDetailsProps {
+export interface ArticleDetailsProps {
   id?: string;
   className?: string;
+  isLoading?: boolean;
+  article?: Article;
+  error?: string;
 }
 
 const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
 };
 
-const renderBlock = (block: ArticleBlock) => {
-  switch (block.type) {
-    case ArticleBlockType.TEXT:
-      return (
-        <ArticleTextBlockComponent
-          key={block.id}
-          block={block}
-        />
-      );
-    case ArticleBlockType.CODE:
-      return (
-        <ArticleCodeBlockComponent
-          key={block.id}
-          block={block}
-        />
-      );
-    case ArticleBlockType.IMAGE:
-      return (
-        <ArticleImageBlockComponent
-          key={block.id}
-          block={block}
-        />
-      );
-    default:
-      return null;
-  }
-};
-
 export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
-  const { t } = useTranslation('article');
-
   const dispatch = useAppDispatch();
 
   const article = useSelector(getArticleDetailsData);
@@ -77,74 +44,11 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
     }
   }, [dispatch, id]);
 
-  let content;
-
-  if (isLoading) {
-    content = (
-      <div className={cls.contentWrapper}>
-        <Skeleton
-          width={200}
-          height={200}
-          borderRadius="50%"
-          className={cls.avatar}
-        />
-        <Skeleton
-          width={669}
-          height={31}
-        />
-        <Skeleton
-          width={339}
-          height={31}
-        />
-        <Skeleton
-          width="100%"
-          height={231}
-        />
-        <Skeleton
-          width="100%"
-          height={231}
-        />
-      </div>
-    );
-  } else if (error) {
-    content = (
-      <Text
-        title={t('Статья не найдена')}
-        align="center"
-      />
-    );
-  } else {
-    content = (
-      <div
-        className={cls.contentWrapper}
-        data-testid="articleDetails"
-      >
-        <Avatar
-          src={article?.img}
-          size={200}
-          className={cls.avatar}
-        />
-        <Text
-          title={article?.title}
-          text={article?.subtitle}
-          align="left"
-          size="sizeL"
-          tagTitle="h2"
-        />
-        <div>
-          <div className={cls.articleInfo}>
-            <EyeIcon className={cls.icon} />
-            <Text text={String(article?.views)} />
-          </div>
-          <div className={cls.articleInfo}>
-            <DatePickerIcon className={cls.icon} />
-            <Text text={article?.createdAt} />
-          </div>
-        </div>
-        {article?.blocks.map(renderBlock)}
-      </div>
-    );
-  }
+  const props = {
+    article,
+    error,
+    isLoading,
+  };
 
   return (
     <DynamicModuleLoader
@@ -152,7 +56,11 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
       removeAfterUnmount
     >
       <div className={classNames(cls.articleDetails, {}, [className])}>
-        {content}
+        <ToggleFeatures
+          name="isAppRedesigned"
+          on={<ArticleDetailsRedesigned {...props} />}
+          off={<ArticleDetailsDeprecated {...props} />}
+        />
       </div>
     </DynamicModuleLoader>
   );

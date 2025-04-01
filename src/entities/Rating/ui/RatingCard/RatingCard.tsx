@@ -1,14 +1,7 @@
 import { memo, useCallback, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Card } from '@/shared/ui/deprecated/Card';
-import { HStack, VStack } from '@/shared/ui/redesigned/Flex';
-import { Text } from '@/shared/ui/deprecated/Text';
-import { StarRating } from '@/shared/ui/deprecated/StarRating';
-import { Modal } from '@/shared/ui/deprecated/Modal';
-import { Input } from '@/shared/ui/deprecated/Input';
-import { Button } from '@/shared/ui/deprecated/Button';
-import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { RatingCardDeprecated } from './RatingCardDeprecated/RatingCardDeprecated';
+import { RatingCardRedesigned } from './RatingCardRedesigned/RatingCardRedesigned';
 
 interface RatingCardProps {
   className?: string;
@@ -17,6 +10,17 @@ interface RatingCardProps {
   onCancel?: (starCount: number) => void;
   onAccept?: (starCount: number, feedback?: string) => void;
   rate?: number;
+}
+
+export interface RatingCardState extends RatingCardProps {
+  feedback?: string;
+  setFeedback?: (feedback: string) => void;
+  isOpenModal?: boolean;
+  starCount?: number;
+  onClickCancel: () => void;
+  onClickSend: () => void;
+  closeModal: () => void;
+  selectStars: (starCount: number) => void;
 }
 
 export const RatingCard = memo(
@@ -31,10 +35,6 @@ export const RatingCard = memo(
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [starCount, setStarCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
-
-    const isMobile = useDevice();
-
-    const { t } = useTranslation();
 
     const selectStars = useCallback(
       (starCount: number) => {
@@ -63,86 +63,26 @@ export const RatingCard = memo(
       setIsOpenModal(false);
     }, []);
 
-    const contentModal = (
-      <>
-        <Text title={feedbackTitle} />
-        <Input
-          label={t('Ваш отзыв')}
-          labelWidth={120}
-          value={feedback}
-          onChange={setFeedback}
-          data-testid="ratingCard.Input"
-        />
-      </>
-    );
+    const commonProps = {
+      className: className,
+      feedbackTitle: feedbackTitle,
+      title: title,
+      feedback: feedback,
+      setFeedback,
+      isOpenModal: isOpenModal,
+      starCount: starCount,
+      onClickCancel: handleClickCancel,
+      onClickSend: handleClickSend,
+      closeModal: closeModal,
+      selectStars: selectStars,
+    };
 
     return (
-      <Card
-        className={className}
-        data-testid="ratingCard"
-      >
-        <VStack
-          gap="24"
-          align="center"
-        >
-          <Text title={starCount ? t('Спасибо за оценку!') : title} />
-          <StarRating
-            size={40}
-            onSelect={selectStars}
-            selectedStars={starCount}
-          />
-        </VStack>
-        {!isMobile && (
-          <Modal
-            lazy
-            isOpen={isOpenModal}
-            onClose={closeModal}
-          >
-            <VStack gap="24">
-              {contentModal}
-              <HStack
-                max
-                gap="16"
-                justify="end"
-              >
-                <Button
-                  onClick={handleClickCancel}
-                  variant="outlineRed"
-                  data-testid="ratingCard.Close"
-                >
-                  {t('Закрыть')}
-                </Button>
-                <Button
-                  onClick={handleClickSend}
-                  data-testid="ratingCard.Send"
-                >
-                  {t('Отправить')}
-                </Button>
-              </HStack>
-            </VStack>
-          </Modal>
-        )}
-        {isMobile && (
-          <Drawer
-            lazy
-            isOpen={isOpenModal}
-            onClose={handleClickCancel}
-          >
-            <VStack
-              gap="24"
-              max
-            >
-              {contentModal}
-              <Button
-                onClick={handleClickSend}
-                fullWidth
-              >
-                {t('Отправить')}
-              </Button>
-            </VStack>
-          </Drawer>
-        )}
-      </Card>
+      <ToggleFeatures
+        name="isAppRedesigned"
+        on={<RatingCardRedesigned {...commonProps} />}
+        off={<RatingCardDeprecated {...commonProps} />}
+      />
     );
   }
 );

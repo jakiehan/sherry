@@ -1208,6 +1208,42 @@
       "userId": "2",
       "text": "Паганец, выздоравливай!",
       "id": "WEuLCIv"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "text": "Шерри, иди попей водички!",
+      "id": "xroAJmq"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "text": "Шерри, летс го",
+      "id": "yNap4oB"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "text": "asasas",
+      "id": "AydeNOW"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "text": "asasasas",
+      "id": "tnbZ1XM"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "text": "asasas",
+      "id": "iK4y1Xp"
+    },
+    {
+      "articleId": "3",
+      "userId": "1",
+      "text": "asasas",
+      "id": "t-kI0Tx"
     }
   ],
   "users": [
@@ -1225,7 +1261,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "appDarkTheme"
+        "theme": "appOrangeTheme"
       }
     },
     {
@@ -1238,7 +1274,8 @@
       "avatar": "https://images.unsplash.com/photo-1652726692250-45965ba38a70?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "features": {
         "isArticleRatingEnabled": false,
-        "isCounterEnabled": true
+        "isCounterEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
         "theme": "appDarkTheme"
@@ -1254,10 +1291,11 @@
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_NoDT3xgFg1tPCcjyNdHHrbcFp3MVFl_78A&s",
       "features": {
         "isArticleRatingEnabled": true,
-        "isCounterEnabled": true
+        "isCounterEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "appDarkTheme"
+        "theme": "appOrangeTheme"
       }
     },
     {
@@ -1319,6 +1357,24 @@
       "rate": 5,
       "feedback": "грусть",
       "id": "C22VtnK"
+    },
+    {
+      "articleId": "8",
+      "userId": "1",
+      "rate": 3,
+      "id": "2Wqay8K"
+    },
+    {
+      "articleId": "14",
+      "userId": "1",
+      "rate": 3,
+      "id": "zEl-QKc"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "rate": 5,
+      "id": "FjKMHFZ"
     }
   ],
   "profile": [
@@ -1328,7 +1384,7 @@
       "lastname": "Олейник",
       "age": 31,
       "currency": "RUB",
-      "country": "Russia",
+      "country": "USA",
       "city": "Ulyanovsk",
       "username": "ehanjaki",
       "avatar": "https://images.unsplash.com/photo-1649000313856-7360316a546c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

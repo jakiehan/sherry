@@ -1,8 +1,12 @@
 .loginForm {
   display: flex;
-  width: 350px;
+  width: 300px;
   flex-direction: column;
   gap: 15px;
+}
+
+.loginFormRedesigned {
+  width: 400px;
 }
 
 .btnLogin {
@@ -10,5 +14,5 @@
 }
 
 .message {
-  min-height: 24px;
+  min-height: 20px;
 }

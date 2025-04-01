@@ -5,6 +5,7 @@ const removedFeatureName = process.argv[2]; // пример = isArticleRating
 const featureState = process.argv[3]; // on/off
 
 const toggleFeaturesHookName = 'useToggleFeatures';
+const toggleFeaturesFuncName = 'toggleFeatures';
 const toggleFeaturesComponentName = 'ToggleFeatures';
 
 if (!removedFeatureName) {
@@ -34,7 +35,8 @@ function isToggleFunctions(node: Node) {
   node.forEachChild((child: Node) => {
     if (
       child.isKind(SyntaxKind.Identifier) &&
-      child.getText() === toggleFeaturesHookName
+      (child.getText() === toggleFeaturesHookName ||
+        child.getText() === toggleFeaturesFuncName)
     ) {
       isToggleFeature = true;
     }

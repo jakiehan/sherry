@@ -4,7 +4,9 @@ import cls from './CommentList.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { Comment } from '../../model/types';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
 
 interface CommentListProps {
   comments?: Comment[];
@@ -26,7 +28,13 @@ export const CommentList = memo(
               key={comment.id}
             />
           ))}
-        {!comments?.length && <Text text={t('Комментарии отсутствуют')} />}
+        {!comments?.length && (
+          <ToggleFeatures
+            name="isAppRedesigned"
+            on={<Text text={t('Комментарии отсутствуют')} />}
+            off={<TextDeprecated text={t('Комментарии отсутствуют')} />}
+          />
+        )}
       </div>
     );
   }

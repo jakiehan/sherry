@@ -2,7 +2,8 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './ArticleDetailsComments.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { CommentList } from '@/entities/Comment';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
@@ -15,6 +16,8 @@ import {
 } from '../../model/selectors/comments';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { ToggleFeatures } from '@/shared/lib/components/ToggleFeatures';
+import { VStack } from '@/shared/ui/redesigned/Flex';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
@@ -43,21 +46,43 @@ export const ArticleDetailsComments = memo(
     );
 
     if (error) {
-      return <Text text="Ошибка загрузки комментариев" />;
+      return (
+        <ToggleFeatures
+          name="isAppRedesigned"
+          on={<Text text="Ошибка загрузки комментариев" />}
+          off={<TextDeprecated text="Ошибка загрузки комментариев" />}
+        />
+      );
     }
 
     return (
-      <div className={classNames(cls.articleDetailsComments, {}, [className])}>
-        <Text
-          className={cls.title}
-          title={t('Комментарии')}
+      <VStack
+        max
+        className={classNames('', {}, [className])}
+        gap="8"
+      >
+        <ToggleFeatures
+          name="isAppRedesigned"
+          on={
+            <Text
+              title={t('Комментарии')}
+              size="sizeL"
+            />
+          }
+          off={
+            <TextDeprecated
+              className={cls.title}
+              title={t('Комментарии')}
+            />
+          }
         />
+
         <AddCommentForm onSendCommit={handleSendComment} />
         <CommentList
           comments={comments}
           isLoading={isLoading}
         />
-      </div>
+      </VStack>
     );
   }
 );

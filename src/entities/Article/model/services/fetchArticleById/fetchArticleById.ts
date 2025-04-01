@@ -14,7 +14,11 @@ export const fetchArticleById = createAsyncThunk<
       throw new Error('Нет id статьи');
     }
 
-    const response = await extra.api.get<Article>(`/articles/${articleId}`);
+    const response = await extra.api.get<Article>(`/articles/${articleId}`, {
+      params: {
+        _expand: 'user',
+      },
+    });
 
     if (!response.data) {
       throw new Error();

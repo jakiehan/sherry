@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { routeConfig } from '../lib/routeConfig/routeConfig';
-import { PageLoader } from '@/widgets/PageLoader';
 import { RequireAuth } from './RequireAuth';
 import { AppRoutesProps } from '../types/router';
 
@@ -25,7 +24,7 @@ const routeWithWrapper = (route: AppRoutesProps) => {
 
 export const AppRouter = () => {
   return (
-    <Suspense fallback={<PageLoader />}>
+    <Suspense fallback="">
       <Routes>{Object.values(routeConfig).map(routeWithWrapper)}</Routes>
     </Suspense>
   );
