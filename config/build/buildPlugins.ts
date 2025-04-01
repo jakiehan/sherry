@@ -43,6 +43,22 @@ export const buildPlugins = ({ paths, isDev, apiURL, project }: BuildOptions): w
       filename: 'css/[name].[contenthash:8]',
       chunkFilename: 'css/[name].[contenthash:8]',
     }));
+    /*plugins.push(new CompressionPlugin({
+      filename: "[path][base].gz",
+      algorithm: "gzip",
+      deleteOriginalAssets: true,
+      compressionOptions: {
+        level: 9,
+      },
+    }));
+    plugins.push(new CompressionPlugin({
+      filename: "[path][base].br",
+      algorithm: "brotliCompress",
+      deleteOriginalAssets: true,
+      compressionOptions: {
+        level: 11,
+      },
+    }));*/
   }
 
   return plugins
